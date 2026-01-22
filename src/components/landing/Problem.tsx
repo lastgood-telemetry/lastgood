@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, Search } from "lucide-react";
+import { Activity, AlertTriangle, Clock, Search } from "lucide-react";
 
 const Problem = () => {
   return (
@@ -37,7 +37,7 @@ const Problem = () => {
 
           <div className="surface-elevated rounded-xl p-6 border border-border/50">
             <div className="w-10 h-10 rounded-lg bg-muted-foreground/10 flex items-center justify-center mb-4">
-              <Clock className="h-5 w-5 text-muted-foreground" />
+              <Activity className="h-5 w-5 text-muted-foreground" />
             </div>
             <h3 className="font-semibold mb-2">MTTR suffers</h3>
             <p className="text-sm text-muted-foreground">

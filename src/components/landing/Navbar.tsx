@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Clock } from "lucide-react";
+import { Clock, Activity } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -7,11 +7,11 @@ const Navbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         <div className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-            <Clock className="h-4 w-4 text-primary" />
+            <Activity className="h-4 w-4 text-primary" />
           </div>
           <span className="text-lg font-semibold tracking-tight">LastGood</span>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-8">
           <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             How it works
@@ -24,7 +24,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <Button variant="hero" size="sm">
+        <Button variant="hero" size="sm" onClick={() => window.open('https://forms.gle/9hEBh6WQJae5w7QG8', '_blank')}>
           Join waitlist
         </Button>
       </div>

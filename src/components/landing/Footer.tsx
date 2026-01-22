@@ -1,4 +1,4 @@
-import { Clock } from "lucide-react";
+import { Activity, Clock } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10">
-              <Clock className="h-3.5 w-3.5 text-primary" />
+              <Activity className="h-3.5 w-3.5 text-primary" />
             </div>
             <span className="font-semibold">LastGood</span>
           </div>

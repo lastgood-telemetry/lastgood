@@ -14,7 +14,7 @@ const CTA = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl" onClick={() => window.open('https://forms.gle/5SPGmk9AyMp8QjDX7', '_blank')}>
+            <Button variant="hero" size="xl" onClick={() => window.open('https://forms.gle/9hEBh6WQJae5w7QG8', '_blank')}>
               Get early access
               <ArrowRight className="h-4 w-4" />
             </Button>
