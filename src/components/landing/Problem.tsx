@@ -14,33 +14,33 @@ const Problem = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <div className="surface-elevated rounded-xl p-6 border border-border/50">
-            <div className="w-10 h-10 rounded-lg bg-timeline-danger/10 flex items-center justify-center mb-4">
-              <AlertTriangle className="h-5 w-5 text-timeline-danger" />
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="group surface-elevated rounded-2xl p-8 border border-border/50 hover:border-timeline-danger/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,50,50,0.1)] hover:-translate-y-1">
+            <div className="w-12 h-12 rounded-xl bg-timeline-danger/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <AlertTriangle className="h-6 w-6 text-timeline-danger" />
             </div>
-            <h3 className="font-semibold mb-2">Logs show symptoms</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-xl font-bold mb-3 text-text-primary">Logs show symptoms</h3>
+            <p className="text-muted-foreground leading-relaxed">
               Error logs tell you something broke, but not why. You see the fire, not what started it.
             </p>
           </div>
 
-          <div className="surface-elevated rounded-xl p-6 border border-border/50">
-            <div className="w-10 h-10 rounded-lg bg-timeline-warning/10 flex items-center justify-center mb-4">
-              <Search className="h-5 w-5 text-timeline-warning" />
+          <div className="group surface-elevated rounded-2xl p-8 border border-border/50 hover:border-timeline-warning/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,191,0,0.1)] hover:-translate-y-1">
+            <div className="w-12 h-12 rounded-xl bg-timeline-warning/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Search className="h-6 w-6 text-timeline-warning" />
             </div>
-            <h3 className="font-semibold mb-2">Changes are scattered</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-xl font-bold mb-3 text-text-primary">Changes are scattered</h3>
+            <p className="text-muted-foreground leading-relaxed">
               Deploys, config updates, infra changes—spread across tools with no unified view.
             </p>
           </div>
 
-          <div className="surface-elevated rounded-xl p-6 border border-border/50">
-            <div className="w-10 h-10 rounded-lg bg-muted-foreground/10 flex items-center justify-center mb-4">
-              <Activity className="h-5 w-5 text-muted-foreground" />
+          <div className="group surface-elevated rounded-2xl p-8 border border-border/50 hover:border-muted-foreground/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(150,150,150,0.1)] hover:-translate-y-1">
+            <div className="w-12 h-12 rounded-xl bg-muted-foreground/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Activity className="h-6 w-6 text-muted-foreground" />
             </div>
-            <h3 className="font-semibold mb-2">MTTR suffers</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-xl font-bold mb-3 text-text-primary">MTTR suffers</h3>
+            <p className="text-muted-foreground leading-relaxed">
               Every minute spent guessing is a minute your customers are impacted.
             </p>
           </div>
