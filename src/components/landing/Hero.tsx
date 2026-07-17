@@ -11,32 +11,31 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 py-24 text-center relative z-10">
         <div className="animate-fade-in flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary shadow-[0_0_15px_rgba(64,191,172,0.1)] backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary/80 animate-pulse"></span>
             </span>
-            <span>Uncover the root cause in seconds</span>
+            <span>AI-native change correlation</span>
           </div>
         </div>
 
-        <h1 className="animate-slide-up text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter max-w-5xl mx-auto leading-[1.05] mb-6 drop-shadow-sm">
-          Production broke
-          <span className="text-gradient block mt-2">Find what changed.</span>
+        <h1 className="animate-slide-up text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1] mb-5 drop-shadow-sm">
+          Incidents start with change.
+          <span className="font-serif-italic text-primary block mt-2 text-3xl sm:text-4xl md:text-5xl font-normal lowercase">find the trigger instantly.</span>
         </h1>
 
-        <p className="animate-slide-up text-lg md:text-xl text-muted-foreground/90 max-w-2xl mx-auto mb-10 font-medium tracking-wide" style={{ animationDelay: '0.1s' }}>
-          Stop guessing. LastGood maps your deployments, feature flags, and infrastructure changes to surface exactly what caused the incident.
+        <p className="animate-slide-up text-sm sm:text-base text-muted-foreground/80 max-w-xl mx-auto mb-8 tracking-wide leading-relaxed" style={{ animationDelay: '0.1s' }}>
+          LastGood continuously correlates telemetry alerts with deployments, config changes, and feature flags—revealing the exact root cause in seconds.
         </p>
 
-        <div className="animate-slide-up flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: '0.2s' }}>
-          <Button variant="default" className="h-12 px-8 text-base font-semibold shadow-[0_0_20px_rgba(64,191,172,0.3)] hover:shadow-[0_0_30px_rgba(64,191,172,0.5)] transition-shadow" onClick={() => window.open("https://forms.gle/9hEBh6WQJae5w7QG8", "_blank")}>
+        <div className="animate-slide-up flex flex-col sm:flex-row items-center justify-center gap-3" style={{ animationDelay: '0.2s' }}>
+          <Button variant="default" className="h-10 px-6 text-sm font-semibold transition-all duration-200" onClick={() => window.open("https://forms.gle/9hEBh6WQJae5w7QG8", "_blank")}>
             Join the Waitlist
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
           </Button>
           <Button 
             variant="outline" 
-            className="h-12 px-8 text-base font-semibold border-border/50 hover:bg-white/5"
+            className="h-10 px-6 text-sm font-semibold border-border/80 hover:bg-white/5 transition-all duration-200"
             onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
           >
             View Example Timeline
