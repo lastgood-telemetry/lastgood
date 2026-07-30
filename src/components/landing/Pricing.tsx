@@ -6,11 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
-  const [addAi, setAddAi] = useState(false);
-
-  const baseProPrice = isAnnual ? 39 : 49;
-  const aiPrice = 5;
-  const proPrice = baseProPrice + (addAi ? aiPrice : 0);
+  const proPrice = isAnnual ? 39 : 49;
 
   return (
     <section id="pricing" className="py-20 relative overflow-hidden border-t border-border/50">
@@ -74,7 +70,7 @@ const Pricing = () => {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                  <span><strong>2 days</strong> signal retention</span>
+                  <span><strong>7 days</strong> signal retention</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Check className="h-4 w-4 text-primary flex-shrink-0" />
@@ -83,7 +79,7 @@ const Pricing = () => {
                 <li className="flex items-center gap-2.5">
                   <Check className="h-4 w-4 text-primary flex-shrink-0" />
                   <span className="flex items-center gap-1.5">
-                    Up to 250 KB/day ingestion
+                    Up to 500 MB/month ingestion
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
@@ -102,7 +98,7 @@ const Pricing = () => {
             </CardContent>
             <CardFooter className="pt-4 pb-6">
               <Button variant="outline" className="w-full font-medium" onClick={() => window.open('https://forms.gle/9hEBh6WQJae5w7QG8', '_blank')}>
-                Get Started
+                Join Waitlist
               </Button>
             </CardFooter>
           </Card>
@@ -126,27 +122,11 @@ const Pricing = () => {
             <CardContent className="space-y-4 flex-1">
               <div className="h-px bg-border/50" />
               
-              {/* Interactive AI Addon */}
-              <div className="bg-primary/5 border border-primary/20 rounded-lg p-3.5 flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="ai-addon-checkbox"
-                  checked={addAi}
-                  onChange={(e) => setAddAi(e.target.checked)}
-                  className="mt-1 h-4.5 w-4.5 rounded border-border text-primary focus:ring-primary/40 accent-primary cursor-pointer"
-                />
-                <div className="flex-1 text-xs">
-                  <label htmlFor="ai-addon-checkbox" className="font-semibold text-text-primary cursor-pointer flex items-center gap-1.5">
-                    Add AI Diagnosis
-                    <span className="text-[10px] font-mono bg-primary/15 text-primary border border-primary/20 px-1.5 py-0.5 rounded">+$5/mo</span>
-                  </label>
-                  <p className="text-muted-foreground mt-0.5 leading-relaxed">
-                    Auto-highlights timeline anomalies and generates incident root-cause summaries.
-                  </p>
-                </div>
-              </div>
-
               <ul className="space-y-3 text-sm text-muted-foreground pt-2">
+                <li className="flex items-center gap-2.5">
+                  <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                  <span><strong>AI Root Cause Diagnosis</strong> included</span>
+                </li>
                 <li className="flex items-center gap-2.5">
                   <Check className="h-4 w-4 text-primary flex-shrink-0" />
                   <span><strong>Unlimited</strong> projects & services</span>
@@ -183,9 +163,9 @@ const Pricing = () => {
               <Button 
                 variant="default" 
                 className="w-full font-semibold shadow-md"
-                onClick={() => window.open(`https://buy.lastgood.io/pro${addAi ? '-with-ai' : ''}?billing=${isAnnual ? 'annual' : 'monthly'}`, '_blank')}
+                onClick={() => window.open('https://forms.gle/9hEBh6WQJae5w7QG8', '_blank')}
               >
-                Buy Pro
+                Join Waitlist
               </Button>
             </CardFooter>
           </Card>
