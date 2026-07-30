@@ -47,9 +47,9 @@ const Hero = () => {
           <Button
             variant="outline"
             className="h-10 px-6 text-sm font-semibold border-border/80 hover:bg-white/5 transition-all duration-200"
-            onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => window.open('https://console.lastgood.space/sandbox', '_blank')}
           >
-            View Example Timeline
+            Try Interactive Sandbox
           </Button>
         </div>
 
