@@ -8,6 +8,8 @@ import ForTeams from "@/components/landing/ForTeams";
 import Pricing from "@/components/landing/Pricing";
 import CTA from "@/components/landing/CTA";
 import Footer from "@/components/landing/Footer";
+import Logos from "@/components/landing/Logos";
+import Trust from "@/components/landing/Trust";
 
 const Index = () => {
   return (
@@ -15,11 +17,13 @@ const Index = () => {
       <Navbar />
       <div className="flex-1 flex flex-col bg-background">
         <Hero />
+        <Logos />
         <Problem />
         <HowItWorks />
         <Timeline />
         <Benefits />
         <ForTeams />
+        <Trust />
         <Pricing />
         <CTA />
       </div>

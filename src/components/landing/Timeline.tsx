@@ -15,50 +15,40 @@ interface TimelineEvent {
 const events: TimelineEvent[] = [
   {
     time: "14:23",
-    type: "deploy",
+    type: "github",
     icon: GitBranch,
-    title: "api-service v2.4.1 deployed",
+    title: "PR #142 Merged: Add new checkout flow",
     detail: "3 commits by @sarah containing db connection adaptations",
     color: "primary",
     likelihood: null,
-    meta: "SHA: 7ad4e2c · v2.4.1",
+    meta: "SHA: 7ad4e2c",
   },
   {
     time: "14:45",
-    type: "config",
+    type: "cicd",
     icon: Settings,
-    title: "Database connection pool modified",
-    detail: "max_connections: 100 → 200",
-    color: "warning",
-    likelihood: "Contributing factor",
-    meta: "Env: production · pool_size",
+    title: "CI/CD Build Started",
+    detail: "Action: production-deploy triggered by main branch",
+    color: "muted",
+    likelihood: null,
+    meta: "Workflow: deploy-prod",
   },
   {
     time: "14:52",
-    type: "flag",
-    icon: Flag,
-    title: "Feature flag 'new-checkout-flow' enabled",
-    detail: "Targeting 100% of organic traffic",
+    type: "deploy",
+    icon: Server,
+    title: "api-service v2.4.1 deployed",
+    detail: "Deployed to production cluster via REST API",
     color: "primary",
     likelihood: "Primary trigger",
-    meta: "Flag: new-checkout-flow · Actor: @mark",
-  },
-  {
-    time: "15:01",
-    type: "infra",
-    icon: Server,
-    title: "Auto-scaling limits triggered",
-    detail: "Replica count scaled: 4 → 8",
-    color: "muted",
-    likelihood: null,
-    meta: "AWS AutoScaling · US-East-1",
+    meta: "Env: production · v2.4.1",
   },
   {
     time: "15:08",
     type: "incident",
     icon: AlertCircle,
     title: "Checkout Latency Spike (504 Gateway Timeout)",
-    detail: "PagerDuty alert service-checkout-latency active",
+    detail: "Webhook alert service-checkout-latency active",
     color: "danger",
     likelihood: null,
     meta: "P1 Incident #4208",
@@ -113,7 +103,7 @@ const Timeline = () => {
             <p className="text-xs font-mono text-primary uppercase tracking-widest">AI Correlation Timeline</p>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
-            Stop digging <span className="font-serif-italic text-primary block mt-1 text-xl sm:text-2xl md:text-3xl font-normal lowercase">through infinite dashboards.</span>
+            Stop asking <span className="font-serif-italic text-primary block mt-1 text-xl sm:text-2xl md:text-3xl font-normal lowercase">'did anyone deploy?' in Slack.</span>
           </h2>
           <p className="text-xs md:text-sm text-muted-foreground/80 max-w-xl mx-auto leading-relaxed">
             LastGood continuously correlates telemetry alerts with upstream system changes. Our engine traces the temporal path to identify the exact code, flag, or config change that initiated the outage.
@@ -216,14 +206,15 @@ const Timeline = () => {
                   <div>
                     <span className="text-primary">❯ summary:</span>
                     <p className="text-muted-foreground mt-1 leading-normal font-sans text-xs">
-                      Enabling the feature flag <strong className="text-text-primary">new-checkout-flow</strong> triggered gateway timeouts. The flow contains an unoptimized database query that exhausts the database connection pool (maxed out at 200).
+                      The recent <strong className="text-text-primary">api-service v2.4.1</strong> deployment triggered gateway timeouts. The GitHub PR #142 introduced an unoptimized database query that exhausts the database connection pool.
                     </p>
                   </div>
                   <div>
                     <span className="text-amber-500">❯ trigger sequence:</span>
                     <ul className="text-[11px] text-muted-foreground mt-1 space-y-1 pl-2 border-l border-border">
-                      <li>14:45 Config pool altered</li>
-                      <li className="text-text-primary font-medium">14:52 Flag toggled (100% traffic)</li>
+                      <li>14:23 GitHub PR merged</li>
+                      <li>14:45 CI/CD build started</li>
+                      <li className="text-text-primary font-medium">14:52 Deployment completed (Primary trigger)</li>
                       <li>15:08 Latency alert activated</li>
                     </ul>
                   </div>
@@ -235,7 +226,7 @@ const Timeline = () => {
                     <span className="text-[10px] text-muted-foreground flex items-center gap-1"><RefreshCw className="h-3 w-3 animate-spin-slow" /> Auto-rollback available</span>
                   </div>
                   <p className="text-muted-foreground font-sans text-xs leading-normal">
-                    Revert feature flag <strong className="text-text-primary">new-checkout-flow</strong> target limits immediately.
+                    Revert CI/CD deployment <strong className="text-text-primary">v2.4.1</strong> via REST API immediately.
                   </p>
                   <button 
                     onClick={() => window.open('https://forms.gle/9hEBh6WQJae5w7QG8', '_blank')}
