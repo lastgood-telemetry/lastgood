@@ -1,108 +1,75 @@
 import { Zap, Target, TrendingDown, Users } from "lucide-react";
 
-const benefits = [
-  {
-    icon: Zap,
-    title: "Faster root cause",
-    description: "Stop hunting through tools. See the most relevant changes instantly, ranked by likelihood.",
-  },
-  {
-    icon: Target,
-    title: "Less guesswork",
-    description: "Replace \"did anyone deploy recently?\" with hard data. Every change, timestamped and surfaced.",
-  },
-  {
-    icon: TrendingDown,
-    title: "Lower MTTR",
-    description: "Shave minutes off every incident. When every second counts, LastGood gives you a head start.",
-  },
-  {
-    icon: Users,
-    title: "Shared context",
-    description: "Everyone on the incident call sees the same timeline. No more siloed knowledge during outages.",
-  },
-];
-
 const Benefits = () => {
   return (
-    <section id="benefits" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-secondary/10 skew-y-3 transform origin-bottom-left -z-10" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-12 max-w-xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="h-px w-6 bg-primary/45"></span>
-            <p className="text-xs font-mono text-primary uppercase tracking-widest">Why LastGood</p>
-            <span className="h-px w-6 bg-primary/45"></span>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3 text-text-primary">
-            Incident response, <span className="font-serif-italic text-primary block mt-1 text-xl sm:text-2xl md:text-3xl font-normal lowercase">fully streamlined.</span>
+    <section id="benefits" className="py-24 relative overflow-hidden bg-transparent border-t border-white/10">
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-xs font-mono text-zinc-400 mb-2.5 uppercase tracking-widest font-semibold">Value Proposition</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white">
+            Incident triage, <span className="font-inria-serif text-zinc-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">engineered for speed and clarity.</span>
           </h2>
-          <p className="text-xs md:text-sm text-muted-foreground/80">
-            Spend less time guessing and more time fixing. Transform chaos into clear, actionable data.
+          <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+            Eliminate triage paralysis. Replace chaotic Slack speculation with hard, timestamped engineering mutation data.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Bento Item 1: Large Span */}
-          <div className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="md:col-span-2 group relative overflow-hidden rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
             <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-all duration-300">
-                <Zap className="h-5 w-5 text-primary" />
+              <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-white">
+                <Zap className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-lg font-bold mb-2 text-text-primary group-hover:text-primary transition-colors">Faster root cause</h3>
-                <p className="text-xs md:text-sm text-muted-foreground/80 leading-normal">
-                  Stop hunting through an endless array of tools. LastGood aggregates everything and surfaces the most relevant changes instantly, mathematically ranked by likelihood.
+                <h3 className="text-lg font-bold mb-2 text-white">Automated Trigger Discovery</h3>
+                <p className="text-xs md:text-sm text-zinc-400 leading-relaxed font-normal">
+                  Stop manually parsing thousands of log lines across disjointed dashboards. LastGood surfaces recent production mutations instantly, mathematically ranked by probability and blast radius.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Bento Item 2: Small Span */}
-          <div className="md:col-span-1 group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
-            <div className="absolute inset-0 bg-gradient-to-bl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="md:col-span-1 group relative overflow-hidden rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
             <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="w-9 h-9 rounded-lg bg-timeline-warning/10 border border-timeline-warning/20 flex items-center justify-center mb-4 transition-all duration-300">
-                <Target className="h-4.5 w-4.5 text-timeline-warning" />
+              <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-white">
+                <Target className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold mb-1.5 text-text-primary">Less guesswork</h3>
-                <p className="text-xs text-muted-foreground/80">
-                  Replace "did anyone deploy recently?" with hard, undeniable data.
+                <h3 className="text-base font-bold mb-2 text-white">Zero Slack Guesswork</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed font-normal">
+                  Replace "did anyone deploy recently?" with undeniable, verified deployment timestamps.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Bento Item 3: Small Span */}
-          <div className="md:col-span-1 group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
-             <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="md:col-span-1 group relative overflow-hidden rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
              <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 transition-all duration-300">
-                <TrendingDown className="h-4.5 w-4.5 text-blue-400" />
+              <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-white">
+                <TrendingDown className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold mb-1.5 text-text-primary">Lower MTTR</h3>
-                <p className="text-xs text-muted-foreground/80">
-                  Shave critical minutes off every incident. Get a head start when every second counts.
+                <h3 className="text-base font-bold mb-2 text-white">85% MTTR Reduction</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed font-normal">
+                  Shave critical minutes off every Sev-1 outage. Get an instant head start when every second counts.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Bento Item 4: Large Span */}
-          <div className="md:col-span-2 group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
-            <div className="absolute inset-0 bg-gradient-to-tl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="md:col-span-2 group relative overflow-hidden rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
             <div className="relative z-10 flex flex-row items-center justify-between h-full gap-8">
               <div className="flex-1">
-                <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4 transition-all duration-300">
-                  <Users className="h-5 w-5 text-purple-400" />
+                <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-white">
+                  <Users className="h-5 w-5" />
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-text-primary group-hover:text-purple-400 transition-colors">Shared context</h3>
-                <p className="text-xs md:text-sm text-muted-foreground/80 leading-normal">
-                  Everyone on the incident call sees the exact same timeline. No more siloed knowledge or disjointed investigations across disconnected teams.
+                <h3 className="text-lg font-bold mb-2 text-white">Unified Incident Context</h3>
+                <p className="text-xs md:text-sm text-zinc-400 leading-relaxed font-normal">
+                  Everyone on the incident bridge sees the exact same change graph timeline. No more siloed knowledge or disjointed investigation across platform, SRE, and product engineering teams.
                 </p>
               </div>
             </div>

@@ -1,47 +1,56 @@
-import { Activity, AlertTriangle, Clock, Search } from "lucide-react";
+import { AlertTriangle, Search, Clock } from "lucide-react";
 
 const Problem = () => {
   return (
-    <section className="py-20 border-t border-border/50">
-      <div className="container mx-auto px-6">
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
-            Incidents are chaos.{" "}
-            <span className="font-serif-italic text-muted-foreground block mt-1 text-xl sm:text-2xl md:text-3xl font-normal lowercase">change visibility is missing.</span>
+    <section className="py-24 border-t border-white/10 bg-transparent">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <p className="text-xs font-mono text-zinc-400 mb-2.5 uppercase tracking-widest font-semibold">The Triage Problem</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+            Incidents are chaotic.{" "}
+            <span className="font-inria-serif text-zinc-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">
+              Telemetry logs show symptoms, not the trigger.
+            </span>
           </h2>
-          <p className="text-sm md:text-base text-muted-foreground/80 leading-relaxed">
-            Your alerts fire. Metrics spike. Logs fill with errors. But what actually changed? Teams scramble through Slack channels, git history, and deployment platforms—wasting critical triage window.
+          <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+            When alerts fire and latency spikes, error logs tell you *what* broke, but not *which upstream mutation* ignited the failure. SRE teams waste critical triage windows hunting across Slack, Git commits, and SaaS portals.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div className="group surface-elevated rounded-2xl p-6 border border-border/80 hover:border-primary/30 transition-all duration-200 hover:shadow-md">
-            <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-5 transition-transform duration-200">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
+          {/* Card 1 */}
+          <div className="group rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
+            <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-zinc-200">
+              <AlertTriangle className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold mb-2 text-text-primary">Logs show symptoms</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Error logs tell you *something* broke, but not why. You see the fire, not the configuration that ignited it.
+            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">01 // Logs Show Symptoms</span>
+            <h3 className="text-base font-bold mb-2 text-white">Symptom Metrics vs Root Cause</h3>
+            <p className="text-xs text-zinc-400 leading-relaxed font-normal">
+              Datadog or Prometheus show CPU exhaustion, but fail to pinpoint the underlying pull request or configuration mutation that introduced the thread leak.
             </p>
           </div>
 
-          <div className="group surface-elevated rounded-2xl p-6 border border-border/80 hover:border-primary/30 transition-all duration-200 hover:shadow-md">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5 transition-transform duration-200">
-              <Search className="h-5 w-5 text-amber-500" />
+          {/* Card 2 */}
+          <div className="group rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
+            <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-zinc-200">
+              <Search className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold mb-2 text-text-primary">Changes are scattered</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Deploys, configuration updates, and feature flags are distributed across disjointed SaaS portals.
+            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">02 // Scattered Mutations</span>
+            <h3 className="text-base font-bold mb-2 text-white">Fragmented Signal Vectors</h3>
+            <p className="text-xs text-zinc-400 leading-relaxed font-normal">
+              Deploys, feature flag toggles, Terraform updates, and Kubernetes config maps live in disconnected portals with zero unified correlation.
             </p>
           </div>
 
-          <div className="group surface-elevated rounded-2xl p-6 border border-border/80 hover:border-primary/30 transition-all duration-200 hover:shadow-md">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-transform duration-200">
-              <Activity className="h-5 w-5 text-primary" />
+          {/* Card 3 */}
+          <div className="group rounded-lg border border-white/10 bg-[#09090c] p-7 transition-all duration-200 hover:border-white/20">
+            <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-zinc-200">
+              <Clock className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold mb-2 text-text-primary">MTTR suffers</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Every minute spent guessing downstream dependencies is a minute of customer-facing outage.
+            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">03 // High MTTR Triage</span>
+            <h3 className="text-base font-bold mb-2 text-white">Slack Communication Chaos</h3>
+            <p className="text-xs text-zinc-400 leading-relaxed font-normal">
+              On-call engineers waste 80% of live incident response asking "did anyone deploy recently?" instead of executing immediate remediation.
             </p>
           </div>
         </div>

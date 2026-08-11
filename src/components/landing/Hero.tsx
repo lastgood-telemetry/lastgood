@@ -1,86 +1,203 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Activity, ArrowRight, Clock, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Terminal, GitCommit, Flag, Server, CheckCircle2, AlertCircle } from "lucide-react";
+
+const incidents = [
+  {
+    id: "db-exhaustion",
+    title: "Sev-1 DB Pool Exhaustion",
+    service: "payment-gateway",
+    metric: "HTTP 500 Spike (+420%)",
+    culpritType: "GIT COMMIT",
+    culpritName: "PR #1492: Add connection pool max limit fallback",
+    culpritAuthor: "@alex_sre",
+    sha: "a1b2c3d4",
+    confidence: "96.4%",
+    blastRadius: "14 downstream services",
+    remediation: "/rollback --commit a1b2c3d4",
+  },
+  {
+    id: "gateway-timeout",
+    title: "504 Gateway Timeout Spike",
+    service: "api-router-v2",
+    metric: "P99 Latency > 4500ms",
+    culpritType: "FEATURE FLAG",
+    culpritName: "Flag Toggle: enable_v2_auth_pipeline (enabled)",
+    culpritAuthor: "@sarah_dev",
+    sha: "ff_88190",
+    confidence: "94.1%",
+    blastRadius: "8 microservices",
+    remediation: "/flag disable enable_v2_auth_pipeline",
+  },
+  {
+    id: "memory-leak",
+    title: "OOMKilled Pod Evictions",
+    service: "user-auth-cluster",
+    metric: "RAM Usage 98.4%",
+    culpritType: "K8S DEPLOYMENT",
+    culpritName: "Helm Upgrade: user-service:v2.4.1-rc3",
+    culpritAuthor: "@ci_bot",
+    sha: "deploy_991",
+    confidence: "98.7%",
+    blastRadius: "Entire auth pod pool",
+    remediation: "/helm rollback user-service 41",
+  },
+];
 
 const Hero = () => {
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeScenario, setActiveScenario] = useState(0);
 
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
+  const currentInc = incidents[activeScenario];
+
+  const integrations = [
+    "GitHub Webhooks",
+    "Datadog Alerts",
+    "AWS CloudTrail",
+    "LaunchDarkly",
+    "Kubernetes Operator",
+    "Vercel Deployments",
+    "Ansible Automation"
+  ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 bg-grid bg-grid-fade pointer-events-none" />
-      {/* Background glow effect */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[600px] opacity-40 pointer-events-none" style={{ background: 'var(--gradient-glow)' }} />
-
-      <div className="container mx-auto px-6 py-24 text-center relative z-10">
-        <div className="animate-fade-in flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary/80 animate-pulse"></span>
-            </span>
-            <span>AI-native change correlation</span>
-          </div>
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-16 overflow-hidden bg-transparent">
+      {/* Structural Grid Background */}
+      <div className="container mx-auto px-6 text-center relative z-10 max-w-5xl">
+        
+        {/* Monochromatic Telemetry Beacon */}
+        <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-[#0e0e11] px-3.5 py-1 text-xs font-mono mb-8 shadow-inner">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          </span>
+          <span className="text-zinc-300 font-medium">Telemetry Change Correlation Engine</span>
+          <span className="text-zinc-600">|</span>
+          <span className="text-white font-bold uppercase tracking-wider">Public Beta Live</span>
         </div>
 
-        <h1 className="animate-slide-up text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1] mb-5 drop-shadow-sm">
-          Incidents start with a change.
-          <span className="font-serif-italic text-primary block mt-2 text-3xl sm:text-4xl md:text-5xl font-normal lowercase">Find the trigger in 3 seconds.</span>
+        {/* Authoritative Monochrome Headline */}
+        <h1 className="animate-slide-up text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.12] mb-6">
+          When production breaks, telemetry tells you what.
+          <span className="font-inria-serif text-zinc-300 block mt-3 text-3xl sm:text-4xl md:text-5xl font-normal italic">
+            LastGood tells you why.
+          </span>
         </h1>
 
-        <p className="animate-slide-up text-sm sm:text-base text-muted-foreground/80 max-w-xl mx-auto mb-8 tracking-wide leading-relaxed" style={{ animationDelay: '0.1s' }}>
-          LastGood automatically correlates your alerts with GitHub commits and CI/CD deployments—before your team starts guessing in Slack.
+        <p className="animate-slide-up text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto mb-10 tracking-wide leading-relaxed font-normal">
+          Stop hunting through logs and asking "who deployed?" during live Sev-1 bridges. LastGood correlates every alert spike with upstream code commits, flag flips, and infra state mutations in 3 seconds.
         </p>
 
-        <div className="animate-slide-up flex flex-col sm:flex-row items-center justify-center gap-3" style={{ animationDelay: '0.2s' }}>
-          <Button variant="default" className="h-10 px-6 text-sm font-semibold transition-all duration-200" onClick={() => window.open("https://forms.gle/9hEBh6WQJae5w7QG8", "_blank")}>
-            Join Waitlist
-            <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+        {/* Sharp Architectural Buttons */}
+        <div className="animate-slide-up flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: '0.1s' }}>
+          <Button
+            variant="default"
+            className="h-11 px-8 text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all rounded-[3px] shadow-sm cursor-pointer border border-transparent"
+            onClick={() => window.open("https://console.lastgood.space/login", "_blank")}
+          >
+            <span>Access BETA</span>
+            <ArrowRight className="ml-2 h-4 w-4 text-black" />
           </Button>
           <Button
             variant="outline"
-            className="h-10 px-6 text-sm font-semibold border-border/80 hover:bg-white/5 transition-all duration-200"
+            className="h-11 px-7 text-xs font-mono font-medium border-white/15 hover:bg-white/10 text-zinc-200 transition-all rounded-[3px] cursor-pointer"
             onClick={() => window.open('https://console.lastgood.space/sandbox', '_blank')}
           >
-            Try Interactive Sandbox
+            <Terminal className="mr-2 h-4 w-4 text-zinc-300" />
+            Explore Interactive Sandbox
           </Button>
         </div>
 
-        {/* Interactive Demo Video */}
-        <div className="animate-slide-up mt-16 max-w-4xl mx-auto rounded-xl overflow-hidden border border-border/80 bg-surface/50 shadow-2xl relative group transition-transform duration-700 hover:scale-[1.02]" style={{ animationDelay: '0.3s', transform: 'perspective(1200px) rotateX(2deg)' }}>
-          {/* Fake Window Header */}
-          <div className="h-10 border-b border-border/50 bg-muted/30 flex items-center px-4">
-            <div className="flex items-center gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
+        {/* Interactive Incident Switcher Box */}
+        <div className="animate-slide-up mt-14 max-w-4xl mx-auto rounded-lg overflow-hidden border border-white/15 bg-[#09090c] shadow-2xl relative text-left" style={{ animationDelay: '0.2s' }}>
+          {/* Engineering Window Header */}
+          <div className="h-10 border-b border-white/10 bg-[#0e0e11] flex items-center justify-between px-4">
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-500" />
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-400" />
+              <span className="ml-2 font-mono text-[11px] text-zinc-400">lastgood-telemetry-engine // live-correlation-demo</span>
+            </div>
+            <div className="flex items-center gap-3">
+               <span className="font-mono text-[10px] text-zinc-200 bg-white/10 px-2 py-0.5 rounded border border-white/20 font-bold">100% DETERMINISTIC</span>
             </div>
           </div>
-          <div className="relative aspect-video w-full bg-black group/video">
-            <video
-              ref={videoRef}
-              autoPlay
-              loop
-              muted={isMuted}
-              playsInline
-              className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-              src="/lastgood-intro.mp4"
-            />
-            {/* Mute Toggle Button */}
-            <button
-              onClick={toggleMute}
-              className="absolute bottom-4 right-4 p-2 rounded-full bg-black/50 text-white backdrop-blur-sm border border-white/10 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300 hover:bg-black/70 focus:outline-none"
-              aria-label={isMuted ? "Unmute video" : "Mute video"}
-            >
-              {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-            </button>
+
+          {/* Scenario Selector Tabs */}
+          <div className="grid grid-cols-3 border-b border-white/10 bg-[#050507] text-xs font-mono">
+            {incidents.map((inc, index) => (
+              <button
+                key={inc.id}
+                onClick={() => setActiveScenario(index)}
+                className={`py-3 px-4 text-center transition-all cursor-pointer border-r border-white/10 last:border-r-0 flex items-center justify-center gap-2 ${
+                  activeScenario === index
+                    ? "bg-[#0e0e11] text-white font-bold border-b-2 border-b-white"
+                    : "text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.02]"
+                }`}
+              >
+                <AlertCircle className={`h-3.5 w-3.5 ${activeScenario === index ? 'text-white' : 'text-zinc-600'}`} />
+                <span className="truncate">{inc.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Scenario Content Visualizer */}
+          <div className="p-6 bg-[#09090c] font-mono text-xs text-zinc-300 space-y-5">
+             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <div>
+                   <div className="text-[10px] text-zinc-500 uppercase tracking-widest">Active Incident Trigger</div>
+                   <div className="text-base font-bold text-white mt-0.5">{currentInc.title}</div>
+                   <div className="text-zinc-300 text-xs mt-1">Alert Payload: {currentInc.metric} ({currentInc.service})</div>
+                </div>
+                <div className="flex items-center gap-3 bg-white/5 border border-white/15 px-3 py-2 rounded">
+                   <div>
+                      <div className="text-[9px] text-zinc-400 uppercase tracking-wider">Correlation Score</div>
+                      <div className="text-lg font-bold text-white">{currentInc.confidence}</div>
+                   </div>
+                   <CheckCircle2 className="h-6 w-6 text-white" />
+                </div>
+             </div>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-[#040406] border border-white/10 rounded p-4 space-y-2">
+                   <div className="text-[10px] text-zinc-500 uppercase tracking-widest flex items-center gap-1.5">
+                      {currentInc.culpritType === "GIT COMMIT" ? <GitCommit className="h-3.5 w-3.5 text-white" /> : currentInc.culpritType === "FEATURE FLAG" ? <Flag className="h-3.5 w-3.5 text-zinc-300" /> : <Server className="h-3.5 w-3.5 text-zinc-400" />}
+                      <span>Isolated Culprit Mutation</span>
+                   </div>
+                   <div className="text-white font-bold text-sm">{currentInc.culpritName}</div>
+                   <div className="text-zinc-400 text-xs">Author: <span className="text-white">{currentInc.culpritAuthor}</span> | SHA: <span className="text-zinc-300">{currentInc.sha}</span></div>
+                </div>
+
+                <div className="bg-[#040406] border border-white/10 rounded p-4 space-y-2">
+                   <div className="text-[10px] text-zinc-500 uppercase tracking-widest">Automated Blast Radius & Remediation</div>
+                   <div className="text-zinc-300 text-xs">Impact: <span className="text-white font-bold">{currentInc.blastRadius}</span></div>
+                   <div className="bg-black border border-white/15 p-2 rounded text-zinc-200 text-[11px] font-mono mt-1">
+                      {currentInc.remediation}
+                   </div>
+                </div>
+             </div>
+          </div>
+
+          {/* Footer Bar */}
+          <div className="h-8 border-t border-white/10 bg-[#0e0e11] px-4 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+             <span>Press button above to access live telemetry console</span>
+             <a href="https://console.lastgood.space/login" target="_blank" rel="noreferrer" className="text-white hover:underline flex items-center gap-1">
+                Launch Full Console <ArrowRight size={10} />
+             </a>
+          </div>
+        </div>
+
+        {/* Integration Logo Stream Ticker */}
+        <div className="mt-16 pt-8 border-t border-white/10">
+          <p className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest mb-6">
+            Native Telemetry Ingestion Connectors
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 opacity-70">
+            {integrations.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2 text-xs font-mono text-zinc-300">
+                <span className="text-white font-bold">•</span>
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

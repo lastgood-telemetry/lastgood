@@ -1,42 +1,37 @@
-import { Sparkles } from "lucide-react";
+import { Terminal } from "lucide-react";
 
 const Timeline = () => {
   return (
-    <section id="timeline" className="py-20 relative overflow-hidden border-t border-border/50">
-      <div className="absolute inset-0 bg-grid bg-grid-fade pointer-events-none opacity-40" />
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="timeline" className="py-24 relative overflow-hidden border-t border-white/10 bg-[#020204]">
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-            <p className="text-xs font-mono text-primary uppercase tracking-widest">Interactive Sandbox</p>
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
-            Stop asking <span className="font-serif-italic text-primary block mt-1 text-xl sm:text-2xl md:text-3xl font-normal lowercase">'did anyone deploy?' in Slack.</span>
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <p className="text-xs font-mono text-sky-400 mb-2.5 uppercase tracking-widest font-semibold">Live Sandbox</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-white">
+            Stop asking <span className="font-inria-serif text-sky-400 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">'did anyone deploy?' in Slack.</span>
           </h2>
-          <p className="text-xs md:text-sm text-muted-foreground/80 max-w-xl mx-auto leading-relaxed">
-            Experience LastGood firsthand. Play with a live incident scenario to see how our engine correlates telemetry alerts with upstream system changes.
+          <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+            Experience LastGood directly inside our live sandbox. Test a simulated Sev-1 outage scenario and watch our telemetry engine score candidate mutations in real time.
           </p>
         </div>
 
-        {/* Sandbox Embed */}
+        {/* Console Sandbox Embed */}
         <div className="max-w-6xl mx-auto">
-          <div className="rounded-xl border border-border/80 bg-surface shadow-2xl overflow-hidden relative group">
-            {/* Fake Window Header */}
-            <div className="h-10 border-b border-border/50 bg-muted/30 flex items-center justify-between px-4">
-              <div className="flex items-center gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          <div className="rounded-lg border border-white/15 bg-[#060608] shadow-2xl overflow-hidden relative">
+            {/* Engineering Header */}
+            <div className="h-9 border-b border-white/10 bg-[#08080b] flex items-center justify-between px-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                <span className="ml-2 font-mono text-[11px] text-zinc-400">console.lastgood.space/sandbox</span>
               </div>
-              <div className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground bg-background/50 px-3 py-1 rounded-full border border-border/50 truncate max-w-[200px] sm:max-w-none">
-                console.lastgood.space/sandbox
-              </div>
+              <span className="font-mono text-[10px] text-sky-400 uppercase tracking-wider">Interactive Console</span>
             </div>
 
             {/* Iframe Container */}
-            <div className="relative w-full h-[600px] md:h-[750px] bg-background">
+            <div className="relative w-full h-[600px] md:h-[720px] bg-[#030305]">
               <iframe
                 src="https://console.lastgood.space/sandbox"
                 className="w-full h-full border-none"
