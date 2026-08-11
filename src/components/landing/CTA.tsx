@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/util/analytics";
 
 const CTA = () => {
   return (
@@ -17,7 +18,10 @@ const CTA = () => {
             <Button
               variant="default"
               className="h-11 px-8 text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all rounded-[3px] shadow-sm cursor-pointer"
-              onClick={() => window.open('https://console.lastgood.space/login', '_blank')}
+              onClick={() => {
+                trackEvent("click_access_beta", "conversion", "CTA");
+                window.open('https://console.lastgood.space/login', '_blank');
+              }}
             >
               <span>Access BETA (Free for 2 Projects)</span>
               <ArrowRight className="ml-2 h-4 w-4 text-black" />

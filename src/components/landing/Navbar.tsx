@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { History, ArrowRight, Terminal } from "lucide-react";
+import { trackEvent } from "@/util/analytics";
 
 const Navbar = () => {
   return (
@@ -39,7 +40,10 @@ const Navbar = () => {
             variant="outline"
             size="sm"
             className="hidden sm:inline-flex text-xs font-mono border-white/15 hover:bg-white/10 text-zinc-200 rounded-[3px] cursor-pointer"
-            onClick={() => window.open('https://console.lastgood.space/sandbox', '_blank')}
+            onClick={() => {
+              trackEvent("click_explore_sandbox", "navigation", "Navbar");
+              window.open('https://console.lastgood.space/sandbox', '_blank');
+            }}
           >
             <Terminal className="mr-1.5 h-3.5 w-3.5 text-zinc-300" />
             Explore Sandbox
@@ -48,7 +52,10 @@ const Navbar = () => {
             variant="default"
             size="sm"
             className="font-mono text-xs font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all rounded-[3px] cursor-pointer px-4"
-            onClick={() => window.open('https://console.lastgood.space/login', '_blank')}
+            onClick={() => {
+              trackEvent("click_access_beta", "navigation", "Navbar");
+              window.open('https://console.lastgood.space/login', '_blank');
+            }}
           >
             <span>Access BETA</span>
             <ArrowRight className="ml-1.5 h-3.5 w-3.5 text-black" />

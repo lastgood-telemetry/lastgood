@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Terminal, GitCommit, Flag, Server, CheckCircle2, AlertCircle } from "lucide-react";
+import { trackEvent } from "@/util/analytics";
 
 const incidents = [
   {
@@ -92,7 +93,10 @@ const Hero = () => {
           <Button
             variant="default"
             className="h-11 px-8 text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all rounded-[3px] shadow-sm cursor-pointer border border-transparent"
-            onClick={() => window.open("https://console.lastgood.space/login", "_blank")}
+            onClick={() => {
+              trackEvent("click_access_beta", "conversion", "Hero");
+              window.open("https://console.lastgood.space/login", "_blank");
+            }}
           >
             <span>Access BETA</span>
             <ArrowRight className="ml-2 h-4 w-4 text-black" />
@@ -100,7 +104,10 @@ const Hero = () => {
           <Button
             variant="outline"
             className="h-11 px-7 text-xs font-mono font-medium border-white/15 hover:bg-white/10 text-zinc-200 transition-all rounded-[3px] cursor-pointer"
-            onClick={() => window.open('https://console.lastgood.space/sandbox', '_blank')}
+            onClick={() => {
+              trackEvent("click_explore_sandbox", "engagement", "Hero");
+              window.open('https://console.lastgood.space/sandbox', '_blank');
+            }}
           >
             <Terminal className="mr-2 h-4 w-4 text-zinc-300" />
             Explore Interactive Sandbox

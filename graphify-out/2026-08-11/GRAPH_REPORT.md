@@ -1,16 +1,16 @@
-# Graph Report - lastgood  (2026-08-11)
+# Graph Report - lastgood  (2026-07-30)
 
 ## Corpus Check
-- 99 files · ~30,004 words
+- 93 files · ~28,468 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 661 nodes · 809 edges · 98 communities (49 shown, 49 thin omitted)
+- 646 nodes · 774 edges · 98 communities (48 shown, 50 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8ed8ae51`
+- Built from commit: `70215ec8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -51,16 +51,16 @@
 - graphify reference: incremental update and cluster-only
 - accordion.tsx
 - badge.tsx
-- card.tsx
+- tabs.tsx
 - graphify reference: GitHub clone and cross-repo merge
 - graphify reference: transcribe video and audio
-- avatar.tsx
-- @radix-ui/react-separator
+- radio-group.tsx
+- scroll-area.tsx
 - textarea.tsx
 - rules/graphify.md
 - workflows/graphify.md
 - class-variance-authority
-- vercel.json
+- clsx
 - cmdk
 - date-fns
 - embla-carousel-react
@@ -108,12 +108,12 @@
 2. `compilerOptions` - 20 edges
 3. `compilerOptions` - 14 edges
 4. `What You Must Do When Invoked` - 12 edges
-5. `trackEvent()` - 11 edges
-6. `/graphify` - 10 edges
-7. `compilerOptions` - 9 edges
-8. `scripts` - 8 edges
-9. `react` - 8 edges
-10. `graphify reference: extra exports and benchmark` - 8 edges
+5. `/graphify` - 10 edges
+6. `compilerOptions` - 9 edges
+7. `scripts` - 8 edges
+8. `react` - 8 edges
+9. `graphify reference: extra exports and benchmark` - 8 edges
+10. `Button` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `useCarousel()` --references--> `react`  [EXTRACTED]
@@ -130,11 +130,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (98 total, 49 thin omitted)
+## Communities (98 total, 50 thin omitted)
 
 ### Community 0 - "Index.tsx"
-Cohesion: 0.08
-Nodes (30): AnalyticsTracker(), App(), queryClient, Benefits(), CTA(), Footer(), audiences, ForTeams() (+22 more)
+Cohesion: 0.07
+Nodes (29): App(), queryClient, benefits, CTA(), Footer(), audiences, ForTeams(), Hero() (+21 more)
 
 ### Community 1 - "devDependencies"
 Cohesion: 0.05
@@ -142,7 +142,7 @@ Nodes (43): autoprefixer, eslint, @eslint/js, eslint-plugin-react-hooks, eslint-
 
 ### Community 2 - "sidebar.tsx"
 Cohesion: 0.05
-Nodes (38): Input, Separator, SheetContent, SheetContentProps, SheetDescription, SheetFooter(), SheetHeader(), SheetOverlay (+30 more)
+Nodes (37): Input, Separator, SheetContent, SheetContentProps, SheetDescription, SheetFooter(), SheetHeader(), SheetOverlay (+29 more)
 
 ### Community 3 - "carousel.tsx"
 Cohesion: 0.07
@@ -161,11 +161,11 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 7 - "utils.ts"
-Cohesion: 0.08
-Nodes (15): NavLink, NavLinkCompatProps, Checkbox, HoverCardContent, PopoverContent, Progress, RadioGroup, RadioGroupItem (+7 more)
+Cohesion: 0.10
+Nodes (11): NavLink, NavLinkCompatProps, Avatar, AvatarFallback, AvatarImage, Checkbox, HoverCardContent, PopoverContent (+3 more)
 
 ### Community 8 - "cn"
-Cohesion: 0.18
+Cohesion: 0.19
 Nodes (15): ButtonProps, buttonVariants, Calendar(), CalendarProps, Pagination(), PaginationContent, PaginationEllipsis(), PaginationItem (+7 more)
 
 ### Community 9 - "compilerOptions"
@@ -190,7 +190,7 @@ Nodes (12): name, private, scripts, build, build:dev, dev, lint, preview (+4 mor
 
 ### Community 14 - "dependencies"
 Cohesion: 0.15
-Nodes (13): clsx, dependencies, clsx, @radix-ui/react-alert-dialog, @radix-ui/react-dropdown-menu, @radix-ui/react-navigation-menu, @radix-ui/react-scroll-area, vaul (+5 more)
+Nodes (13): dependencies, @radix-ui/react-alert-dialog, @radix-ui/react-dropdown-menu, @radix-ui/react-navigation-menu, @radix-ui/react-scroll-area, @radix-ui/react-separator, vaul, @radix-ui/react-alert-dialog (+5 more)
 
 ### Community 15 - "menubar.tsx"
 Cohesion: 0.17
@@ -276,33 +276,29 @@ Nodes (3): AccordionContent, AccordionItem, AccordionTrigger
 Cohesion: 0.67
 Nodes (3): Badge(), BadgeProps, badgeVariants
 
-### Community 36 - "card.tsx"
-Cohesion: 0.29
-Nodes (6): Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
-
-### Community 39 - "avatar.tsx"
+### Community 36 - "tabs.tsx"
 Cohesion: 0.50
-Nodes (3): Avatar, AvatarFallback, AvatarImage
+Nodes (3): TabsContent, TabsList, TabsTrigger
 
 ## Knowledge Gaps
-- **385 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+380 more)
+- **379 isolated node(s):** `$schema`, `style`, `rsc`, `tsx`, `config` (+374 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **49 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **50 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `carousel.tsx`, `scripts`, `@radix-ui/react-separator`, `class-variance-authority`, `cmdk`, `date-fns`, `embla-carousel-react`, `@hookform/resolvers`, `input-otp`, `lucide-react`, `next-themes`, `@radix-ui/react-accordion`, `@radix-ui/react-aspect-ratio`, `@radix-ui/react-avatar`, `@radix-ui/react-checkbox`, `@radix-ui/react-collapsible`, `@radix-ui/react-context-menu`, `@radix-ui/react-dialog`, `@radix-ui/react-hover-card`, `@radix-ui/react-label`, `@radix-ui/react-menubar`, `@radix-ui/react-popover`, `@radix-ui/react-progress`, `@radix-ui/react-radio-group`, `@radix-ui/react-select`, `@radix-ui/react-slider`, `@radix-ui/react-slot`, `@radix-ui/react-switch`, `@radix-ui/react-tabs`, `@radix-ui/react-toast`, `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group`, `@radix-ui/react-tooltip`, `react-day-picker`, `react-dom`, `react-hook-form`, `react-resizable-panels`, `react-router-dom`, `recharts`, `sonner`, `tailwind-merge`, `tailwindcss-animate`, `@tanstack/react-query`, `zod`?**
-  _High betweenness centrality (0.290) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `carousel.tsx`, `scripts`, `class-variance-authority`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `@hookform/resolvers`, `input-otp`, `lucide-react`, `next-themes`, `@radix-ui/react-accordion`, `@radix-ui/react-aspect-ratio`, `@radix-ui/react-avatar`, `@radix-ui/react-checkbox`, `@radix-ui/react-collapsible`, `@radix-ui/react-context-menu`, `@radix-ui/react-dialog`, `@radix-ui/react-hover-card`, `@radix-ui/react-label`, `@radix-ui/react-menubar`, `@radix-ui/react-popover`, `@radix-ui/react-progress`, `@radix-ui/react-radio-group`, `@radix-ui/react-select`, `@radix-ui/react-slider`, `@radix-ui/react-slot`, `@radix-ui/react-switch`, `@radix-ui/react-tabs`, `@radix-ui/react-toast`, `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group`, `@radix-ui/react-tooltip`, `react-day-picker`, `react-dom`, `react-hook-form`, `react-resizable-panels`, `react-router-dom`, `recharts`, `sonner`, `tailwind-merge`, `tailwindcss-animate`, `@tanstack/react-query`, `zod`?**
+  _High betweenness centrality (0.294) - this node is a cross-community bridge._
 - **Why does `react` connect `carousel.tsx` to `sidebar.tsx`, `hooks/use-toast.ts`, `dependencies`?**
-  _High betweenness centrality (0.249) - this node is a cross-community bridge._
-- **Why does `cn()` connect `cn` to `Index.tsx`, `sidebar.tsx`, `carousel.tsx`, `hooks/use-toast.ts`, `utils.ts`, `command.tsx`, `form.tsx`, `menubar.tsx`, `context-menu.tsx`, `dropdown-menu.tsx`, `alert-dialog.tsx`, `table.tsx`, `breadcrumb.tsx`, `drawer.tsx`, `navigation-menu.tsx`, `select.tsx`, `toggle-group.tsx`, `alert.tsx`, `input-otp.tsx`, `accordion.tsx`, `badge.tsx`, `card.tsx`, `avatar.tsx`, `textarea.tsx`?**
+  _High betweenness centrality (0.251) - this node is a cross-community bridge._
+- **Why does `cn()` connect `cn` to `Index.tsx`, `sidebar.tsx`, `carousel.tsx`, `hooks/use-toast.ts`, `utils.ts`, `command.tsx`, `form.tsx`, `menubar.tsx`, `context-menu.tsx`, `dropdown-menu.tsx`, `alert-dialog.tsx`, `table.tsx`, `breadcrumb.tsx`, `drawer.tsx`, `navigation-menu.tsx`, `select.tsx`, `toggle-group.tsx`, `alert.tsx`, `input-otp.tsx`, `accordion.tsx`, `badge.tsx`, `tabs.tsx`, `radio-group.tsx`, `scroll-area.tsx`, `textarea.tsx`?**
   _High betweenness centrality (0.206) - this node is a cross-community bridge._
 - **What connects `$schema`, `style`, `rsc` to the rest of the system?**
-  _385 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _379 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Index.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0792156862745098 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06763285024154589 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.046511627906976744 - nodes in this community are weakly interconnected._
 - **Should `sidebar.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.050505050505050504 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05204872646733112 - nodes in this community are weakly interconnected._
