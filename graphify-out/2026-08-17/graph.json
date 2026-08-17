@@ -1000,8 +1000,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "package_dependencies_class_variance_authority",
-      "community": 14,
-      "community_name": "dependencies",
+      "community": 44,
+      "community_name": "class-variance-authority",
       "norm_label": "class-variance-authority"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "class_variance_authority",
-      "community": 14,
-      "community_name": "dependencies",
+      "community": 44,
+      "community_name": "class-variance-authority",
       "norm_label": "class-variance-authority"
     },
     {
@@ -1044,8 +1044,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "package_dependencies_cmdk",
-      "community": 44,
-      "community_name": "cmdk",
+      "community": 14,
+      "community_name": "dependencies",
       "norm_label": "cmdk"
     },
     {
@@ -1055,8 +1055,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "cmdk",
-      "community": 44,
-      "community_name": "cmdk",
+      "community": 14,
+      "community_name": "dependencies",
       "norm_label": "cmdk"
     },
     {
@@ -9694,7 +9694,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/landing/CTA.tsx",
-      "source_location": "L22",
+      "source_location": "L25",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_landing_cta_cta",

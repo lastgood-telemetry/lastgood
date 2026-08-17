@@ -30,53 +30,53 @@
     "semantic_hash": ""
   },
   "src/components/landing/Benefits.tsx": {
-    "mtime": 1786989058.1532671,
-    "ast_hash": "bdec7ca9f22b569a54e5115ad50b45b9",
+    "mtime": 1786988604.0015786,
+    "ast_hash": "3c309e29a64c171c64e8a133510a587b",
     "semantic_hash": ""
   },
   "src/components/landing/CTA.tsx": {
-    "mtime": 1786989094.4138029,
-    "ast_hash": "415001ef2c239b68d3cca9b83b5b7f0e",
+    "mtime": 1786988628.0365908,
+    "ast_hash": "433dd91456f2778eb5ed8abc8ec1c546",
     "semantic_hash": ""
   },
   "src/components/landing/Footer.tsx": {
-    "mtime": 1786989104.1093738,
-    "ast_hash": "e5a9e1c13e8fccea8ebed8770b12106d",
+    "mtime": 1786988633.9419987,
+    "ast_hash": "25d7a806cecc530321653e0640f0bfdc",
     "semantic_hash": ""
   },
   "src/components/landing/ForTeams.tsx": {
-    "mtime": 1786989066.6610508,
-    "ast_hash": "f806c45787e5f197ce0850bcfcd943d3",
+    "mtime": 1786988609.274919,
+    "ast_hash": "96a47b3d25109e33406036b8ae83cf19",
     "semantic_hash": ""
   },
   "src/components/landing/Hero.tsx": {
-    "mtime": 1786989013.8981578,
-    "ast_hash": "11eac6b19ece06c2deca2b5189e6ec13",
+    "mtime": 1786988571.7875767,
+    "ast_hash": "a01311d4a9ebf476a7a438f813cf5ef6",
     "semantic_hash": ""
   },
   "src/components/landing/HowItWorks.tsx": {
-    "mtime": 1786989040.7618208,
-    "ast_hash": "92cf7184a1fdc29bf71cb876d85c862a",
+    "mtime": 1786988590.4570453,
+    "ast_hash": "78f2a6452cbde60ff1cf5fa9d04e72d3",
     "semantic_hash": ""
   },
   "src/components/landing/Navbar.tsx": {
-    "mtime": 1786988996.4957483,
-    "ast_hash": "6cfdc8a097bfab75bb0f26d7a53d8176",
+    "mtime": 1786988562.5574205,
+    "ast_hash": "aeb210ca23021ce99fbca6b3841658f9",
     "semantic_hash": ""
   },
   "src/components/landing/Pricing.tsx": {
-    "mtime": 1786989086.9885423,
-    "ast_hash": "550cba694f9b2d431b61dfb01d633f7a",
+    "mtime": 1786988622.282637,
+    "ast_hash": "e87e537246061bf31d8095ccdab7127b",
     "semantic_hash": ""
   },
   "src/components/landing/Problem.tsx": {
-    "mtime": 1786989028.6504292,
-    "ast_hash": "215318e39f0b99d98f2cdbc56e39a6cf",
+    "mtime": 1786988582.4381423,
+    "ast_hash": "74a86faa87a661160852e3383b885fbf",
     "semantic_hash": ""
   },
   "src/components/landing/Timeline.tsx": {
-    "mtime": 1786989048.3636484,
-    "ast_hash": "96d44e5069b55f7a85db65962a09fb9e",
+    "mtime": 1786988596.4027128,
+    "ast_hash": "cd22cce5d116211fc4f9167579b6adfc",
     "semantic_hash": ""
   },
   "src/components/ui/accordion.tsx": {
@@ -345,8 +345,8 @@
     "semantic_hash": ""
   },
   "src/pages/Index.tsx": {
-    "mtime": 1786988987.491449,
-    "ast_hash": "c514dbe8b2a9d272405962606b9ce032",
+    "mtime": 1786988556.9086447,
+    "ast_hash": "cd2c6a5a90495771336fa14cd56f07a7",
     "semantic_hash": ""
   },
   "src/pages/NotFound.tsx": {
@@ -370,8 +370,8 @@
     "semantic_hash": ""
   },
   "tailwind.config.ts": {
-    "mtime": 1786988697.1975586,
-    "ast_hash": "a6b7eda74cd889fff4b4982713d88963",
+    "mtime": 1786988552.602499,
+    "ast_hash": "af9b484134fdf061a9b1bb6757a37c89",
     "semantic_hash": ""
   },
   "tsconfig.app.json": {
@@ -480,13 +480,13 @@
     "semantic_hash": ""
   },
   "src/components/landing/Logos.tsx": {
-    "mtime": 1786989019.1414237,
-    "ast_hash": "f213a7302f7b06215645ce9869a6144b",
+    "mtime": 1786988576.6642613,
+    "ast_hash": "47086db17fc2e827d85f284ad6b63d4e",
     "semantic_hash": ""
   },
   "src/components/landing/Trust.tsx": {
-    "mtime": 1786989075.9179533,
-    "ast_hash": "b4c40f96928223c66562cefb894cf49c",
+    "mtime": 1786988615.1266518,
+    "ast_hash": "1786e7435ea8ea0a4891fc4396f88c6d",
     "semantic_hash": ""
   },
   "src/pages/Terms.tsx": {

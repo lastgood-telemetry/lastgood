@@ -1,7 +1,7 @@
 # Graph Report - lastgood  (2026-08-17)
 
 ## Corpus Check
-- 99 files · ~30,084 words
+- 99 files · ~30,260 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -59,7 +59,7 @@
 - textarea.tsx
 - rules/graphify.md
 - workflows/graphify.md
-- cmdk
+- class-variance-authority
 - vercel.json
 - clsx
 - date-fns
@@ -190,7 +190,7 @@ Nodes (12): name, private, scripts, build, build:dev, dev, lint, preview (+4 mor
 
 ### Community 14 - "dependencies"
 Cohesion: 0.15
-Nodes (13): class-variance-authority, dependencies, class-variance-authority, @radix-ui/react-alert-dialog, @radix-ui/react-dropdown-menu, @radix-ui/react-navigation-menu, @radix-ui/react-scroll-area, vaul (+5 more)
+Nodes (13): cmdk, dependencies, cmdk, @radix-ui/react-alert-dialog, @radix-ui/react-dropdown-menu, @radix-ui/react-navigation-menu, @radix-ui/react-scroll-area, vaul (+5 more)
 
 ### Community 15 - "menubar.tsx"
 Cohesion: 0.17
@@ -292,7 +292,7 @@ Nodes (3): Avatar, AvatarFallback, AvatarImage
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `carousel.tsx`, `scripts`, `@radix-ui/react-separator`, `cmdk`, `clsx`, `date-fns`, `embla-carousel-react`, `@hookform/resolvers`, `input-otp`, `lucide-react`, `next-themes`, `@radix-ui/react-accordion`, `@radix-ui/react-aspect-ratio`, `@radix-ui/react-avatar`, `@radix-ui/react-checkbox`, `@radix-ui/react-collapsible`, `@radix-ui/react-context-menu`, `@radix-ui/react-dialog`, `@radix-ui/react-hover-card`, `@radix-ui/react-label`, `@radix-ui/react-menubar`, `@radix-ui/react-popover`, `@radix-ui/react-progress`, `@radix-ui/react-radio-group`, `@radix-ui/react-select`, `@radix-ui/react-slider`, `@radix-ui/react-slot`, `@radix-ui/react-switch`, `@radix-ui/react-tabs`, `@radix-ui/react-toast`, `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group`, `@radix-ui/react-tooltip`, `react-day-picker`, `react-dom`, `react-hook-form`, `react-resizable-panels`, `react-router-dom`, `recharts`, `sonner`, `tailwind-merge`, `tailwindcss-animate`, `@tanstack/react-query`, `zod`?**
+- **Why does `dependencies` connect `dependencies` to `carousel.tsx`, `scripts`, `@radix-ui/react-separator`, `class-variance-authority`, `clsx`, `date-fns`, `embla-carousel-react`, `@hookform/resolvers`, `input-otp`, `lucide-react`, `next-themes`, `@radix-ui/react-accordion`, `@radix-ui/react-aspect-ratio`, `@radix-ui/react-avatar`, `@radix-ui/react-checkbox`, `@radix-ui/react-collapsible`, `@radix-ui/react-context-menu`, `@radix-ui/react-dialog`, `@radix-ui/react-hover-card`, `@radix-ui/react-label`, `@radix-ui/react-menubar`, `@radix-ui/react-popover`, `@radix-ui/react-progress`, `@radix-ui/react-radio-group`, `@radix-ui/react-select`, `@radix-ui/react-slider`, `@radix-ui/react-slot`, `@radix-ui/react-switch`, `@radix-ui/react-tabs`, `@radix-ui/react-toast`, `@radix-ui/react-toggle`, `@radix-ui/react-toggle-group`, `@radix-ui/react-tooltip`, `react-day-picker`, `react-dom`, `react-hook-form`, `react-resizable-panels`, `react-router-dom`, `recharts`, `sonner`, `tailwind-merge`, `tailwindcss-animate`, `@tanstack/react-query`, `zod`?**
   _High betweenness centrality (0.290) - this node is a cross-community bridge._
 - **Why does `react` connect `carousel.tsx` to `sidebar.tsx`, `hooks/use-toast.ts`, `dependencies`?**
   _High betweenness centrality (0.249) - this node is a cross-community bridge._

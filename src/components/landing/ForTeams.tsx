@@ -20,30 +20,30 @@ const audiences = [
 
 const ForTeams = () => {
   return (
-    <section id="for-teams" className="py-24 relative overflow-hidden bg-transparent border-t border-white/10">
+    <section id="for-teams" className="py-24 relative overflow-hidden bg-transparent border-t border-slate-800">
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-xs font-mono text-zinc-400 mb-2.5 uppercase tracking-widest font-semibold">Target Engineering Ecosystem</p>
+          <p className="text-xs font-mono text-indigo-400 mb-2.5 uppercase tracking-widest font-semibold">Target Engineering Ecosystem</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-white">
-            Built for engineering teams <span className="font-inria-serif text-zinc-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">who own production reliability.</span>
+            Built for engineering teams <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">who own production reliability.</span>
           </h2>
-          <p className="text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed font-normal">
+          <p className="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed font-normal">
             Designed for high-throughput organizations where uptime is critical and incident resolution time directly impacts business SLA.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {audiences.map((audience, idx) => (
-            <div key={audience.title} className="group relative rounded-lg bg-[#09090c] p-7 border border-white/10 hover:border-white/20 transition-all duration-200">
+            <div key={audience.title} className="group relative rounded-lg bg-[#111827] p-7 border border-slate-800 hover:border-slate-700 transition-all duration-200">
               <div className="relative z-10 flex flex-col items-start h-full">
-                <div className="w-10 h-10 rounded bg-white/5 border border-white/15 flex items-center justify-center mb-6 text-white">
+                <div className={`w-10 h-10 rounded-md flex items-center justify-center mb-6 ${idx === 0 ? 'bg-indigo-950/60 border border-indigo-500/30 text-indigo-400' : idx === 1 ? 'bg-slate-800 border border-slate-700 text-slate-300' : 'bg-emerald-950/60 border border-emerald-500/30 text-emerald-400'}`}>
                   <audience.icon className="h-5 w-5" />
                 </div>
-                <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-2">
+                <span className={`font-mono text-[10px] uppercase tracking-widest mb-2 font-semibold ${idx === 0 ? 'text-indigo-400' : idx === 1 ? 'text-slate-400' : 'text-emerald-400'}`}>
                   {idx === 0 ? "01 // Deployment Triage" : idx === 1 ? "02 // Centralized Audit" : "03 // Incident Context"}
                 </span>
                 <h3 className="text-base font-bold mb-2 text-white">{audience.title}</h3>
-                <p className="text-xs text-zinc-400 leading-relaxed font-normal flex-1">
+                <p className="text-xs text-slate-400 leading-relaxed font-normal flex-1">
                   {audience.description}
                 </p>
               </div>
