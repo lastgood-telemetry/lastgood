@@ -1,4 +1,4 @@
-import { History, Shield, CheckCircle2 } from "lucide-react";
+import { Shield, CheckCircle2 } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-start justify-between gap-10 pb-12 border-b border-slate-800">
           <div className="space-y-3 max-w-sm">
             <a href="/" className="flex items-center gap-3 cursor-pointer group">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-indigo-950/60 border border-indigo-500/30 group-hover:border-indigo-400 transition-all">
-                <History className="h-4 w-4 text-indigo-400" />
+              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-md border border-slate-800 group-hover:border-indigo-500/50 transition-all duration-200">
+                <img src="/logo.jpg" alt="LastGood" className="h-full w-full object-cover" />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
                 Last<span className="text-slate-400 font-mono tracking-tighter ml-0.5">Good</span>
@@ -66,6 +66,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-6">
             <a href="https://console.lastgood.space/login" target="_blank" rel="noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline font-bold">Access Beta Console</a>
+            <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
             <a href="mailto:support@lastgood.space" className="hover:text-slate-300 transition-colors">Engineering Support</a>
           </div>
         </div>
