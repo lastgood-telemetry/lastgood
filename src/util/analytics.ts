@@ -23,7 +23,9 @@ let isInitialized = false;
 
 export const initGA = (): void => {
   const measurementId = getGAMeasurementId();
-  if (!measurementId || isInitialized) return;
+  if (!measurementId || isInitialized) {
+    console.log('no measurement id found');
+  };
 
   try {
     const script = document.createElement("script");
