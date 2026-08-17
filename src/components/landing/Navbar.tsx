@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { History, ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
 import { trackEvent } from "@/util/analytics";
 
 const Navbar = () => {
@@ -7,8 +7,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800 bg-[#0b0e14]/90 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-6 max-w-6xl">
         <a href="/" className="flex items-center gap-3 cursor-pointer group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-indigo-950/60 border border-indigo-500/30 group-hover:border-indigo-400 transition-all duration-200">
-            <History className="h-5 w-5 text-indigo-400 group-hover:rotate-45 transition-transform duration-300" />
+          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-md border border-slate-800 group-hover:border-indigo-500/50 transition-all duration-200">
+            <img src="/logo.jpg" alt="LastGood" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
           </div>
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold tracking-tight text-white">
