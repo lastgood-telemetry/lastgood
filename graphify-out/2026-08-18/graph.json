@@ -1000,8 +1000,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "package_dependencies_class_variance_authority",
-      "community": 46,
-      "community_name": "class-variance-authority",
+      "community": 14,
+      "community_name": "dependencies",
       "norm_label": "class-variance-authority"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "class_variance_authority",
-      "community": 46,
-      "community_name": "class-variance-authority",
+      "community": 14,
+      "community_name": "dependencies",
       "norm_label": "class-variance-authority"
     },
     {
@@ -1022,8 +1022,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "package_dependencies_clsx",
-      "community": 14,
-      "community_name": "dependencies",
+      "community": 46,
+      "community_name": "clsx",
       "norm_label": "clsx"
     },
     {
@@ -1033,8 +1033,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "clsx",
-      "community": 14,
-      "community_name": "dependencies",
+      "community": 46,
+      "community_name": "clsx",
       "norm_label": "clsx"
     },
     {
@@ -5760,7 +5760,7 @@
       "label": "trackPageView()",
       "file_type": "code",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L52",
+      "source_location": "L50",
       "_origin": "ast",
       "id": "src_util_analytics_trackpageview",
       "community": 0,
@@ -5771,7 +5771,7 @@
       "label": "trackEvent()",
       "file_type": "code",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L64",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "src_util_analytics_trackevent",
       "community": 0,
@@ -5782,7 +5782,7 @@
       "label": "resetGAForTesting()",
       "file_type": "code",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L83",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "src_util_analytics_resetgafortesting",
       "community": 0,
@@ -15162,7 +15162,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L83",
+      "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_util_analytics",
@@ -15173,7 +15173,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L64",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_util_analytics",
@@ -15184,7 +15184,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L52",
+      "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_util_analytics",
@@ -15219,7 +15219,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L70",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_util_analytics_trackevent",
@@ -15231,7 +15231,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/util/analytics.ts",
-      "source_location": "L53",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_util_analytics_trackpageview",
@@ -16501,5 +16501,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4ff47141fb5724c5edfaa3eb010867987e8403d4"
+  "built_at_commit": "629bbfbde8032cd9c524021e8281a5a0290eeea5"
 }

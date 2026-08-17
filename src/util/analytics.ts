@@ -24,8 +24,8 @@ let isInitialized = false;
 export const initGA = (): void => {
   const measurementId = getGAMeasurementId();
   if (!measurementId || isInitialized) {
-    console.log('no measurement id found');
-  };
+    return;
+  }
 
   try {
     const script = document.createElement("script");
@@ -34,8 +34,8 @@ export const initGA = (): void => {
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      window.dataLayer?.push(args);
+    function gtag(..._args: any[]) {
+      window.dataLayer?.push(arguments);
     }
     window.gtag = gtag;
     gtag("js", new Date());

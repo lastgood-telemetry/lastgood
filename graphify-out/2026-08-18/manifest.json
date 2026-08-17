@@ -40,8 +40,8 @@
     "semantic_hash": ""
   },
   "src/components/landing/Footer.tsx": {
-    "mtime": 1786993285.766423,
-    "ast_hash": "04e64932a6b00afe995ba2f6395b1df4",
+    "mtime": 1786989104.1093738,
+    "ast_hash": "e5a9e1c13e8fccea8ebed8770b12106d",
     "semantic_hash": ""
   },
   "src/components/landing/ForTeams.tsx": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/components/landing/Navbar.tsx": {
-    "mtime": 1786991348.963208,
-    "ast_hash": "bbfcb296420b5d29e7d3cd645b6be4d7",
+    "mtime": 1786988996.4957483,
+    "ast_hash": "6cfdc8a097bfab75bb0f26d7a53d8176",
     "semantic_hash": ""
   },
   "src/components/landing/Pricing.tsx": {
@@ -500,8 +500,8 @@
     "semantic_hash": ""
   },
   "src/util/analytics.ts": {
-    "mtime": 1786993887.459824,
-    "ast_hash": "e9ed62c75f2a95e80b6a1922f0205ac0",
+    "mtime": 1786472298.0022354,
+    "ast_hash": "1cf00b1a3ac038b30694e25c0fce3aaf",
     "semantic_hash": ""
   },
   "vercel.json": {
@@ -512,11 +512,6 @@
   "public/lastgood-intro.mp4": {
     "mtime": 1785561288.5334845,
     "ast_hash": "e0f7041d41b307e564dd80487a78a78f",
-    "semantic_hash": ""
-  },
-  "public/logo.jpg": {
-    "mtime": 1786991341.54546,
-    "ast_hash": "cc17b3bd9cbf42158e18f2e3d5fa3d0f",
     "semantic_hash": ""
   }
 }
