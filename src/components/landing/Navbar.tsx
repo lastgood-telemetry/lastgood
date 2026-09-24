@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-6 max-w-6xl">
         <a href="/" className="flex items-center gap-3 cursor-pointer group">
           <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-md border border-slate-800 group-hover:border-indigo-500/50 transition-all duration-200">
-            <img src="/logo.jpg" alt="LastGood" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <img src="/logo.png" alt="LastGood" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
           </div>
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold tracking-tight text-white">

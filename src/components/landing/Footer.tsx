@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="space-y-3 max-w-sm">
             <a href="/" className="flex items-center gap-3 cursor-pointer group">
               <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-md border border-slate-800 group-hover:border-indigo-500/50 transition-all duration-200">
-                <img src="/logo.jpg" alt="LastGood" className="h-full w-full object-cover" />
+                <img src="/logo.png" alt="LastGood" className="h-full w-full object-cover" />
               </div>
               <span className="text-xl font-bold tracking-tight text-white">
                 Last<span className="text-slate-400 font-mono tracking-tighter ml-0.5">Good</span>
