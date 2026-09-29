@@ -26,7 +26,7 @@ const Problem = () => {
             <span className="text-[10px] font-mono text-rose-400 uppercase tracking-widest block mb-2 font-semibold">01 // Logs Show Symptoms</span>
             <h3 className="text-base font-bold mb-2 text-white">Symptom Metrics vs Root Cause</h3>
             <p className="text-xs text-slate-400 leading-relaxed font-normal">
-              Datadog or Prometheus show CPU exhaustion, but fail to pinpoint the underlying pull request or configuration mutation that introduced the thread leak.
+              Monitoring tools such as Datadog and Prometheus help you see the symptoms. LastGood adds a cross-tool view of recent code, flag, and infrastructure changes to investigate alongside them.
             </p>
           </div>
 
