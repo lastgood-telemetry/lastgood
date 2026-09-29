@@ -80,12 +80,12 @@ const Hero = () => {
         <h1 className="animate-slide-up text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.12] mb-6">
           When production breaks, telemetry tells you what.
           <span className="font-inria-serif text-slate-300 block mt-3 text-3xl sm:text-4xl md:text-5xl font-normal italic">
-            LastGood tells you why.
+            LastGood helps you investigate what changed.
           </span>
         </h1>
 
         <p className="animate-slide-up text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mb-10 tracking-wide leading-relaxed font-normal">
-          Stop hunting through logs and asking "who deployed?" during live Sev-1 bridges. LastGood correlates every alert spike with upstream code commits, flag flips, and infra state mutations in 3 seconds.
+          Stop hunting through logs and asking "who deployed?" during live Sev-1 bridges. LastGood brings alerts, code commits, flag flips, and infrastructure changes into one timeline so your team can investigate likely causes faster. It works alongside your existing monitoring and incident tools, including Datadog and PagerDuty.
         </p>
 
         {/* Sharp Architectural Buttons */}
@@ -110,7 +110,7 @@ const Hero = () => {
             }}
           >
             <Terminal className="mr-2 h-4 w-4 text-indigo-400" />
-            Explore Interactive Sandbox
+            Explore Simulated Sandbox
           </Button>
         </div>
 
@@ -122,10 +122,10 @@ const Hero = () => {
               <div className="w-2.5 h-2.5 rounded-full bg-slate-600" />
               <div className="w-2.5 h-2.5 rounded-full bg-slate-500" />
               <div className="w-2.5 h-2.5 rounded-full bg-slate-400" />
-              <span className="ml-2 font-mono text-[11px] text-slate-400">lastgood-telemetry-engine // live-correlation-demo</span>
+              <span className="ml-2 font-mono text-[11px] text-slate-400">lastgood-telemetry-engine // simulated-incident</span>
             </div>
             <div className="flex items-center gap-3">
-               <span className="font-mono text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-bold">100% DETERMINISTIC</span>
+               <span className="font-mono text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-bold">ILLUSTRATIVE SCENARIO</span>
             </div>
           </div>
 
@@ -186,7 +186,7 @@ const Hero = () => {
 
           {/* Footer Bar */}
           <div className="h-9 border-t border-slate-800 bg-[#0f172a] px-4 flex items-center justify-between text-[10px] font-mono text-slate-400">
-             <span>Press button above to access live telemetry console</span>
+             <span>Simulated incident; scores and outcomes are illustrative</span>
              <a href="https://console.lastgood.space/login" target="_blank" rel="noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline flex items-center gap-1 font-semibold">
                 Launch Full Console <ArrowRight size={10} />
              </a>
@@ -196,7 +196,7 @@ const Hero = () => {
         {/* Integration Logo Stream Ticker */}
         <div className="mt-16 pt-8 border-t border-slate-800">
           <p className="text-[11px] font-mono text-slate-400 uppercase tracking-widest mb-6 font-semibold">
-            Native Telemetry Ingestion Connectors
+            Signals from your existing tools
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {integrations.map((item, idx) => (

@@ -5,7 +5,7 @@ const Trust = () => {
     <section className="py-24 relative overflow-hidden bg-transparent border-t border-slate-800">
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <div className="text-center mb-16">
-          <p className="text-xs font-mono text-emerald-400 mb-2.5 uppercase tracking-widest font-semibold">Enterprise Security & Compliance</p>
+          <p className="text-xs font-mono text-emerald-400 mb-2.5 uppercase tracking-widest font-semibold">Security Approach</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
             Built for <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">production infrastructure trust.</span>
           </h2>
@@ -57,7 +57,7 @@ const Trust = () => {
                 LastGood is built by Staff SREs and platform architects who lived through the nightmare of 3 AM incident bridges. Having managed infrastructure at hyper-scale, we built the missing correlation layer between production alerts and code mutations.
               </p>
               <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center gap-3">
-                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded font-semibold">SOC 2 Type II Architecture</span>
+                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded font-semibold">SOC 2 certification not claimed</span>
                 <span className="text-[11px] font-mono text-indigo-300 bg-indigo-950/60 border border-indigo-500/30 px-3 py-1 rounded font-semibold">VPC Deployment Ready</span>
               </div>
             </div>

@@ -7,12 +7,12 @@ const Timeline = () => {
 
         {/* Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <p className="text-xs font-mono text-indigo-400 mb-2.5 uppercase tracking-widest font-semibold">Live Sandbox</p>
+          <p className="text-xs font-mono text-indigo-400 mb-2.5 uppercase tracking-widest font-semibold">Simulated Sandbox</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-white">
             Stop asking <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">'did anyone deploy?' in Slack.</span>
           </h2>
           <p className="text-sm text-slate-300 leading-relaxed font-normal">
-            Experience LastGood directly inside our live sandbox. Test a simulated Sev-1 outage scenario and watch our telemetry engine score candidate mutations in real time.
+            Explore a simulated Sev-1 incident in the interactive sandbox. The alert, changes, scores, and suggested action are illustrative, not a customer incident or a benchmark of production accuracy.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ const Timeline = () => {
                 <div className="w-2.5 h-2.5 rounded-full bg-slate-400" />
                 <span className="ml-2 font-mono text-[11px] text-slate-400">console.lastgood.space/sandbox</span>
               </div>
-              <span className="font-mono text-[10px] text-indigo-300 bg-indigo-950/60 px-2.5 py-0.5 rounded border border-indigo-500/30 uppercase tracking-wider font-bold">Interactive Console</span>
+              <span className="font-mono text-[10px] text-indigo-300 bg-indigo-950/60 px-2.5 py-0.5 rounded border border-indigo-500/30 uppercase tracking-wider font-bold">Simulated Scenario</span>
             </div>
 
             {/* Iframe Container */}
@@ -35,7 +35,7 @@ const Timeline = () => {
               <iframe
                 src="https://console.lastgood.space/sandbox"
                 className="w-full h-full border-none"
-                title="LastGood Interactive Sandbox"
+                title="LastGood simulated incident sandbox"
                 loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
               />

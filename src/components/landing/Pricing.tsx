@@ -11,59 +11,16 @@ const Pricing = () => {
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <p className="text-xs font-mono text-indigo-400 mb-2.5 uppercase tracking-widest font-semibold">Pricing & Beta Scale</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
-            Simple, transparent <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">production scale tiers.</span>
+            Try the public beta <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">at no cost.</span>
           </h2>
         </div>
 
-        {/* Outer Relative Container holding Blurred Background & Crisp Beta Overlay */}
-        <div className="relative max-w-5xl mx-auto min-h-[460px] flex items-center justify-center">
+        <p className="text-center text-sm text-slate-400 max-w-2xl mx-auto mb-8">
+          The public beta covers up to 2 connected projects. Paid-plan billing units, limits, and prices are not specified here; contact us for terms before planning a paid rollout.
+        </p>
+        <div className="relative max-w-5xl mx-auto flex items-center justify-center">
 
-          {/* HIDE & BLUR THE PRICING SECTION BACKGROUND */}
-          <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3 gap-6 filter blur-lg opacity-20 select-none pointer-events-none">
-            {/* Fake Blurred Card 1 */}
-            <div className="rounded-lg border border-slate-800 bg-[#111827] p-8 flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Developer</h3>
-                <div className="my-4 text-4xl font-mono text-white">$0</div>
-                <div className="space-y-3 text-xs text-slate-400">
-                  <div>• 2 connected services</div>
-                  <div>• 7 days retention</div>
-                  <div>• Community support</div>
-                </div>
-              </div>
-              <div className="h-10 bg-slate-800 rounded mt-8" />
-            </div>
-
-            {/* Fake Blurred Card 2 */}
-            <div className="rounded-lg border border-slate-700 bg-[#1e293b] p-8 flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Pro Team</h3>
-                <div className="my-4 text-4xl font-mono text-indigo-400">$49</div>
-                <div className="space-y-3 text-xs text-slate-300">
-                  <div>• Unlimited microservices</div>
-                  <div>• 30 days retention</div>
-                  <div>• Priority SRE support</div>
-                </div>
-              </div>
-              <div className="h-10 bg-indigo-600 rounded mt-8" />
-            </div>
-
-            {/* Fake Blurred Card 3 */}
-            <div className="rounded-lg border border-slate-800 bg-[#111827] p-8 flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-2">Enterprise</h3>
-                <div className="my-4 text-4xl font-mono text-white">$999</div>
-                <div className="space-y-3 text-xs text-slate-400">
-                  <div>• Custom signal retention</div>
-                  <div>• VPC Deployment</div>
-                  <div>• 24/7 SLA</div>
-                </div>
-              </div>
-              <div className="h-10 bg-slate-800 rounded mt-8" />
-            </div>
-          </div>
-
-          {/* CRISP HIGH-CONTRAST MONOCHROME PUBLIC BETA OVERLAY CARD */}
+          {/* Public beta terms; no unconfirmed paid-plan prices */}
           <div className="relative z-20 w-full max-w-2xl rounded-lg border border-slate-700 bg-[#111827]/95 p-8 md:p-12 text-center shadow-2xl backdrop-blur-md">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-950/60 px-3.5 py-1 text-xs font-mono text-emerald-400 mb-6 font-bold uppercase tracking-wider">
               <Zap className="h-3.5 w-3.5 text-emerald-400" />
@@ -85,11 +42,11 @@ const Pricing = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>Unlimited Log Webhooks</span>
+                <span>Incident Change Timeline</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                <span>Full Root Cause Engine</span>
+                <span>Ranked Candidate Changes</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="h-4 w-4 text-emerald-400 shrink-0" />

@@ -24,7 +24,7 @@ const Benefits = () => {
               <div>
                 <h3 className="text-lg font-bold mb-2 text-white">Automated Trigger Discovery</h3>
                 <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-normal">
-                  Stop manually parsing thousands of log lines across disjointed dashboards. LastGood surfaces recent production mutations instantly, mathematically ranked by probability and blast radius.
+                  Stop manually parsing thousands of log lines across disjointed dashboards. LastGood surfaces recent production mutations instantly, ranked for investigation by timing and potential impact.
                 </p>
               </div>
             </div>
@@ -52,9 +52,9 @@ const Benefits = () => {
                 <TrendingDown className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold mb-2 text-white">85% MTTR Reduction</h3>
+                <h3 className="text-base font-bold mb-2 text-white">A Faster Starting Point</h3>
                 <p className="text-xs text-slate-400 leading-relaxed font-normal">
-                  Shave critical minutes off every Sev-1 outage. Get an instant head start when every second counts.
+                  See recent changes next to the alert so responders can prioritize what to check first. Actual time saved depends on your incident and integrations.
                 </p>
               </div>
             </div>
