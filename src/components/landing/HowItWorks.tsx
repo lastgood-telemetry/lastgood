@@ -39,7 +39,7 @@ const HowItWorks = () => {
         <div className="text-center mb-16">
           <p className="text-xs font-mono text-indigo-400 mb-2.5 uppercase tracking-widest font-semibold">System Architecture</p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
-            From telemetry alert <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">to root-cause trigger in 3 seconds.</span>
+            From telemetry alert <span className="font-inria-serif text-slate-300 block mt-1 text-2xl sm:text-3xl md:text-4xl font-normal italic">to a shortlist of likely changes.</span>
           </h2>
         </div>
 
