@@ -1,5 +1,4 @@
 import Navbar from "@/components/landing/Navbar";
-import ProductHuntBanner from "@/components/landing/ProductHuntBanner";
 import Hero from "@/components/landing/Hero";
 import Problem from "@/components/landing/Problem";
 import HowItWorks from "@/components/landing/HowItWorks";
@@ -24,7 +23,6 @@ const Index = () => {
 
       {/* Main Content Sections */}
       <div className="relative z-10 flex-1 flex flex-col">
-        <ProductHuntBanner />
         <Navbar />
         <Hero />
         <Logos />
