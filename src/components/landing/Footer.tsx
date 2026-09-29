@@ -15,7 +15,7 @@ const Footer = () => {
               </span>
             </a>
             <p className="text-xs text-slate-400 leading-relaxed font-normal">
-              Autonomous engineering change correlation platform. Eliminating incident triage guesswork across production microservices.
+              Change correlation for incident triage alongside your existing monitoring and response tools.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center gap-1.5 text-slate-300">
                   <Shield size={13} className="text-indigo-400" />
-                  <span>SOC 2 Type II Architecture</span>
+                  <span>SOC 2 certification not claimed</span>
                 </li>
               </ul>
             </div>
@@ -68,6 +68,7 @@ const Footer = () => {
             <a href="https://console.lastgood.space/login" target="_blank" rel="noreferrer" className="text-indigo-400 hover:text-indigo-300 hover:underline font-bold">Access Beta Console</a>
             <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
             <a href="mailto:support@lastgood.space" className="hover:text-slate-300 transition-colors">Engineering Support</a>
+            <a href="https://www.producthunt.com/products/lastgood?launch=lastgood" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">Product Hunt</a>
           </div>
         </div>
       </div>
