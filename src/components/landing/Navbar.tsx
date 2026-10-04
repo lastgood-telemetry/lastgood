@@ -1,69 +1,71 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Terminal } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { trackEvent } from "@/util/analytics";
 
-const Navbar = () => {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800 bg-[#0b0e14]/90 backdrop-blur-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-6 max-w-6xl">
-        <a href="/" className="flex items-center gap-3 cursor-pointer group">
-          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-md border border-slate-800 group-hover:border-indigo-500/50 transition-all duration-200">
-            <img src="/logo.png" alt="LastGood" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold tracking-tight text-white">
-              Last<span className="text-slate-400 font-mono tracking-tighter ml-0.5">Good</span>
-            </span>
-            <span className="hidden sm:inline-block font-mono text-[9px] text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-              BETA LIVE
-            </span>
-          </div>
-        </a>
+export const CONSOLE_URL = "https://console.lastgood.space/login";
+export const SANDBOX_URL = "https://console.lastgood.space/sandbox";
 
-        <div className="hidden md:flex items-center gap-8 font-mono text-xs">
-          <a href="#how-it-works" className="text-slate-400 hover:text-indigo-300 transition-colors">
-            Telemetry Engine
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <header
+      className="site-header"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setOpen(false);
+      }}
+    >
+      <a className="wordmark" href="/" aria-label="LastGood home">
+        <span className="brand-mark" aria-hidden="true">
+          L<span>G</span>
+        </span>
+        LastGood<span className="beta-label">BETA</span>
+      </a>
+      <nav className="desktop-nav" aria-label="Main navigation">
+        <a href="/#how-it-works">Workflow</a>
+        <a href="/#integrations">Integrations</a>
+        <a href="/#pricing">Free beta</a>
+      </nav>
+      <div className="nav-actions">
+        <a
+          className="nav-login"
+          href={CONSOLE_URL}
+          onClick={() =>
+            trackEvent("click_access_beta", "navigation", "Navbar")
+          }
+        >
+          Open console <ArrowUpRight size={14} />
+        </a>
+        <button
+          className="menu-toggle"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+      {open && (
+        <nav
+          id="mobile-navigation"
+          className="mobile-nav"
+          aria-label="Mobile navigation"
+        >
+          <a href="/#how-it-works" onClick={() => setOpen(false)}>
+            Workflow
           </a>
-          <a href="#benefits" className="text-slate-400 hover:text-indigo-300 transition-colors">
-            Architecture
-          </a>
-          <a href="#for-teams" className="text-slate-400 hover:text-indigo-300 transition-colors">
+          <a href="/#integrations" onClick={() => setOpen(false)}>
             Integrations
           </a>
-          <a href="#pricing" className="text-slate-400 hover:text-indigo-300 transition-colors">
-            Pricing & Scale
+          <a href="/#pricing" onClick={() => setOpen(false)}>
+            Free beta
           </a>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            className="hidden sm:inline-flex text-xs font-mono border-slate-800 hover:bg-slate-900 hover:border-slate-700 hover:text-white text-slate-300 rounded-md transition-all cursor-pointer bg-transparent"
-            onClick={() => {
-              trackEvent("click_explore_sandbox", "navigation", "Navbar");
-              window.open('https://console.lastgood.space/sandbox', '_blank');
-            }}
-          >
-            <Terminal className="mr-1.5 h-3.5 w-3.5 text-indigo-400" />
-            Explore Sandbox
-          </Button>
-          <Button
-            variant="default"
-            size="sm"
-            className="font-mono text-xs font-bold uppercase tracking-wider bg-indigo-600 hover:bg-indigo-500 text-white transition-all rounded-md cursor-pointer px-4 shadow-sm"
-            onClick={() => {
-              trackEvent("click_access_beta", "navigation", "Navbar");
-              window.open('https://console.lastgood.space/login', '_blank');
-            }}
-          >
-            <span>Access BETA</span>
-            <ArrowRight className="ml-1.5 h-3.5 w-3.5 text-white" />
-          </Button>
-        </div>
-      </div>
-    </nav>
+          <a href={SANDBOX_URL}>
+            Try the sandbox <ArrowUpRight size={15} />
+          </a>
+        </nav>
+      )}
+    </header>
   );
 };
-
 export default Navbar;
