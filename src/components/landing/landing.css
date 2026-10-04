@@ -54,16 +54,17 @@
   letter-spacing: -1px;
 }
 .brand-mark {
-  display: flex;
-  align-items: center;
-  font-size: 17px;
-  width: 28px;
-  height: 28px;
-  letter-spacing: -4px;
-  border-bottom: 2px solid #b6edce;
-}
-.brand-mark span {
-  color: #b6edce;
+  display: block;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  background-color: #b6edce;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 .beta-label {
   font: 9px/1.5 monospace;
@@ -844,7 +845,8 @@
     font-size: 20px;
   }
   .brand-mark {
-    width: 23px;
+    width: 30px;
+    height: 30px;
   }
   .beta-label {
     font-size: 8px;
