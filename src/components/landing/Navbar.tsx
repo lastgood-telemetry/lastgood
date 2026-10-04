@@ -15,9 +15,14 @@ const Navbar = () => {
       }}
     >
       <a className="wordmark" href="/" aria-label="LastGood home">
-        <span className="brand-mark" aria-hidden="true">
-          L<span>G</span>
-        </span>
+        <span
+          className="brand-mark"
+          aria-hidden="true"
+          style={{
+            maskImage: 'url("/logo.png")',
+            WebkitMaskImage: 'url("/logo.png")',
+          }}
+        />
         LastGood<span className="beta-label">BETA</span>
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
