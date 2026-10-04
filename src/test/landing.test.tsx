@@ -5,6 +5,14 @@ import Index from "../pages/Index";
 afterEach(cleanup);
 
 describe("evidence-first landing page", () => {
+  it("keeps the original logo artwork in the home wordmark", () => {
+    render(<Index />);
+    const home = screen.getByRole("link", { name: "LastGood home" });
+    const logo = home.querySelector(".brand-mark");
+    expect(logo).toHaveAttribute("aria-hidden", "true");
+    expect(logo).toHaveStyle({ maskImage: 'url("/logo.png")' });
+    expect(logo).not.toHaveTextContent("LG");
+  });
   it("has one clear promise and an explicit simulated product scene", () => {
     render(<Index />);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
