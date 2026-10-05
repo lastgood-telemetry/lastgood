@@ -18,7 +18,7 @@ const Footer = () => (
       <span>© 2026 LastGood</span>
       <div>
         <a href="/terms">Terms of service</a>
-        <a href="mailto:support@lastgood.space">Contact</a>
+        <a href="mailto:hello@lastgood.space">hello@lastgood.space</a>
         <a
           href="https://github.com/lastgood-telemetry/lastgood"
           target="_blank"
