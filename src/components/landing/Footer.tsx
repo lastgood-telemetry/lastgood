@@ -19,13 +19,6 @@ const Footer = () => (
       <div>
         <a href="/terms">Terms of service</a>
         <a href="mailto:hello@lastgood.space">hello@lastgood.space</a>
-        <a
-          href="https://github.com/lastgood-telemetry/lastgood"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub <ArrowUpRight size={13} />
-        </a>
       </div>
     </div>
   </footer>
