@@ -109,7 +109,7 @@ const Terms = () => {
             <h2>11. Contact Us</h2>
             <p>If you have questions regarding these Terms, please contact us at:</p>
             <ul>
-              <li><strong>Email:</strong> undefined.kishan@gmail.com</li>
+              <li><strong>Email:</strong> <a href="mailto:hello@lastgood.space">hello@lastgood.space</a></li>
               <li><strong>Website:</strong> <a href="https://lastgood.space">https://lastgood.space</a></li>
             </ul>
           </div>
