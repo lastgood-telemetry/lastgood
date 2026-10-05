@@ -414,7 +414,7 @@ const Index = () => (
               We're building in the open. Expect the product to evolve, and tell
               us where the workflow needs to be better.
             </p>
-            <a href="mailto:support@lastgood.space">
+            <a href="mailto:hello@lastgood.space">
               Talk to us <ArrowUpRight size={14} />
             </a>
             <small>
