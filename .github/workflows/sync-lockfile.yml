@@ -13,31 +13,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      - name: Regenerate package-lock.json
-        run: npm install
+      - name: Regenerate pnpm-lock.yaml
+        run: pnpm install --lockfile-only
 
       - name: Commit lockfile and open PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
-          if git diff --quiet -- package-lock.json; then
-            echo "package-lock.json already in sync; nothing to do."
+          git add pnpm-lock.yaml
+          git rm -f --ignore-unmatch bun.lockb package-lock.json
+          if git diff --cached --quiet; then
+            echo "pnpm-lock.yaml already in sync and no stray lockfiles; nothing to do."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git push origin --delete lockfile-sync 2>/dev/null || true
           git checkout -B lockfile-sync
-          git add package-lock.json
-          git commit -m "chore: sync lockfile for posthog-js"
+          git commit -m "chore: sync pnpm lockfile for posthog-js + drop stray bun/npm lockfiles"
           git push -u origin lockfile-sync
           gh pr create --base main --head lockfile-sync \
-            --title "chore: sync lockfile for posthog-js" \
-            --body "The posthog-js analytics merge updated package.json without regenerating package-lock.json, so Vercel production builds fail with an outdated-lockfile error. This PR contains the regenerated lockfile. Merge it to restore green deploys." \
+            --title "chore: sync pnpm lockfile for posthog-js + drop stray bun/npm lockfiles" \
+            --body "Vercel builds this repo with pnpm and fails the frozen-lockfile check because pnpm-lock.yaml no longer matches package.json (posthog-js was added). This PR regenerates pnpm-lock.yaml and deletes the stray bun.lockb and package-lock.json, standardizing the repo on pnpm. Merge it to restore green deploys." \
           || gh pr view lockfile-sync --json url --jq '."A PR from lockfile-sync already exists: " + .url'
