@@ -327,6 +327,62 @@ const Index = () => (
         </div>
       </section>
       <section
+        id="slack"
+        className="slack-section section-shell"
+        aria-labelledby="slack-heading"
+      >
+        <div className="section-heading">
+          <span className="eyebrow">
+            IN THE WORKS / SLACK <span className="slack-soon">Coming soon</span>
+          </span>
+          <h2 id="slack-heading">
+            You already have alerting.
+            <br />Get the change context.
+          </h2>
+          <p>
+            At 2 AM, you don't need another bot telling you production broke.
+            The planned Slack integration will bring likely suspects into the
+            incident thread you're already working in.
+          </p>
+        </div>
+        <div className="slack-layout">
+          <div className="slack-story">
+            <h3>Not another alert bot.</h3>
+            <p>
+              Datadog, PagerDuty or Grafana raises the alarm. LastGood's job is
+              different: put recent deploys and feature-flag flips in one ranked
+              list, so your team has a lead before the log-diving starts.
+            </p>
+            <ol className="slack-flow" aria-label="Planned Slack investigation workflow">
+              <li><span>01</span><div><strong>Your existing alert fires.</strong><p>Keep the tools that monitor and page your team.</p></div></li>
+              <li><span>02</span><div><strong>Suspect changes land in Slack.</strong><p>One context card in the incident thread, not a second alarm.</p></div></li>
+              <li><span>03</span><div><strong>Open Rewind. Follow the evidence.</strong><p>The link will open the exact incident window, with the leading suspect highlighted.</p></div></li>
+              <li><span>04</span><div><strong>Confirm the cause. Decide the fix.</strong><p>Your team reviews the evidence and rolls back if needed. No automatic production changes.</p></div></li>
+            </ol>
+          </div>
+          <figure className="slack-preview" aria-label="Illustrative Slack suspect card">
+            <div className="slack-channel"><span># incident-api</span><span>ILLUSTRATIVE PREVIEW</span></div>
+            <div className="slack-message">
+              <div className="slack-author"><span className="slack-avatar" aria-hidden="true">↳</span><strong>LastGood</strong><span className="slack-app">APP</span><time>02:14</time></div>
+              <div className="slack-card">
+                <span className="micro-label">CHANGE CONTEXT / API · PRODUCTION</span>
+                <h3>HighErrorRate on api</h3>
+                <p className="slack-card-intro">You have the alert. Here are the changes worth checking.</p>
+                <ol className="slack-suspects" aria-label="Ranked suspect changes">
+                  <li><span>1</span><div><strong>deploy <code>api@2f3a1c</code></strong><small>14 min ago · same service &amp; environment</small></div></li>
+                  <li><span>2</span><div><strong>flag <code>checkout-v2</code> flipped on</strong><small>22 min ago · production</small></div></li>
+                  <li><span>3</span><div><strong>deploy <code>api@9b72e0</code></strong><small>38 min ago · same service &amp; environment</small></div></li>
+                </ol>
+                <div className="slack-rewind-preview"><span>Open incident in Rewind</span><ArrowUpRight size={16} aria-hidden="true" /></div>
+                <p className="slack-card-note">Incident window pre-scoped. Leading suspect highlighted.</p>
+                <div className="slack-review">Suspects, not a verdict. Confirm before you roll back.</div>
+              </div>
+            </div>
+            <figcaption>Planned workflow with example data. Slack delivery and incident-scoped links are not available in the beta yet.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section
         id="integrations"
         className="integrations section-shell"
         aria-labelledby="integrations-heading"
