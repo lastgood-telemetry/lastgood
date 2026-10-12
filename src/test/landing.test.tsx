@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import Index from "../pages/Index";
 
@@ -41,6 +41,18 @@ describe("evidence-first landing page", () => {
     expect(screen.getAllByText("LIVE")).toHaveLength(2);
     expect(screen.getByText("COMING SOON")).toBeVisible();
     expect(screen.getByText(/Not available in the beta today/)).toBeVisible();
+  });
+  it("shows Slack as planned context, not another live alert source", () => {
+    render(<Index />);
+    const section = screen.getByRole("region", { name: /You already have alerting/ });
+    expect(within(section).getByText("Coming soon")).toBeVisible();
+    expect(within(section).getByText("Not another alert bot.")).toBeVisible();
+    expect(within(section).getByText(/not available in the beta yet/)).toBeVisible();
+    expect(within(section).getByText(/No automatic production changes/)).toBeVisible();
+    expect(within(section).getByRole("list", { name: "Planned Slack investigation workflow" }).children).toHaveLength(4);
+    expect(within(section).getByRole("list", { name: "Ranked suspect changes" }).children).toHaveLength(3);
+    expect(within(section).queryByRole("link")).toBeNull();
+    expect(within(section).queryByRole("button")).toBeNull();
   });
   it("only offers free beta and no unsupported certification claim", () => {
     render(<Index />);
