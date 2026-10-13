@@ -329,7 +329,7 @@ const Index = () => (
                 Sign in with GitHub <ArrowUpRight size={16} />
               </a>
               <a className="secondary-link" href={SANDBOX_URL}>
-                Explore the demo <ArrowUpRight size={16} />
+                Try the sandbox <ArrowUpRight size={16} />
               </a>
             </div>
           </div>
@@ -340,7 +340,7 @@ const Index = () => (
               us where the workflow needs to be better.
             </p>
             <ChatLink>
-              Talk to us <ArrowUpRight size={14} />
+              Chat with us
             </ChatLink>
             <small>
               No SOC 2 certification claimed. Contact us to discuss security
