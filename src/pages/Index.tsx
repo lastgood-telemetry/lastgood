@@ -19,20 +19,20 @@ import "@/components/landing/landing.css";
 
 const shots = [
   {
-    src: "/screens/rewind.png",
+    src: "/screens/rewind.svg",
     alt: "LastGood Rewind view in the sandbox showing a checkout-service incident with ranked changes and an AI triage summary",
     title: "Rewind",
     caption: "Ranked changes before the incident, with an AI triage summary. Risk ranks investigation order, not causation.",
     wide: true,
   },
   {
-    src: "/screens/events.png",
+    src: "/screens/events.svg",
     alt: "LastGood Events feed in the sandbox listing GitHub, Kubernetes and LaunchDarkly changes",
     title: "Events",
     caption: "Every change from every source in one feed, each with a score rationale.",
   },
   {
-    src: "/screens/channels.png",
+    src: "/screens/channels.svg",
     alt: "LastGood Ingestion Channels page showing GitHub App and Custom REST API",
     title: "Ingestion Channels",
     caption: "Connect the GitHub App or send events from your own tools.",
