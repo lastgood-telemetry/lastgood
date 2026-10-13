@@ -9,11 +9,42 @@ import {
   ChevronRight,
   Terminal,
   Circle,
+  Bell,
+  MessageSquare,
 } from "lucide-react";
 import Navbar, { CONSOLE_URL, SANDBOX_URL } from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import { trackEvent } from "@/util/analytics";
 import "@/components/landing/landing.css";
+
+const shots = [
+  {
+    src: "/screens/rewind.png",
+    alt: "LastGood Rewind view in the sandbox showing a checkout-service incident with ranked changes and an AI triage summary",
+    title: "Rewind",
+    caption: "Ranked changes before the incident, with an AI triage summary. Risk ranks investigation order, not causation.",
+    wide: true,
+  },
+  {
+    src: "/screens/events.png",
+    alt: "LastGood Events feed in the sandbox listing GitHub, Kubernetes and LaunchDarkly changes",
+    title: "Events",
+    caption: "Every change from every source in one feed, each with a score rationale.",
+  },
+  {
+    src: "/screens/channels.png",
+    alt: "LastGood Ingestion Channels page showing GitHub App and Custom REST API",
+    title: "Ingestion Channels",
+    caption: "Connect the GitHub App or send events from your own tools.",
+  },
+];
+
+const integrations = [
+  { icon: GitBranch, name: "GitHub App", desc: "Pushes, deployments and workflow runs", status: "LIVE" },
+  { icon: Terminal, name: "Custom REST API", desc: "Deploys, migrations, feature flags and config changes from any tool", status: "LIVE" },
+  { icon: Bell, name: "Alert webhooks", desc: "Datadog and a generic webhook open and close incidents", status: "LIVE" },
+  { icon: MessageSquare, name: "Slack", desc: "Suspect changes in the incident thread, with a Rewind link", status: "LIVE" },
+];
 
 const examples = [
   {
@@ -198,7 +229,7 @@ const Index = () => (
               changes that might explain it in one place.
             </p>
             <p className="hero-fine">
-              A clearer starting point for your next investigation.
+              No stack crawl, no credits, no agent. Just what changed, in Slack, in seconds.
             </p>
           </div>
         </div>
@@ -227,8 +258,7 @@ const Index = () => (
             YOUR OBSERVABILITY STACK, WITH THE CHANGE CONTEXT IT'S MISSING.
           </span>
           <span>
-            GitHub webhooks <span className="separator">/</span> Custom REST
-            ingestion
+            GitHub <span className="separator">/</span> REST <span className="separator">/</span> Datadog <span className="separator">/</span> Slack
           </span>
         </div>
       </section>
@@ -327,13 +357,60 @@ const Index = () => (
         </div>
       </section>
       <section
+        id="product"
+        className="shots section-shell"
+        aria-labelledby="shots-heading"
+      >
+        <div className="section-heading">
+          <span className="eyebrow">03 / THE PRODUCT</span>
+          <h2 id="shots-heading">
+            This is the console.
+            <br />
+            Not a mockup.
+          </h2>
+          <p>
+            Screenshots from the live sandbox, which runs on a simulated
+            checkout incident. The data is sample data; the screens are the real
+            product.
+          </p>
+        </div>
+        <div className="shots-grid">
+          {shots.map((shot) => (
+            <figure key={shot.src} className={shot.wide ? "shot shot-wide" : "shot"}>
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={1356}
+                height={847}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                <strong>{shot.title}</strong>
+                <span>{shot.caption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="shots-actions">
+          <a
+            className="primary-link"
+            href={SANDBOX_URL}
+            onClick={() => trackEvent("click_explore_sandbox", "screenshots", "Revamp")}
+          >
+            Try the sandbox <ArrowUpRight size={16} />
+          </a>
+          <span className="action-note">Sample data. No signup needed.</span>
+        </div>
+      </section>
+      <section
         id="slack"
         className="slack-section section-shell"
         aria-labelledby="slack-heading"
       >
         <div className="section-heading">
           <span className="eyebrow">
-            IN THE WORKS / SLACK <span className="slack-soon">Coming soon</span>
+            SLACK <span className="slack-soon">Live</span>
           </span>
           <h2 id="slack-heading">
             You already have alerting.
@@ -341,8 +418,7 @@ const Index = () => (
           </h2>
           <p>
             At 2 AM, you don't need another bot telling you production broke.
-            The planned Slack integration will bring likely suspects into the
-            incident thread you're already working in.
+            LastGood posts likely suspects into Slack, one message per incident, edited in place as the incident changes.
           </p>
         </div>
         <div className="slack-layout">
@@ -353,15 +429,15 @@ const Index = () => (
               different: put recent deploys and feature-flag flips in one ranked
               list, so your team has a lead before the log-diving starts.
             </p>
-            <ol className="slack-flow" aria-label="Planned Slack investigation workflow">
+            <ol className="slack-flow" aria-label="Slack investigation workflow">
               <li><span>01</span><div><strong>Your existing alert fires.</strong><p>Keep the tools that monitor and page your team.</p></div></li>
-              <li><span>02</span><div><strong>Suspect changes land in Slack.</strong><p>One context card in the incident thread, not a second alarm.</p></div></li>
-              <li><span>03</span><div><strong>Open Rewind. Follow the evidence.</strong><p>The link will open the exact incident window, with the leading suspect highlighted.</p></div></li>
+              <li><span>02</span><div><strong>Suspect changes land in Slack.</strong><p>One message per incident with the top 3 suspects, edited in place.</p></div></li>
+              <li><span>03</span><div><strong>Open Rewind. Follow the evidence.</strong><p>The link opens Rewind for that incident time, service and environment.</p></div></li>
               <li><span>04</span><div><strong>Confirm the cause. Decide the fix.</strong><p>Your team reviews the evidence and rolls back if needed. No automatic production changes.</p></div></li>
             </ol>
           </div>
-          <figure className="slack-preview" aria-label="Illustrative Slack suspect card">
-            <div className="slack-channel"><span># incident-api</span><span>ILLUSTRATIVE PREVIEW</span></div>
+          <figure className="slack-preview" aria-label="Example Slack suspect card">
+            <div className="slack-channel"><span># incident-api</span><span>EXAMPLE DATA</span></div>
             <div className="slack-message">
               <div className="slack-author"><span className="slack-avatar" aria-hidden="true">↳</span><strong>LastGood</strong><span className="slack-app">APP</span><time>02:14</time></div>
               <div className="slack-card">
@@ -374,11 +450,11 @@ const Index = () => (
                   <li><span>3</span><div><strong>deploy <code>api@9b72e0</code></strong><small>38 min ago · same service &amp; environment</small></div></li>
                 </ol>
                 <div className="slack-rewind-preview"><span>Open incident in Rewind</span><ArrowUpRight size={16} aria-hidden="true" /></div>
-                <p className="slack-card-note">Incident window pre-scoped. Leading suspect highlighted.</p>
+                <p className="slack-card-note">Rewind link carries incident time, service and environment.</p>
                 <div className="slack-review">Suspects, not a verdict. Confirm before you roll back.</div>
               </div>
             </div>
-            <figcaption>Planned workflow with example data. Slack delivery and incident-scoped links are not available in the beta yet.</figcaption>
+            <figcaption>Example data. Defaults: sev2 and above, production only, at most 5 new threads per 10 minutes. Configure it on the console Notifications page.</figcaption>
           </figure>
         </div>
       </section>
@@ -388,48 +464,46 @@ const Index = () => (
         aria-labelledby="integrations-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">03 / CONNECT YOUR CHANGE SIGNALS</span>
+          <span className="eyebrow">04 / CONNECT YOUR CHANGE SIGNALS</span>
           <h2 id="integrations-heading">
-            Start with what's live.
+            Changes in. Alerts in.
             <br />
-            Build from there.
+            Suspects out.
           </h2>
           <p>
-            No mystery connector list. This is what you can use today, and what
-            is still on the roadmap.
+            Not another agent that needs read access to your whole stack. A GitHub App, one API key and one webhook is the whole setup. This is what works today. <a href="/docs">Read the docs</a>
           </p>
         </div>
         <div className="integration-table">
-          <div className="integration-row">
-            <GitBranch size={21} />
-            <div>
-              <h3>GitHub</h3>
-              <p>Webhook-based change ingestion</p>
+          {integrations.map(({ icon: Icon, name, desc, status }) => (
+            <div className="integration-row" key={name}>
+              <Icon size={21} />
+              <div>
+                <h3>{name}</h3>
+                <p>{desc}</p>
+              </div>
+              <span className="live-status">
+                <span className="signal-dot" /> {status}
+              </span>
             </div>
-            <span className="live-status">
-              <span className="signal-dot" /> LIVE
-            </span>
-          </div>
-          <div className="integration-row">
-            <Terminal size={21} />
-            <div>
-              <h3>Custom REST API</h3>
-              <p>Send change events from your own tools</p>
-            </div>
-            <span className="live-status">
-              <span className="signal-dot" /> LIVE
-            </span>
-          </div>
+          ))}
           <div className="roadmap-row">
-            <span className="micro-label">COMING SOON</span>
+            <span className="micro-label">NOT YET</span>
             <p>
-              Datadog <span>/</span> GitLab <span>/</span> Kubernetes{" "}
-              <span>/</span> AWS CloudTrail
+              One-click AWS CloudTrail <span>/</span> GitLab <span>/</span>{" "}
+              Kubernetes
             </p>
             <small>
-              Planned integrations. Not available in the beta today.
+              Not available as native connectors. CloudTrail already works
+              through EventBridge and the REST API, and GitLab CI can call the
+              REST API.
             </small>
           </div>
+        </div>
+        <div className="integration-cta">
+          <a className="secondary-link" href="/docs">
+            Every way to integrate <ArrowRight size={16} />
+          </a>
         </div>
       </section>
       <section
@@ -458,6 +532,9 @@ const Index = () => (
                 }
               >
                 Start free beta <ArrowRight size={16} />
+              </a>
+              <a className="secondary-link" href={CONSOLE_URL}>
+                Sign in with GitHub <ArrowUpRight size={16} />
               </a>
               <a className="secondary-link" href={SANDBOX_URL}>
                 Explore the demo <ArrowUpRight size={16} />
