@@ -25,165 +25,6 @@ const integrations = [
   { icon: MessageSquare, name: "Slack", desc: "Suspect changes in the incident thread, with a Rewind link", status: "LIVE" },
 ];
 
-const examples = [
-  {
-    service: "checkout-api",
-    incident: "Error rate increased",
-    detail: "HTTP 5xx · production",
-    change: "Update connection pool limits",
-    commit: "7f3a91c",
-    time: "14:02:18",
-    alert: "14:06:32",
-    evidence:
-      "Same service and environment. The deployment preceded the alert by about 4 minutes.",
-    earlier: "Update checkout validation",
-    earlierTime: "13:44:07",
-  },
-  {
-    service: "edge-gateway",
-    incident: "Response time increased",
-    detail: "p95 latency · production",
-    change: "Update upstream timeout",
-    commit: "a8d21e4",
-    time: "09:12:40",
-    alert: "09:15:09",
-    evidence:
-      "Same service and environment. The configuration change preceded the alert by about 2 minutes.",
-    earlier: "Deploy gateway patch",
-    earlierTime: "08:53:12",
-  },
-];
-
-function ProductScene() {
-  const [selected, setSelected] = useState(0);
-  const example = examples[selected];
-  return (
-    <div
-      className="product-scene"
-      aria-label="Illustrative change investigation"
-    >
-      <div className="scene-toolbar">
-        <span>
-          <span className="signal-dot" /> Rewind
-        </span>
-        <span className="scene-caption">
-          ILLUSTRATIVE DATA · NOT A LIVE INCIDENT
-        </span>
-      </div>
-      <div className="scene-body">
-        <aside className="scene-sidebar">
-          <span className="micro-label">INVESTIGATION</span>
-          <span className="sidebar-active">
-            <Activity size={15} /> Change timeline
-          </span>
-          <span>
-            <GitBranch size={15} /> Services
-          </span>
-          <div className="sidebar-bottom">
-            <span className="signal-dot" /> Evidence, then action.
-          </div>
-        </aside>
-        <div className="scene-workspace">
-          <div className="scene-topline">
-            <div
-              className="service-switch"
-              role="group"
-              aria-label="Example service"
-            >
-              {examples.map((item, index) => (
-                <button
-                  key={item.service}
-                  aria-pressed={selected === index}
-                  onClick={() => setSelected(index)}
-                >
-                  {item.service}
-                </button>
-              ))}
-            </div>
-            <span className="environment">
-              <Circle size={8} fill="currentColor" /> production
-            </span>
-          </div>
-          <div className="incident-heading">
-            <div>
-              <span className="micro-label">
-                INCIDENT WINDOW / 04 OCT 2026 · UTC
-              </span>
-              <h3>{example.incident}</h3>
-              <p>{example.detail}</p>
-            </div>
-            <span className="incident-pill">INVESTIGATING</span>
-          </div>
-          <div className="evidence-grid">
-            <div className="change-timeline">
-              <div className="timeline-label">
-                <span>TIME / UTC</span>
-                <span>RECENT CHANGES</span>
-              </div>
-              <div className="change-row muted-row">
-                <time>{example.earlierTime}</time>
-                <GitCommitHorizontal size={17} />
-                <div>
-                  {example.earlier}
-                  <small>GitHub deployment</small>
-                </div>
-              </div>
-              <div className="change-row selected-row">
-                <time>{example.time}</time>
-                <GitCommitHorizontal size={17} />
-                <div>
-                  {example.change}
-                  <small>
-                    GitHub · <code>{example.commit}</code>
-                  </small>
-                </div>
-                <ChevronRight size={16} />
-              </div>
-              <div className="change-row alert-row">
-                <time>{example.alert}</time>
-                <Activity size={17} />
-                <div>
-                  {example.incident}
-                  <small>Incident signal</small>
-                </div>
-              </div>
-            </div>
-            <div className="evidence-panel">
-              <span className="micro-label">SUSPECTED CONTRIBUTOR</span>
-              <h4>{example.change}</h4>
-              <p>{example.evidence}</p>
-              <div className="evidence-tags">
-                <span>
-                  <Check size={12} /> Service match
-                </span>
-                <span>
-                  <Check size={12} /> Before alert
-                </span>
-              </div>
-              <div className="human-review">
-                <span className="review-icon">↳</span>
-                <p>
-                  Correlation is a lead, not proof.
-                  <br />
-                  <strong>Review the change before acting.</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="scene-status">
-            <span>
-              <span className="signal-dot" /> 2 changes in this example window
-            </span>
-            <span>
-              Human review required <ArrowUpRight size={12} />
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const Index = () => (
   <div className="landing-page">
     <a className="skip-link" href="#main">
@@ -215,23 +56,39 @@ const Index = () => (
         <div className="hero-actions">
           <a
             className="primary-link"
-            href={CONSOLE_URL}
-            onClick={() => trackEvent("click_access_beta", "hero", "Revamp")}
-          >
-            Start free beta <ArrowRight size={16} />
-          </a>
-          <a
-            className="secondary-link"
             href={SANDBOX_URL}
             onClick={() =>
               trackEvent("click_explore_sandbox", "hero", "Revamp")
             }
           >
-            Try the sandbox <ArrowUpRight size={16} />
+            Try the sandbox <ArrowRight size={16} />
           </a>
-          <span className="action-note">No signup needed for the demo</span>
+          <a
+            className="secondary-link"
+            href={CONSOLE_URL}
+            onClick={() => trackEvent("click_access_beta", "hero", "Revamp")}
+          >
+            Start free beta <ArrowUpRight size={16} />
+          </a>
+          <span className="action-note">
+            No signup for the sandbox. <a href="/docs">Read the integration docs</a>
+          </span>
         </div>
-        <ProductScene />
+        <a className="hero-shot" href="/product" aria-label="See the product">
+          <img
+            src="/screens/rewind.svg"
+            alt="LastGood Rewind in the sandbox: a checkout-service incident with ranked changes and an AI triage summary"
+            width={1356}
+            height={847}
+            decoding="async"
+          />
+          <span className="hero-shot-caption">
+            <span>REAL CONSOLE · SANDBOX, SAMPLE DATA</span>
+            <span>
+              See the product <ArrowRight size={14} />
+            </span>
+          </span>
+        </a>
         <div className="hero-footnote">
           <span>
             YOUR OBSERVABILITY STACK, WITH THE CHANGE CONTEXT IT'S MISSING.
@@ -289,30 +146,6 @@ const Index = () => (
             <span className="step-meta">CONTEXT / EVIDENCE / HUMAN REVIEW</span>
           </article>
         </div>
-      </section>
-      <section
-        id="product"
-        className="product-preview section-shell"
-        aria-labelledby="preview-heading"
-      >
-        <a className="preview-frame" href="/product" aria-labelledby="preview-heading">
-          <div className="preview-copy">
-            <span className="eyebrow">THE PRODUCT</span>
-            <h2 id="preview-heading">The real console, in the sandbox.</h2>
-            <p>Rewind, Events and Ingestion Channels, on a simulated incident. Sample data.</p>
-            <span className="preview-link">
-              See the product <ArrowRight size={16} />
-            </span>
-          </div>
-          <img
-            src="/screens/rewind.svg"
-            alt="LastGood Rewind view in the sandbox showing a checkout-service incident with ranked changes"
-            width={1356}
-            height={847}
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
       </section>
       <section
         id="integrations"
@@ -480,7 +313,7 @@ const Index = () => (
               <br />a better starting point.
             </h2>
             <p>
-              Free beta for up to 2 projects. Paid plans are not available yet.
+              Free beta for up to 2 services. Paid plans are not available yet.
             </p>
             <div className="beta-links">
               <a
