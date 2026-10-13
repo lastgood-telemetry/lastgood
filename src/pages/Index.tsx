@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Navbar, { CONSOLE_URL, SANDBOX_URL } from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import ChatLink from "@/components/landing/ChatLink";
 import { trackEvent } from "@/util/analytics";
 import "@/components/landing/landing.css";
 
@@ -505,9 +506,9 @@ const Index = () => (
               We're building in the open. Expect the product to evolve, and tell
               us where the workflow needs to be better.
             </p>
-            <a href="mailto:hello@lastgood.space">
+            <ChatLink>
               Talk to us <ArrowUpRight size={14} />
-            </a>
+            </ChatLink>
             <small>
               No SOC 2 certification claimed. Contact us to discuss security
               requirements before connecting sensitive production data.
