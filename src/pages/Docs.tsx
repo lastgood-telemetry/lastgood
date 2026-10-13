@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Navbar, { CONSOLE_URL } from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import ChatLink from "@/components/landing/ChatLink";
 import "@/components/landing/landing.css";
 
 const API = "https://api.lastgood.space";
@@ -271,9 +272,7 @@ Content-Type: application/json`}</Code>
             <a className="primary-link" href={CONSOLE_URL}>
               Open console <ArrowUpRight size={16} />
             </a>
-            <a className="secondary-link" href="mailto:hello@lastgood.space">
-              Stuck? Email us
-            </a>
+            <ChatLink className="secondary-link">Stuck? Chat with us</ChatLink>
           </div>
         </article>
       </main>
