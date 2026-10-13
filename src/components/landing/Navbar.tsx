@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { trackEvent } from "@/util/analytics";
 
 export const CONSOLE_URL = "https://console.lastgood.space/login";
 export const SANDBOX_URL = "https://console.lastgood.space/sandbox";
 
+const links = [
+  { href: "/product", label: "Product" },
+  { href: "/#how-it-works", label: "Workflow" },
+  { href: "/#integrations", label: "Integrations" },
+  { href: "/docs", label: "Docs" },
+];
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
-      className="site-header"
+      className={scrolled ? "site-header is-scrolled" : "site-header"}
       onKeyDown={(event) => {
         if (event.key === "Escape") setOpen(false);
       }}
@@ -26,12 +43,20 @@ const Navbar = () => {
         LastGood<span className="beta-label">BETA</span>
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
-        <a href="/#how-it-works">Workflow</a>
-        <a href="/#integrations">Integrations</a>
-        <a href="/#pricing">Free beta</a>
-        <a href="/docs">Docs</a>
+        {links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            aria-current={l.href === path ? "page" : undefined}
+          >
+            {l.label}
+          </a>
+        ))}
       </nav>
       <div className="nav-actions">
+        <a className="nav-sandbox" href={SANDBOX_URL}>
+          Sandbox
+        </a>
         <a
           className="nav-login"
           href={CONSOLE_URL}
@@ -57,18 +82,11 @@ const Navbar = () => {
           className="mobile-nav"
           aria-label="Mobile navigation"
         >
-          <a href="/#how-it-works" onClick={() => setOpen(false)}>
-            Workflow
-          </a>
-          <a href="/#integrations" onClick={() => setOpen(false)}>
-            Integrations
-          </a>
-          <a href="/#pricing" onClick={() => setOpen(false)}>
-            Free beta
-          </a>
-          <a href="/docs" onClick={() => setOpen(false)}>
-            Docs
-          </a>
+          {links.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
+          ))}
           <a href={SANDBOX_URL}>
             Try the sandbox <ArrowUpRight size={15} />
           </a>
