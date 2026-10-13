@@ -13,6 +13,17 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("lg-theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
     <script type="text/javascript">
       window.$crisp = [];
       window.CRISP_WEBSITE_ID = "b43bd032-f6c2-47fc-835a-c2a4cdcb067d";
