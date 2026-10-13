@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import ChatLink from "@/components/landing/ChatLink";
 const Footer = () => (
   <footer className="site-footer">
     <div className="footer-top">
@@ -20,7 +21,7 @@ const Footer = () => (
         <a href="/product">Product</a>
         <a href="/docs">Docs</a>
         <a href="/terms">Terms of service</a>
-        <a href="mailto:hello@lastgood.space">hello@lastgood.space</a>
+        <ChatLink>Chat with us</ChatLink>
       </div>
     </div>
   </footer>
