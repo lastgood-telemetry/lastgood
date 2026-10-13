@@ -29,6 +29,7 @@ const Navbar = () => {
         <a href="/#how-it-works">Workflow</a>
         <a href="/#integrations">Integrations</a>
         <a href="/#pricing">Free beta</a>
+        <a href="/docs">Docs</a>
       </nav>
       <div className="nav-actions">
         <a
@@ -64,6 +65,9 @@ const Navbar = () => {
           </a>
           <a href="/#pricing" onClick={() => setOpen(false)}>
             Free beta
+          </a>
+          <a href="/docs" onClick={() => setOpen(false)}>
+            Docs
           </a>
           <a href={SANDBOX_URL}>
             Try the sandbox <ArrowUpRight size={15} />
