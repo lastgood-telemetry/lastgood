@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "@/components/landing/useTheme";
 import { trackEvent } from "@/util/analytics";
 
 export const CONSOLE_URL = "https://console.lastgood.space/login";
@@ -15,6 +16,7 @@ const links = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggle } = useTheme();
   const path = typeof window !== "undefined" ? window.location.pathname : "/";
 
   useEffect(() => {
@@ -54,17 +56,34 @@ const Navbar = () => {
         ))}
       </nav>
       <div className="nav-actions">
-        <a className="nav-sandbox" href={SANDBOX_URL}>
-          Sandbox
-        </a>
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={toggle}
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          title={theme === "dark" ? "Light mode" : "Dark mode"}
+        >
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
         <a
-          className="nav-login"
+          className="nav-sandbox"
           href={CONSOLE_URL}
           onClick={() =>
             trackEvent("click_access_beta", "navigation", "Navbar")
           }
         >
-          Open console <ArrowUpRight size={14} />
+          Sign in
+        </a>
+        <a
+          className="nav-login"
+          href={SANDBOX_URL}
+          onClick={() =>
+            trackEvent("click_explore_sandbox", "navigation", "Navbar")
+          }
+        >
+          <span className="nl-long">Try the sandbox</span>
+          <span className="nl-short" aria-hidden="true">Sandbox</span>
+          <ArrowUpRight size={14} />
         </a>
         <button
           className="menu-toggle"
@@ -87,6 +106,7 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <a href={CONSOLE_URL}>Sign in</a>
           <a href={SANDBOX_URL}>
             Try the sandbox <ArrowUpRight size={15} />
           </a>
