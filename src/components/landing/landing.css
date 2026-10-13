@@ -1590,3 +1590,68 @@ html:not([data-theme="light"]) body { background: #101413; }
   .nav-actions { gap: 6px; }
   .menu-toggle { padding: 6px; }
 }
+
+.docs-body a.primary-link { color: var(--c101413); }
+.docs-body a.primary-link:hover { color: var(--c101413); }
+.docs-body a.secondary-link { color: var(--ce5e9e6); }
+.docs-body a.secondary-link:hover { color: var(--cb6edce); }
+.hero-shot { margin-left: 0; margin-right: 0; }
+
+/* Rewind illustration (vector, themed, animated once) */
+.rw-ill { display: block; width: 100%; height: auto; --ill-hot: #7de3b0; --ill-bad: #f0707a; --ill-soft: rgba(182, 237, 206, 0.1); }
+:root[data-theme="light"] .rw-ill { --ill-hot: #17784a; --ill-bad: #be123c; --ill-soft: rgba(23, 120, 74, 0.09); }
+.rw-ill text { font-family: Arial, Helvetica, sans-serif; fill: var(--cf1f2ef); }
+.rw-frame { fill: var(--c101413); stroke: var(--c3c4940); }
+.rw-line { stroke: var(--c292e2c); stroke-width: 1; }
+.rw-mark { fill: var(--cb6edce); }
+.rw-brand { font-size: 15px; font-weight: 700; }
+.rw-nav { font-size: 13px; fill: var(--ca8b3ac) !important; }
+.rw-nav-on { fill: var(--cf1f2ef) !important; font-weight: 600; }
+.rw-nav-active { fill: var(--ill-soft); stroke: var(--c3c4940); }
+.rw-crumb { font-size: 12px; fill: var(--ca8b3ac) !important; }
+.rw-pill { fill: none; stroke: var(--c3c4940); }
+.rw-pill-t { font: 9px monospace; letter-spacing: 1px; fill: var(--ca8b3ac) !important; }
+.rw-h { font-size: 26px; letter-spacing: -0.5px; }
+.rw-chip { fill: var(--c151a18); stroke: var(--c292e2c); }
+.rw-chip-t { font: 11px monospace; fill: var(--ca8b3ac) !important; }
+.rw-label { font: 10px monospace; letter-spacing: 1.5px; fill: var(--ca8b3ac) !important; }
+.rw-base { stroke: var(--c292e2c); stroke-width: 2; }
+.rw-draw { stroke: var(--ill-hot); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: rw-draw 1.8s ease-out 0.2s forwards; }
+.rw-tick { stroke: var(--c3c4940); opacity: 0; animation: rw-fade 0.4s ease-out forwards; }
+.rw-ev { opacity: 0; animation: rw-pop 0.5s ease-out forwards; }
+.rw-dot { fill: var(--c101413); stroke: var(--ca8b3ac); stroke-width: 2; }
+.rw-dot-hot { fill: var(--ill-hot); stroke: var(--ill-hot); }
+.rw-halo { fill: var(--ill-soft); stroke: var(--ill-hot); stroke-opacity: 0.5; transform-box: fill-box; transform-origin: center; animation: rw-pulse 2.6s ease-in-out 2.4s infinite; }
+.rw-ev-t { font: 11px monospace; fill: var(--ca8b3ac) !important; }
+.rw-ev-hot { fill: var(--ill-hot) !important; font-weight: 700; }
+.rw-inc { stroke: var(--ill-bad); stroke-width: 2; }
+.rw-inc-f { fill: var(--ill-bad); }
+.rw-inc-t { fill: var(--ill-bad) !important; font-weight: 700; }
+.rw-card { fill: var(--c151a18); stroke: var(--c292e2c); }
+.rw-row { opacity: 0; animation: rw-up 0.5s ease-out forwards; }
+.rw-rowbg { fill: none; stroke: var(--c292e2c); }
+.rw-rowbg-hot { fill: var(--ill-soft); stroke: var(--ill-hot); }
+.rw-rank { font: 12px monospace; fill: var(--ca8b3ac) !important; }
+.rw-rt { font-size: 14px; font-weight: 600; }
+.rw-rm { font: 11px monospace; fill: var(--ca8b3ac) !important; }
+.rw-risk { font: 700 20px monospace; }
+.rw-risk-s { font-size: 11px; font-weight: 400; fill: var(--ca8b3ac); }
+.rw-bar-bg { fill: var(--c292e2c); }
+.rw-bar { fill: var(--ca8b3ac); transform-box: fill-box; transform-origin: left; transform: scaleX(0); animation: rw-grow 0.8s ease-out forwards; }
+.rw-bar-hot { fill: var(--ill-hot); }
+.rw-suspect-t { font: 700 9px monospace; letter-spacing: 1px; fill: var(--ill-hot) !important; opacity: 0; animation: rw-fade 0.5s ease-out 3.2s forwards; }
+.rw-seg { fill: var(--c292e2c); }
+.rw-seg-on { fill: var(--ill-hot); opacity: 0; animation: rw-fade 0.5s ease-out forwards; }
+.rw-text { fill: var(--c292e2c); opacity: 0; animation: rw-fade 0.5s ease-out forwards; }
+@keyframes rw-draw { to { stroke-dashoffset: 0; } }
+@keyframes rw-fade { to { opacity: 1; } }
+@keyframes rw-pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes rw-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes rw-grow { to { transform: scaleX(1); } }
+@keyframes rw-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) {
+  .rw-draw { animation: none; stroke-dashoffset: 0; }
+  .rw-tick, .rw-ev, .rw-row, .rw-seg-on, .rw-text, .rw-suspect-t { animation: none; opacity: 1; }
+  .rw-bar { animation: none; transform: none; }
+  .rw-halo { animation: none; }
+}
