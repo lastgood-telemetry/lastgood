@@ -1,7 +1,6 @@
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import Index from "../pages/Index";
-import Product from "../pages/Product";
 
 afterEach(cleanup);
 
@@ -14,13 +13,13 @@ describe("evidence-first landing page", () => {
     expect(logo).toHaveStyle({ maskImage: 'url("/logo.png")' });
     expect(logo).not.toHaveTextContent("LG");
   });
-  it("has one clear promise and a labeled real-console capture", () => {
+  it("has one clear promise and a labeled console illustration", () => {
     render(<Index />);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Production broke.What changed?",
     );
-    expect(screen.getByText(/REAL CONSOLE/)).toBeVisible();
+    expect(screen.getByText(/SIMPLIFIED VIEW/)).toBeVisible();
     expect(document.body.textContent).not.toMatch(/ILLUSTRATIVE DATA/);
   });
   it("makes the sandbox the primary call to action", () => {
@@ -101,13 +100,5 @@ describe("evidence-first landing page", () => {
     expect(
       screen.queryByRole("navigation", { name: "Mobile navigation" }),
     ).not.toBeInTheDocument();
-  });
-});
-
-describe("docs and screenshots", () => {
-  it("shows labeled sandbox screenshots", () => {
-    render(<Product />);
-    expect(screen.getAllByRole("img", { name: /sandbox|Ingestion Channels/ }).length).toBe(3);
-    expect(screen.getAllByText(/sample data/i).length).toBeGreaterThan(0);
   });
 });

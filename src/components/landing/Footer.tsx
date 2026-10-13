@@ -18,7 +18,6 @@ const Footer = () => (
     <div className="footer-bottom">
       <span>© 2026 LastGood</span>
       <div>
-        <a href="/product">Product</a>
         <a href="/docs">Docs</a>
         <a href="/terms">Terms of service</a>
         <ChatLink>Chat with us</ChatLink>

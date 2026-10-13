@@ -1,3 +1,4 @@
+import RewindIllustration from "@/components/landing/RewindIllustration";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -74,21 +75,12 @@ const Index = () => (
             No signup for the sandbox. <a href="/docs">Read the integration docs</a>
           </span>
         </div>
-        <a className="hero-shot" href="/product" aria-label="See the product">
-          <img
-            src="/screens/rewind.svg"
-            alt="LastGood Rewind in the sandbox: a checkout-service incident with ranked changes and an AI triage summary"
-            width={1356}
-            height={847}
-            decoding="async"
-          />
+        <figure className="hero-shot">
+          <RewindIllustration />
           <span className="hero-shot-caption">
-            <span>REAL CONSOLE · SANDBOX, SAMPLE DATA</span>
-            <span>
-              See the product <ArrowRight size={14} />
-            </span>
+            <span>SIMPLIFIED VIEW OF THE CONSOLE · SAMPLE DATA</span>
           </span>
-        </a>
+        </figure>
         <div className="hero-footnote">
           <span>
             YOUR OBSERVABILITY STACK, WITH THE CHANGE CONTEXT IT'S MISSING.
@@ -192,9 +184,6 @@ const Index = () => (
         <div className="integration-cta">
           <a className="secondary-link" href="/docs">
             Every way to integrate <ArrowRight size={16} />
-          </a>
-          <a className="secondary-link" href="/product">
-            See the product <ArrowRight size={16} />
           </a>
         </div>
       </section>
