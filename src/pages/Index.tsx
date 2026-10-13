@@ -14,30 +14,9 @@ import {
 } from "lucide-react";
 import Navbar, { CONSOLE_URL, SANDBOX_URL } from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import ChatLink from "@/components/landing/ChatLink";
 import { trackEvent } from "@/util/analytics";
 import "@/components/landing/landing.css";
-
-const shots = [
-  {
-    src: "/screens/rewind.svg",
-    alt: "LastGood Rewind view in the sandbox showing a checkout-service incident with ranked changes and an AI triage summary",
-    title: "Rewind",
-    caption: "Ranked changes before the incident, with an AI triage summary. Risk ranks investigation order, not causation.",
-    wide: true,
-  },
-  {
-    src: "/screens/events.svg",
-    alt: "LastGood Events feed in the sandbox listing GitHub, Kubernetes and LaunchDarkly changes",
-    title: "Events",
-    caption: "Every change from every source in one feed, each with a score rationale.",
-  },
-  {
-    src: "/screens/channels.svg",
-    alt: "LastGood Ingestion Channels page showing GitHub App and Custom REST API",
-    title: "Ingestion Channels",
-    caption: "Connect the GitHub App or send events from your own tools.",
-  },
-];
 
 const integrations = [
   { icon: GitBranch, name: "GitHub App", desc: "Pushes, deployments and workflow runs", status: "LIVE" },
@@ -45,165 +24,6 @@ const integrations = [
   { icon: Bell, name: "Alert webhooks", desc: "Datadog and a generic webhook open and close incidents", status: "LIVE" },
   { icon: MessageSquare, name: "Slack", desc: "Suspect changes in the incident thread, with a Rewind link", status: "LIVE" },
 ];
-
-const examples = [
-  {
-    service: "checkout-api",
-    incident: "Error rate increased",
-    detail: "HTTP 5xx · production",
-    change: "Update connection pool limits",
-    commit: "7f3a91c",
-    time: "14:02:18",
-    alert: "14:06:32",
-    evidence:
-      "Same service and environment. The deployment preceded the alert by about 4 minutes.",
-    earlier: "Update checkout validation",
-    earlierTime: "13:44:07",
-  },
-  {
-    service: "edge-gateway",
-    incident: "Response time increased",
-    detail: "p95 latency · production",
-    change: "Update upstream timeout",
-    commit: "a8d21e4",
-    time: "09:12:40",
-    alert: "09:15:09",
-    evidence:
-      "Same service and environment. The configuration change preceded the alert by about 2 minutes.",
-    earlier: "Deploy gateway patch",
-    earlierTime: "08:53:12",
-  },
-];
-
-function ProductScene() {
-  const [selected, setSelected] = useState(0);
-  const example = examples[selected];
-  return (
-    <div
-      className="product-scene"
-      aria-label="Illustrative change investigation"
-    >
-      <div className="scene-toolbar">
-        <span>
-          <span className="signal-dot" /> Rewind
-        </span>
-        <span className="scene-caption">
-          ILLUSTRATIVE DATA · NOT A LIVE INCIDENT
-        </span>
-      </div>
-      <div className="scene-body">
-        <aside className="scene-sidebar">
-          <span className="micro-label">INVESTIGATION</span>
-          <span className="sidebar-active">
-            <Activity size={15} /> Change timeline
-          </span>
-          <span>
-            <GitBranch size={15} /> Services
-          </span>
-          <div className="sidebar-bottom">
-            <span className="signal-dot" /> Evidence, then action.
-          </div>
-        </aside>
-        <div className="scene-workspace">
-          <div className="scene-topline">
-            <div
-              className="service-switch"
-              role="group"
-              aria-label="Example service"
-            >
-              {examples.map((item, index) => (
-                <button
-                  key={item.service}
-                  aria-pressed={selected === index}
-                  onClick={() => setSelected(index)}
-                >
-                  {item.service}
-                </button>
-              ))}
-            </div>
-            <span className="environment">
-              <Circle size={8} fill="currentColor" /> production
-            </span>
-          </div>
-          <div className="incident-heading">
-            <div>
-              <span className="micro-label">
-                INCIDENT WINDOW / 04 OCT 2026 · UTC
-              </span>
-              <h3>{example.incident}</h3>
-              <p>{example.detail}</p>
-            </div>
-            <span className="incident-pill">INVESTIGATING</span>
-          </div>
-          <div className="evidence-grid">
-            <div className="change-timeline">
-              <div className="timeline-label">
-                <span>TIME / UTC</span>
-                <span>RECENT CHANGES</span>
-              </div>
-              <div className="change-row muted-row">
-                <time>{example.earlierTime}</time>
-                <GitCommitHorizontal size={17} />
-                <div>
-                  {example.earlier}
-                  <small>GitHub deployment</small>
-                </div>
-              </div>
-              <div className="change-row selected-row">
-                <time>{example.time}</time>
-                <GitCommitHorizontal size={17} />
-                <div>
-                  {example.change}
-                  <small>
-                    GitHub · <code>{example.commit}</code>
-                  </small>
-                </div>
-                <ChevronRight size={16} />
-              </div>
-              <div className="change-row alert-row">
-                <time>{example.alert}</time>
-                <Activity size={17} />
-                <div>
-                  {example.incident}
-                  <small>Incident signal</small>
-                </div>
-              </div>
-            </div>
-            <div className="evidence-panel">
-              <span className="micro-label">SUSPECTED CONTRIBUTOR</span>
-              <h4>{example.change}</h4>
-              <p>{example.evidence}</p>
-              <div className="evidence-tags">
-                <span>
-                  <Check size={12} /> Service match
-                </span>
-                <span>
-                  <Check size={12} /> Before alert
-                </span>
-              </div>
-              <div className="human-review">
-                <span className="review-icon">↳</span>
-                <p>
-                  Correlation is a lead, not proof.
-                  <br />
-                  <strong>Review the change before acting.</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="scene-status">
-            <span>
-              <span className="signal-dot" /> 2 changes in this example window
-            </span>
-            <span>
-              Human review required <ArrowUpRight size={12} />
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 const Index = () => (
   <div className="landing-page">
@@ -236,23 +56,39 @@ const Index = () => (
         <div className="hero-actions">
           <a
             className="primary-link"
-            href={CONSOLE_URL}
-            onClick={() => trackEvent("click_access_beta", "hero", "Revamp")}
-          >
-            Start free beta <ArrowRight size={16} />
-          </a>
-          <a
-            className="secondary-link"
             href={SANDBOX_URL}
             onClick={() =>
               trackEvent("click_explore_sandbox", "hero", "Revamp")
             }
           >
-            Try the sandbox <ArrowUpRight size={16} />
+            Try the sandbox <ArrowRight size={16} />
           </a>
-          <span className="action-note">No signup needed for the demo</span>
+          <a
+            className="secondary-link"
+            href={CONSOLE_URL}
+            onClick={() => trackEvent("click_access_beta", "hero", "Revamp")}
+          >
+            Start free beta <ArrowUpRight size={16} />
+          </a>
+          <span className="action-note">
+            No signup for the sandbox. <a href="/docs">Read the integration docs</a>
+          </span>
         </div>
-        <ProductScene />
+        <a className="hero-shot" href="/product" aria-label="See the product">
+          <img
+            src="/screens/rewind.svg"
+            alt="LastGood Rewind in the sandbox: a checkout-service incident with ranked changes and an AI triage summary"
+            width={1356}
+            height={847}
+            decoding="async"
+          />
+          <span className="hero-shot-caption">
+            <span>REAL CONSOLE · SANDBOX, SAMPLE DATA</span>
+            <span>
+              See the product <ArrowRight size={14} />
+            </span>
+          </span>
+        </a>
         <div className="hero-footnote">
           <span>
             YOUR OBSERVABILITY STACK, WITH THE CHANGE CONTEXT IT'S MISSING.
@@ -312,95 +148,54 @@ const Index = () => (
         </div>
       </section>
       <section
-        className="principles section-shell"
-        aria-labelledby="principles-heading"
+        id="integrations"
+        className="integrations section-shell"
+        aria-labelledby="integrations-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">02 / BUILT FOR THE INVESTIGATION</span>
-          <h2 id="principles-heading">
-            A timeline.
+          <span className="eyebrow">02 / CONNECT YOUR CHANGE SIGNALS</span>
+          <h2 id="integrations-heading">
+            Changes in. Alerts in.
             <br />
-            Not another firehose.
-          </h2>
-        </div>
-        <div className="principle-list">
-          <article>
-            <span>01</span>
-            <div>
-              <h3>Context before conclusions.</h3>
-              <p>
-                Exact timestamps, commit links and event payloads give you
-                something to inspect, not a black-box verdict.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span>02</span>
-            <div>
-              <h3>Alongside your existing tools.</h3>
-              <p>
-                LastGood is a change-correlation layer, not a replacement for
-                Datadog, PagerDuty or your logs.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span>03</span>
-            <div>
-              <h3>Your team stays in control.</h3>
-              <p>
-                Use the diagnostic report as a starting point. Confirm the cause
-                and review remediation before making production changes.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
-      <section
-        id="product"
-        className="shots section-shell"
-        aria-labelledby="shots-heading"
-      >
-        <div className="section-heading">
-          <span className="eyebrow">03 / THE PRODUCT</span>
-          <h2 id="shots-heading">
-            This is the console.
-            <br />
-            Not a mockup.
+            Suspects out.
           </h2>
           <p>
-            Screenshots from the live sandbox, which runs on a simulated
-            checkout incident. The data is sample data; the screens are the real
-            product.
+            Not another agent that needs read access to your whole stack. A GitHub App, one API key and one webhook is the whole setup. This is what works today. <a href="/docs">Read the docs</a>
           </p>
         </div>
-        <div className="shots-grid">
-          {shots.map((shot) => (
-            <figure key={shot.src} className={shot.wide ? "shot shot-wide" : "shot"}>
-              <img
-                src={shot.src}
-                alt={shot.alt}
-                width={1356}
-                height={847}
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                <strong>{shot.title}</strong>
-                <span>{shot.caption}</span>
-              </figcaption>
-            </figure>
+        <div className="integration-table">
+          {integrations.map(({ icon: Icon, name, desc, status }) => (
+            <div className="integration-row" key={name}>
+              <Icon size={21} />
+              <div>
+                <h3>{name}</h3>
+                <p>{desc}</p>
+              </div>
+              <span className="live-status">
+                <span className="signal-dot" /> {status}
+              </span>
+            </div>
           ))}
+          <div className="roadmap-row">
+            <span className="micro-label">NOT YET</span>
+            <p>
+              One-click AWS CloudTrail <span>/</span> GitLab <span>/</span>{" "}
+              Kubernetes
+            </p>
+            <small>
+              Not available as native connectors. CloudTrail already works
+              through EventBridge and the REST API, and GitLab CI can call the
+              REST API.
+            </small>
+          </div>
         </div>
-        <div className="shots-actions">
-          <a
-            className="primary-link"
-            href={SANDBOX_URL}
-            onClick={() => trackEvent("click_explore_sandbox", "screenshots", "Revamp")}
-          >
-            Try the sandbox <ArrowUpRight size={16} />
+        <div className="integration-cta">
+          <a className="secondary-link" href="/docs">
+            Every way to integrate <ArrowRight size={16} />
           </a>
-          <span className="action-note">Sample data. No signup needed.</span>
+          <a className="secondary-link" href="/product">
+            See the product <ArrowRight size={16} />
+          </a>
         </div>
       </section>
       <section
@@ -459,51 +254,48 @@ const Index = () => (
         </div>
       </section>
       <section
-        id="integrations"
-        className="integrations section-shell"
-        aria-labelledby="integrations-heading"
+        className="principles section-shell"
+        aria-labelledby="principles-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">04 / CONNECT YOUR CHANGE SIGNALS</span>
-          <h2 id="integrations-heading">
-            Changes in. Alerts in.
+          <span className="eyebrow">03 / BUILT FOR THE INVESTIGATION</span>
+          <h2 id="principles-heading">
+            A timeline.
             <br />
-            Suspects out.
+            Not another firehose.
           </h2>
-          <p>
-            Not another agent that needs read access to your whole stack. A GitHub App, one API key and one webhook is the whole setup. This is what works today. <a href="/docs">Read the docs</a>
-          </p>
         </div>
-        <div className="integration-table">
-          {integrations.map(({ icon: Icon, name, desc, status }) => (
-            <div className="integration-row" key={name}>
-              <Icon size={21} />
-              <div>
-                <h3>{name}</h3>
-                <p>{desc}</p>
-              </div>
-              <span className="live-status">
-                <span className="signal-dot" /> {status}
-              </span>
+        <div className="principle-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Context before conclusions.</h3>
+              <p>
+                Exact timestamps, commit links and event payloads give you
+                something to inspect, not a black-box verdict.
+              </p>
             </div>
-          ))}
-          <div className="roadmap-row">
-            <span className="micro-label">NOT YET</span>
-            <p>
-              One-click AWS CloudTrail <span>/</span> GitLab <span>/</span>{" "}
-              Kubernetes
-            </p>
-            <small>
-              Not available as native connectors. CloudTrail already works
-              through EventBridge and the REST API, and GitLab CI can call the
-              REST API.
-            </small>
-          </div>
-        </div>
-        <div className="integration-cta">
-          <a className="secondary-link" href="/docs">
-            Every way to integrate <ArrowRight size={16} />
-          </a>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Alongside your existing tools.</h3>
+              <p>
+                LastGood is a change-correlation layer, not a replacement for
+                Datadog, PagerDuty or your logs.
+              </p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Your team stays in control.</h3>
+              <p>
+                Use the diagnostic report as a starting point. Confirm the cause
+                and review remediation before making production changes.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
       <section
@@ -521,7 +313,7 @@ const Index = () => (
               <br />a better starting point.
             </h2>
             <p>
-              Free beta for up to 2 projects. Paid plans are not available yet.
+              Free beta for up to 2 services. Paid plans are not available yet.
             </p>
             <div className="beta-links">
               <a
@@ -537,7 +329,7 @@ const Index = () => (
                 Sign in with GitHub <ArrowUpRight size={16} />
               </a>
               <a className="secondary-link" href={SANDBOX_URL}>
-                Explore the demo <ArrowUpRight size={16} />
+                Try the sandbox <ArrowUpRight size={16} />
               </a>
             </div>
           </div>
@@ -547,9 +339,9 @@ const Index = () => (
               We're building in the open. Expect the product to evolve, and tell
               us where the workflow needs to be better.
             </p>
-            <a href="mailto:hello@lastgood.space">
-              Talk to us <ArrowUpRight size={14} />
-            </a>
+            <ChatLink>
+              Chat with us
+            </ChatLink>
             <small>
               No SOC 2 certification claimed. Contact us to discuss security
               requirements before connecting sensitive production data.

@@ -1,15 +1,34 @@
-import { useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "@/components/landing/useTheme";
 import { trackEvent } from "@/util/analytics";
 
 export const CONSOLE_URL = "https://console.lastgood.space/login";
 export const SANDBOX_URL = "https://console.lastgood.space/sandbox";
 
+const links = [
+  { href: "/product", label: "Product" },
+  { href: "/#how-it-works", label: "Workflow" },
+  { href: "/#integrations", label: "Integrations" },
+  { href: "/docs", label: "Docs" },
+];
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, toggle } = useTheme();
+  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
-      className="site-header"
+      className={scrolled ? "site-header is-scrolled" : "site-header"}
       onKeyDown={(event) => {
         if (event.key === "Escape") setOpen(false);
       }}
@@ -26,20 +45,45 @@ const Navbar = () => {
         LastGood<span className="beta-label">BETA</span>
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
-        <a href="/#how-it-works">Workflow</a>
-        <a href="/#integrations">Integrations</a>
-        <a href="/#pricing">Free beta</a>
-        <a href="/docs">Docs</a>
+        {links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            aria-current={l.href === path ? "page" : undefined}
+          >
+            {l.label}
+          </a>
+        ))}
       </nav>
       <div className="nav-actions">
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={toggle}
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          title={theme === "dark" ? "Light mode" : "Dark mode"}
+        >
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
         <a
-          className="nav-login"
+          className="nav-sandbox"
           href={CONSOLE_URL}
           onClick={() =>
             trackEvent("click_access_beta", "navigation", "Navbar")
           }
         >
-          Open console <ArrowUpRight size={14} />
+          Sign in
+        </a>
+        <a
+          className="nav-login"
+          href={SANDBOX_URL}
+          onClick={() =>
+            trackEvent("click_explore_sandbox", "navigation", "Navbar")
+          }
+        >
+          <span className="nl-long">Try the sandbox</span>
+          <span className="nl-short" aria-hidden="true">Sandbox</span>
+          <ArrowUpRight size={14} />
         </a>
         <button
           className="menu-toggle"
@@ -57,18 +101,12 @@ const Navbar = () => {
           className="mobile-nav"
           aria-label="Mobile navigation"
         >
-          <a href="/#how-it-works" onClick={() => setOpen(false)}>
-            Workflow
-          </a>
-          <a href="/#integrations" onClick={() => setOpen(false)}>
-            Integrations
-          </a>
-          <a href="/#pricing" onClick={() => setOpen(false)}>
-            Free beta
-          </a>
-          <a href="/docs" onClick={() => setOpen(false)}>
-            Docs
-          </a>
+          {links.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              {l.label}
+            </a>
+          ))}
+          <a href={CONSOLE_URL}>Sign in</a>
           <a href={SANDBOX_URL}>
             Try the sandbox <ArrowUpRight size={15} />
           </a>

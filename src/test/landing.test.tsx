@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import Index from "../pages/Index";
+import Product from "../pages/Product";
 
 afterEach(cleanup);
 
@@ -13,28 +14,30 @@ describe("evidence-first landing page", () => {
     expect(logo).toHaveStyle({ maskImage: 'url("/logo.png")' });
     expect(logo).not.toHaveTextContent("LG");
   });
-  it("has one clear promise and an explicit simulated product scene", () => {
+  it("has one clear promise and a labeled real-console capture", () => {
     render(<Index />);
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Production broke.What changed?",
     );
-    expect(screen.getByText(/ILLUSTRATIVE DATA/)).toBeVisible();
-    expect(screen.getByText(/Correlation is a lead, not proof/)).toBeVisible();
+    expect(screen.getByText(/REAL CONSOLE/)).toBeVisible();
+    expect(document.body.textContent).not.toMatch(/ILLUSTRATIVE DATA/);
   });
-  it("changes the example without pretending to run a live diagnosis", () => {
+  it("makes the sandbox the primary call to action", () => {
     render(<Index />);
-    fireEvent.click(screen.getByRole("button", { name: "edge-gateway" }));
-    expect(
-      screen.getByRole("button", { name: "edge-gateway" }),
-    ).toHaveAttribute("aria-pressed", "true");
-    expect(
-      screen.getByRole("button", { name: "checkout-api" }),
-    ).toHaveAttribute("aria-pressed", "false");
-    expect(
-      screen.getByRole("heading", { name: "Response time increased" }),
-    ).toBeVisible();
-    expect(screen.getByText(/configuration change preceded/)).toBeVisible();
+    const primary = document.querySelectorAll(".hero-actions .primary-link");
+    expect(primary).toHaveLength(1);
+    expect(primary[0]).toHaveAttribute("href", "https://console.lastgood.space/sandbox");
+  });
+  it("toggles light and dark theme and remembers the choice", () => {
+    localStorage.clear();
+    document.documentElement.setAttribute("data-theme", "dark");
+    render(<Index />);
+    fireEvent.click(screen.getByRole("button", { name: "Switch to light mode" }));
+    expect(document.documentElement.getAttribute("data-theme")).toBe("light");
+    expect(localStorage.getItem("lg-theme")).toBe("light");
+    fireEvent.click(screen.getByRole("button", { name: "Switch to dark mode" }));
+    expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
   });
   it("separates shipped integrations from the roadmap", () => {
     render(<Index />);
@@ -56,7 +59,7 @@ describe("evidence-first landing page", () => {
   });
   it("only offers free beta and no unsupported certification claim", () => {
     render(<Index />);
-    expect(screen.getByText(/Free beta for up to 2 projects/)).toBeVisible();
+    expect(screen.getByText(/Free beta for up to 2 services/)).toBeVisible();
     expect(screen.getByText(/No SOC 2 certification claimed/)).toBeVisible();
     expect(document.body.textContent).not.toMatch(
       /85%|100% DETERMINISTIC|Staff SREs|\$49|\$999|3 seconds/,
@@ -103,7 +106,7 @@ describe("evidence-first landing page", () => {
 
 describe("docs and screenshots", () => {
   it("shows labeled sandbox screenshots", () => {
-    render(<Index />);
+    render(<Product />);
     expect(screen.getAllByRole("img", { name: /sandbox|Ingestion Channels/ }).length).toBe(3);
     expect(screen.getAllByText(/sample data/i).length).toBeGreaterThan(0);
   });
