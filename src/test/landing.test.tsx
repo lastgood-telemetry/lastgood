@@ -38,18 +38,18 @@ describe("evidence-first landing page", () => {
   });
   it("separates shipped integrations from the roadmap", () => {
     render(<Index />);
-    expect(screen.getAllByText("LIVE")).toHaveLength(2);
-    expect(screen.getByText("COMING SOON")).toBeVisible();
-    expect(screen.getByText(/Not available in the beta today/)).toBeVisible();
+    expect(screen.getAllByText("LIVE").length).toBeGreaterThanOrEqual(4);
+    expect(screen.getByText("NOT YET")).toBeVisible();
+    expect(screen.getByText(/Not available as native connectors/)).toBeVisible();
   });
-  it("shows Slack as planned context, not another live alert source", () => {
+  it("shows Slack as a live notification destination, not an alert source", () => {
     render(<Index />);
     const section = screen.getByRole("region", { name: /You already have alerting/ });
-    expect(within(section).getByText("Coming soon")).toBeVisible();
+    expect(within(section).getByText("Live")).toBeVisible();
     expect(within(section).getByText("Not another alert bot.")).toBeVisible();
-    expect(within(section).getByText(/not available in the beta yet/)).toBeVisible();
+    expect(within(section).getByText(/at most 5 new threads per 10 minutes/)).toBeVisible();
     expect(within(section).getByText(/No automatic production changes/)).toBeVisible();
-    expect(within(section).getByRole("list", { name: "Planned Slack investigation workflow" }).children).toHaveLength(4);
+    expect(within(section).getByRole("list", { name: "Slack investigation workflow" }).children).toHaveLength(4);
     expect(within(section).getByRole("list", { name: "Ranked suspect changes" }).children).toHaveLength(3);
     expect(within(section).queryByRole("link")).toBeNull();
     expect(within(section).queryByRole("button")).toBeNull();
@@ -73,9 +73,9 @@ describe("evidence-first landing page", () => {
         "https://console.lastgood.space/login",
       );
     }
-    expect(
-      screen.getByRole("link", { name: "Try the sandbox" }),
-    ).toHaveAttribute("href", "https://console.lastgood.space/sandbox");
+    for (const link of screen.getAllByRole("link", { name: "Try the sandbox" })) {
+      expect(link).toHaveAttribute("href", "https://console.lastgood.space/sandbox");
+    }
     expect(
       screen.getByRole("link", { name: /Find us on Product Hunt/ }),
     ).toHaveAttribute("rel", "noopener noreferrer");
@@ -98,5 +98,13 @@ describe("evidence-first landing page", () => {
     expect(
       screen.queryByRole("navigation", { name: "Mobile navigation" }),
     ).not.toBeInTheDocument();
+  });
+});
+
+describe("docs and screenshots", () => {
+  it("shows labeled sandbox screenshots", () => {
+    render(<Index />);
+    expect(screen.getAllByRole("img", { name: /sandbox|Ingestion Channels/ }).length).toBe(3);
+    expect(screen.getAllByText(/sample data/i).length).toBeGreaterThan(0);
   });
 });

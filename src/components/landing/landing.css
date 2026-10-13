@@ -1256,3 +1256,58 @@
   .slack-card { padding-left: 13px; }
   .slack-preview figcaption { padding: 15px 16px; }
 }
+
+/* Product screenshots */
+.shots { padding-top: 100px; padding-bottom: 90px; border-bottom: 1px solid var(--line); }
+.shots-grid { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.shot { margin: 0; border: 1px solid #3c4940; border-radius: 6px; background: #151a18; overflow: hidden; min-width: 0; }
+.shot-wide { grid-column: 1 / -1; }
+.shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid #292e2c; }
+.shot figcaption { display: grid; gap: 6px; padding: 16px 20px 18px; }
+.shot figcaption strong { font-size: 14px; font-weight: 600; }
+.shot figcaption span { font-size: 12px; line-height: 1.7; color: #a8b3ac; }
+.shots-actions { margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.section-heading > p a, .integration-cta a { color: var(--mint); }
+.section-heading > p a { text-decoration: underline; text-underline-offset: 3px; }
+.integration-cta { margin-top: 24px; padding: 0 8px; }
+.integration-cta a { display: inline-flex; gap: 8px; align-items: center; padding: 8px 0; }
+.integration-cta a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.beta-links { flex-wrap: wrap; }
+
+/* Docs */
+.docs-shell { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 72px; padding-top: 64px; padding-bottom: 96px; }
+.docs-toc { position: sticky; top: 24px; align-self: start; display: grid; gap: 4px; }
+.docs-toc .micro-label { margin-bottom: 12px; }
+.docs-toc a { color: #a8b3ac; font-size: 13px; padding: 7px 0 7px 14px; border-left: 1px solid #292e2c; }
+.docs-toc a:hover { color: var(--mint); border-left-color: var(--mint); }
+.docs-body { max-width: 760px; min-width: 0; }
+.docs-body h1 { font-size: 46px; font-weight: 400; letter-spacing: -2px; line-height: 1.1; margin: 0 0 48px; }
+.docs-body section { padding: 36px 0; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+.docs-body h2 { font-size: 26px; font-weight: 400; letter-spacing: -0.8px; margin: 0 0 16px; }
+.docs-body h3 { font-size: 15px; font-weight: 600; margin: 28px 0 8px; }
+.docs-body p { color: #b7c2bb; font-size: 14px; line-height: 1.8; margin: 0 0 14px; }
+.docs-body p strong { color: var(--ink); font-weight: 600; }
+.docs-body a { color: var(--mint); }
+.docs-body code { font: 12px/1.6 monospace; background: #19251e; border: 1px solid #2c3b32; padding: 1px 5px; border-radius: 3px; color: #d5f7e4; overflow-wrap: anywhere; }
+.doc-code { margin: 16px 0; border: 1px solid #3c4940; border-radius: 6px; background: #0c100f; overflow: hidden; }
+.doc-code figcaption { font: 10px/1.6 monospace; letter-spacing: 1px; color: #a1ada5; padding: 10px 16px; border-bottom: 1px solid #292e2c; }
+.doc-code pre { margin: 0; padding: 16px; overflow-x: auto; }
+.docs-body .doc-code code { background: none; border: 0; padding: 0; color: #d9e2dc; font-size: 12px; line-height: 1.7; overflow-wrap: normal; }
+.doc-table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid #292e2c; border-radius: 6px; }
+.docs-body table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.docs-body th { text-align: left; font: 10px/1.6 monospace; letter-spacing: 1px; color: #a1ada5; padding: 12px 14px; border-bottom: 1px solid #3c4940; white-space: nowrap; }
+.docs-body td:first-child code { white-space: nowrap; }
+.docs-body td { padding: 12px 14px; border-bottom: 1px solid #292e2c; color: #b7c2bb; vertical-align: top; line-height: 1.6; }
+.docs-body tr:last-child td { border-bottom: 0; }
+.docs-cta { display: flex; gap: 24px; align-items: center; padding-top: 36px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+@media (max-width: 1000px) {
+  .docs-shell { grid-template-columns: 1fr; gap: 32px; padding-top: 40px; }
+  .docs-toc { position: static; display: flex; flex-wrap: wrap; gap: 8px; }
+  .docs-toc .micro-label { width: 100%; margin-bottom: 4px; }
+  .docs-toc a { border: 1px solid #292e2c; border-radius: 3px; padding: 6px 10px; }
+  .docs-body h1 { font-size: 34px; letter-spacing: -1.4px; }
+}
+@media (max-width: 760px) {
+  .shots { padding-top: 64px; padding-bottom: 56px; }
+  .shots-grid { grid-template-columns: 1fr; }
+}

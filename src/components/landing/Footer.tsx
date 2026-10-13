@@ -17,6 +17,7 @@ const Footer = () => (
     <div className="footer-bottom">
       <span>© 2026 LastGood</span>
       <div>
+        <a href="/docs">Docs</a>
         <a href="/terms">Terms of service</a>
         <a href="mailto:hello@lastgood.space">hello@lastgood.space</a>
       </div>
