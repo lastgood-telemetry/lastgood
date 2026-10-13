@@ -17,28 +17,6 @@ import Footer from "@/components/landing/Footer";
 import { trackEvent } from "@/util/analytics";
 import "@/components/landing/landing.css";
 
-const shots = [
-  {
-    src: "/screens/rewind.svg",
-    alt: "LastGood Rewind view in the sandbox showing a checkout-service incident with ranked changes and an AI triage summary",
-    title: "Rewind",
-    caption: "Ranked changes before the incident, with an AI triage summary. Risk ranks investigation order, not causation.",
-    wide: true,
-  },
-  {
-    src: "/screens/events.svg",
-    alt: "LastGood Events feed in the sandbox listing GitHub, Kubernetes and LaunchDarkly changes",
-    title: "Events",
-    caption: "Every change from every source in one feed, each with a score rationale.",
-  },
-  {
-    src: "/screens/channels.svg",
-    alt: "LastGood Ingestion Channels page showing GitHub App and Custom REST API",
-    title: "Ingestion Channels",
-    caption: "Connect the GitHub App or send events from your own tools.",
-  },
-];
-
 const integrations = [
   { icon: GitBranch, name: "GitHub App", desc: "Pushes, deployments and workflow runs", status: "LIVE" },
   { icon: Terminal, name: "Custom REST API", desc: "Deploys, migrations, feature flags and config changes from any tool", status: "LIVE" },
@@ -312,95 +290,78 @@ const Index = () => (
         </div>
       </section>
       <section
-        className="principles section-shell"
-        aria-labelledby="principles-heading"
+        id="product"
+        className="product-preview section-shell"
+        aria-labelledby="preview-heading"
       >
-        <div className="section-heading">
-          <span className="eyebrow">02 / BUILT FOR THE INVESTIGATION</span>
-          <h2 id="principles-heading">
-            A timeline.
-            <br />
-            Not another firehose.
-          </h2>
-        </div>
-        <div className="principle-list">
-          <article>
-            <span>01</span>
-            <div>
-              <h3>Context before conclusions.</h3>
-              <p>
-                Exact timestamps, commit links and event payloads give you
-                something to inspect, not a black-box verdict.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span>02</span>
-            <div>
-              <h3>Alongside your existing tools.</h3>
-              <p>
-                LastGood is a change-correlation layer, not a replacement for
-                Datadog, PagerDuty or your logs.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span>03</span>
-            <div>
-              <h3>Your team stays in control.</h3>
-              <p>
-                Use the diagnostic report as a starting point. Confirm the cause
-                and review remediation before making production changes.
-              </p>
-            </div>
-          </article>
-        </div>
+        <a className="preview-frame" href="/product" aria-labelledby="preview-heading">
+          <div className="preview-copy">
+            <span className="eyebrow">THE PRODUCT</span>
+            <h2 id="preview-heading">The real console, in the sandbox.</h2>
+            <p>Rewind, Events and Ingestion Channels, on a simulated incident. Sample data.</p>
+            <span className="preview-link">
+              See the product <ArrowRight size={16} />
+            </span>
+          </div>
+          <img
+            src="/screens/rewind.svg"
+            alt="LastGood Rewind view in the sandbox showing a checkout-service incident with ranked changes"
+            width={1356}
+            height={847}
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
       </section>
       <section
-        id="product"
-        className="shots section-shell"
-        aria-labelledby="shots-heading"
+        id="integrations"
+        className="integrations section-shell"
+        aria-labelledby="integrations-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">03 / THE PRODUCT</span>
-          <h2 id="shots-heading">
-            This is the console.
+          <span className="eyebrow">02 / CONNECT YOUR CHANGE SIGNALS</span>
+          <h2 id="integrations-heading">
+            Changes in. Alerts in.
             <br />
-            Not a mockup.
+            Suspects out.
           </h2>
           <p>
-            Screenshots from the live sandbox, which runs on a simulated
-            checkout incident. The data is sample data; the screens are the real
-            product.
+            Not another agent that needs read access to your whole stack. A GitHub App, one API key and one webhook is the whole setup. This is what works today. <a href="/docs">Read the docs</a>
           </p>
         </div>
-        <div className="shots-grid">
-          {shots.map((shot) => (
-            <figure key={shot.src} className={shot.wide ? "shot shot-wide" : "shot"}>
-              <img
-                src={shot.src}
-                alt={shot.alt}
-                width={1356}
-                height={847}
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                <strong>{shot.title}</strong>
-                <span>{shot.caption}</span>
-              </figcaption>
-            </figure>
+        <div className="integration-table">
+          {integrations.map(({ icon: Icon, name, desc, status }) => (
+            <div className="integration-row" key={name}>
+              <Icon size={21} />
+              <div>
+                <h3>{name}</h3>
+                <p>{desc}</p>
+              </div>
+              <span className="live-status">
+                <span className="signal-dot" /> {status}
+              </span>
+            </div>
           ))}
+          <div className="roadmap-row">
+            <span className="micro-label">NOT YET</span>
+            <p>
+              One-click AWS CloudTrail <span>/</span> GitLab <span>/</span>{" "}
+              Kubernetes
+            </p>
+            <small>
+              Not available as native connectors. CloudTrail already works
+              through EventBridge and the REST API, and GitLab CI can call the
+              REST API.
+            </small>
+          </div>
         </div>
-        <div className="shots-actions">
-          <a
-            className="primary-link"
-            href={SANDBOX_URL}
-            onClick={() => trackEvent("click_explore_sandbox", "screenshots", "Revamp")}
-          >
-            Try the sandbox <ArrowUpRight size={16} />
+        <div className="integration-cta">
+          <a className="secondary-link" href="/docs">
+            Every way to integrate <ArrowRight size={16} />
           </a>
-          <span className="action-note">Sample data. No signup needed.</span>
+          <a className="secondary-link" href="/product">
+            See the product <ArrowRight size={16} />
+          </a>
         </div>
       </section>
       <section
@@ -459,51 +420,48 @@ const Index = () => (
         </div>
       </section>
       <section
-        id="integrations"
-        className="integrations section-shell"
-        aria-labelledby="integrations-heading"
+        className="principles section-shell"
+        aria-labelledby="principles-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">04 / CONNECT YOUR CHANGE SIGNALS</span>
-          <h2 id="integrations-heading">
-            Changes in. Alerts in.
+          <span className="eyebrow">03 / BUILT FOR THE INVESTIGATION</span>
+          <h2 id="principles-heading">
+            A timeline.
             <br />
-            Suspects out.
+            Not another firehose.
           </h2>
-          <p>
-            Not another agent that needs read access to your whole stack. A GitHub App, one API key and one webhook is the whole setup. This is what works today. <a href="/docs">Read the docs</a>
-          </p>
         </div>
-        <div className="integration-table">
-          {integrations.map(({ icon: Icon, name, desc, status }) => (
-            <div className="integration-row" key={name}>
-              <Icon size={21} />
-              <div>
-                <h3>{name}</h3>
-                <p>{desc}</p>
-              </div>
-              <span className="live-status">
-                <span className="signal-dot" /> {status}
-              </span>
+        <div className="principle-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Context before conclusions.</h3>
+              <p>
+                Exact timestamps, commit links and event payloads give you
+                something to inspect, not a black-box verdict.
+              </p>
             </div>
-          ))}
-          <div className="roadmap-row">
-            <span className="micro-label">NOT YET</span>
-            <p>
-              One-click AWS CloudTrail <span>/</span> GitLab <span>/</span>{" "}
-              Kubernetes
-            </p>
-            <small>
-              Not available as native connectors. CloudTrail already works
-              through EventBridge and the REST API, and GitLab CI can call the
-              REST API.
-            </small>
-          </div>
-        </div>
-        <div className="integration-cta">
-          <a className="secondary-link" href="/docs">
-            Every way to integrate <ArrowRight size={16} />
-          </a>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Alongside your existing tools.</h3>
+              <p>
+                LastGood is a change-correlation layer, not a replacement for
+                Datadog, PagerDuty or your logs.
+              </p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Your team stays in control.</h3>
+              <p>
+                Use the diagnostic report as a starting point. Confirm the cause
+                and review remediation before making production changes.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
       <section
