@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import Index from "../pages/Index";
+import Product from "../pages/Product";
 
 afterEach(cleanup);
 
@@ -103,7 +104,7 @@ describe("evidence-first landing page", () => {
 
 describe("docs and screenshots", () => {
   it("shows labeled sandbox screenshots", () => {
-    render(<Index />);
+    render(<Product />);
     expect(screen.getAllByRole("img", { name: /sandbox|Ingestion Channels/ }).length).toBe(3);
     expect(screen.getAllByText(/sample data/i).length).toBeGreaterThan(0);
   });
