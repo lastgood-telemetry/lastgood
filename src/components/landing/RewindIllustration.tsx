@@ -2,9 +2,9 @@
 // and data story as the real product; detail is stripped. Colors come from
 // the landing theme variables, so it follows light and dark mode.
 const rows = [
-  { rank: "#1", title: "Flag enabled: new-checkout-flow", meta: "launchdarkly · 5 min before", risk: 92, suspect: true },
-  { rank: "#2", title: "Deployment: checkout-service v1.4.2", meta: "github · 15 min before", risk: 40, suspect: false },
-  { rank: "#3", title: "Merge PR #412: update redis cache config", meta: "github · 1h 30m before", risk: 25, suspect: false },
+  { rank: "#1", title: "Deploy: checkout-api@2f3a1c", meta: "github · 4 min before · touches migration files", level: "HIGH RISK", suspect: true },
+  { rank: "#2", title: "Flag enabled: checkout-v2", meta: "launchdarkly · 22 min before", level: "MEDIUM", suspect: false },
+  { rank: "#3", title: "Config change: redis cache", meta: "github · 1h 30m before", level: "LOW", suspect: false },
 ];
 
 const RewindIllustration = () => (
@@ -35,7 +35,7 @@ const RewindIllustration = () => (
     {/* heading and incident context */}
     <text className="rw-h" x="228" y="94">Rewind</text>
     <g className="rw-chips">
-      {["checkout-service", "production", "2 hour window", "incident 10:42 UTC"].map((t, i) => {
+      {["checkout-api", "production", "2 hour window", "incident 10:42 UTC"].map((t, i) => {
         const x = 228 + [0, 168, 288, 424][i];
         const w = [150, 104, 118, 150][i];
         return (
@@ -56,16 +56,16 @@ const RewindIllustration = () => (
     ))}
     <g className="rw-ev rw-ev-3" style={{ animationDelay: "0.9s" }}>
       <circle className="rw-dot" cx="420" cy="226" r="6" />
-      <text className="rw-ev-t" x="420" y="254" textAnchor="middle">PR #412</text>
+      <text className="rw-ev-t" x="420" y="254" textAnchor="middle">redis cache</text>
     </g>
     <g className="rw-ev rw-ev-2" style={{ animationDelay: "1.3s" }}>
       <circle className="rw-dot" cx="660" cy="226" r="6" />
-      <text className="rw-ev-t" x="660" y="254" textAnchor="middle">deploy v1.4.2</text>
+      <text className="rw-ev-t" x="660" y="254" textAnchor="middle">flag checkout-v2</text>
     </g>
     <g className="rw-ev rw-ev-1" style={{ animationDelay: "1.7s" }}>
       <circle className="rw-halo" cx="880" cy="226" r="14" />
       <circle className="rw-dot rw-dot-hot" cx="880" cy="226" r="8" />
-      <text className="rw-ev-t rw-ev-hot" x="880" y="254" textAnchor="middle">flag on</text>
+      <text className="rw-ev-t rw-ev-hot" x="880" y="254" textAnchor="middle">deploy 2f3a1c</text>
     </g>
     <g className="rw-ev" style={{ animationDelay: "2.1s" }}>
       <line className="rw-inc" x1="1000" y1="196" x2="1000" y2="240" />
@@ -84,13 +84,12 @@ const RewindIllustration = () => (
           <text className="rw-rank" x="258" y={y + 30}>{r.rank}</text>
           <text className="rw-rt" x="292" y={y + 30}>{r.title}</text>
           <text className="rw-rm" x="292" y={y + 54}>{r.meta}</text>
-          <text className="rw-risk" x="696" y={y + 32} textAnchor="end">{r.risk}<tspan className="rw-risk-s">/100</tspan></text>
-          <rect className="rw-bar-bg" x="616" y={y + 48} width="80" height="4" rx="2" />
-          <rect className={r.suspect ? "rw-bar rw-bar-hot" : "rw-bar"} x="616" y={y + 48} width={(80 * r.risk) / 100} height="4" rx="2" style={{ animationDelay: `${2.6 + i * 0.25}s` }} />
+          <rect className={r.suspect ? "rw-badge rw-badge-hot" : "rw-badge"} x="602" y={y + 14} width="96" height="22" rx="3" />
+          <text className={r.suspect ? "rw-badge-t rw-badge-t-hot" : "rw-badge-t"} x="650" y={y + 29} textAnchor="middle">{r.level}</text>
         </g>
       );
     })}
-    <text className="rw-suspect-t" x="292" y="402" style={{ animationDelay: "3.2s" }}>SUSPECTED CONTRIBUTOR</text>
+    <text className="rw-suspect-t" x="292" y="402" style={{ animationDelay: "3.2s" }}>PRIME SUSPECT</text>
 
     {/* diagnosis */}
     <rect className="rw-card" x="748" y="284" width="424" height="328" rx="4" />

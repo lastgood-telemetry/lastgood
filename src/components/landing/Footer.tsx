@@ -6,7 +6,7 @@ const Footer = () => (
       <a className="wordmark" href="/">
         LastGood
       </a>
-      <p>Less guesswork. More evidence.</p>
+      <p>Change correlation for incident response.</p>
       <a
         href="https://www.producthunt.com/products/lastgood?launch=lastgood"
         target="_blank"

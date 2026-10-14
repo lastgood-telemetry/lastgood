@@ -82,14 +82,6 @@ const Index = () => (
             <span>HOW IT WORKS · EXAMPLE INCIDENT, SAMPLE DATA</span>
           </span>
         </figure>
-        <div className="hero-footnote">
-          <span>
-            YOUR OBSERVABILITY STACK, WITH THE CHANGE CONTEXT IT'S MISSING.
-          </span>
-          <span>
-            GitHub <span className="separator">/</span> REST <span className="separator">/</span> Datadog <span className="separator">/</span> Slack
-          </span>
-        </div>
       </section>
       <section
         id="how-it-thinks"
@@ -114,35 +106,52 @@ const Index = () => (
             <h3>What kind of change is it?</h3>
             <p>
               A migration, a hotfix, an infra change, a config edit, a deploy
-              and a flag flip carry different risk. Files touched count too:
-              schema, config and dependency changes rank higher.
+              and a flag flip carry different risk. So do the files touched.
             </p>
+            <div className="mini mini-tags" aria-hidden="true">
+              <span className="hot">migration</span>
+              <span>config</span>
+              <span>deploy</span>
+              <span className="off">docs</span>
+            </div>
           </article>
           <article>
             <span className="step-number">Q2</span>
             <h3>How much does this service matter?</h3>
             <p>
               Criticality is something you set per service, not a guess from its
-              name. Map dependencies and a change upstream of the failing
-              service gets weight too. No map? It still works.
+              name. Map dependencies and a change upstream gets weight too. No
+              map? It still works.
             </p>
+            <div className="mini mini-graph" aria-hidden="true">
+              <span>web</span><i /><span className="hot">api</span><i /><span>db</span>
+            </div>
           </article>
           <article>
             <span className="step-number">Q3</span>
             <h3>Is it still a live suspect?</h3>
             <p>
-              Risk fades with time, and it fades slower for risky changes. A
-              migration can stay a suspect for up to 48 hours. A low-risk
-              change drops away fast.
+              Risk fades with time, slower for risky changes. A migration can
+              stay a suspect for up to 48 hours. A low-risk change drops away
+              fast.
             </p>
+            <div className="mini mini-decay" aria-hidden="true">
+              <div><b className="long" /><em>migration</em></div>
+              <div><b className="short" /><em>deploy</em></div>
+            </div>
           </article>
           <article>
             <span className="step-number">Q4</span>
             <h3>Did it happen where the incident is?</h3>
             <p>
-              Production counts in full. Staging and dev count for less.
-              Changes are matched to the incident's service and environment.
+              Production counts in full. Staging and dev count for less. Changes
+              are matched to the incident's service and environment.
             </p>
+            <div className="mini mini-env" aria-hidden="true">
+              <div><b style={{ width: "100%" }} /><em>prod</em></div>
+              <div><b style={{ width: "50%" }} /><em>staging</em></div>
+              <div><b style={{ width: "15%" }} /><em>dev</em></div>
+            </div>
           </article>
         </div>
         <div className="think-example">
@@ -185,53 +194,29 @@ const Index = () => (
           </div>
         </div>
       </section>
-      <section
-        id="how-it-works"
-        className="workflow section-shell"
-        aria-labelledby="workflow-heading"
-      >
-        <div className="section-heading">
-          <span className="eyebrow">02 / THE WORKFLOW</span>
-          <h2 id="workflow-heading">
-            From alert to
-            <br />a useful first lead.
-          </h2>
+      <section className="cta-strip section-shell" aria-labelledby="cta-heading">
+        <h2 id="cta-heading">See the ranking for yourself.</h2>
+        <div>
           <p>
-            Keep your monitoring. Add the missing context between a production
-            symptom and a recent change.
+            The sandbox needs no signup and uses fixed sample data. The console
+            behind login runs the engine on your own changes.
           </p>
-        </div>
-        <div className="workflow-steps">
-          <article>
-            <span className="step-number">01</span>
-            <GitBranch size={22} />
-            <h3>Bring in the changes.</h3>
-            <p>
-              Connect GitHub webhooks or send events from your own tools through
-              the REST API.
-            </p>
-            <span className="step-meta">DEPLOYS / COMMITS / CUSTOM EVENTS</span>
-          </article>
-          <article>
-            <span className="step-number">02</span>
-            <Activity size={22} />
-            <h3>Rewind to the incident.</h3>
-            <p>
-              Choose a time, service and environment. Review the changes around
-              the incident in a single timeline.
-            </p>
-            <span className="step-meta">TIME / SERVICE / ENVIRONMENT</span>
-          </article>
-          <article>
-            <span className="step-number">03</span>
-            <Terminal size={22} />
-            <h3>Follow the evidence.</h3>
-            <p>
-              Inspect suspected contributors and their event details. Your team
-              decides what to investigate or roll back.
-            </p>
-            <span className="step-meta">CONTEXT / EVIDENCE / HUMAN REVIEW</span>
-          </article>
+          <div className="beta-links">
+            <a
+              className="primary-link"
+              href={SANDBOX_URL}
+              onClick={() => trackEvent("click_explore_sandbox", "after_thinking", "Revamp")}
+            >
+              Try the sandbox <ArrowRight size={16} />
+            </a>
+            <a
+              className="secondary-link"
+              href={CONSOLE_URL}
+              onClick={() => trackEvent("click_access_beta", "after_thinking", "Revamp")}
+            >
+              Start free beta <ArrowUpRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
       <section
@@ -240,9 +225,9 @@ const Index = () => (
         aria-labelledby="integrations-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">03 / CONNECT YOUR CHANGE SIGNALS</span>
+          <span className="eyebrow">02 / CONNECT YOUR CHANGE SIGNALS</span>
           <h2 id="integrations-heading">
-            Changes in. Alerts in.
+            Changes in.
             <br />
             Suspects out.
           </h2>
@@ -288,7 +273,7 @@ const Index = () => (
         aria-labelledby="result-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">THE RESULT</span>
+          <span className="eyebrow">03 / THE RESULT</span>
           <h2 id="result-heading">
             Open Rewind. The
             <br />
@@ -311,46 +296,36 @@ const Index = () => (
         className="slack-section section-shell"
         aria-labelledby="slack-heading"
       >
-        <div className="section-heading">
-          <span className="eyebrow">
-            SLACK <span className="slack-soon">Live</span>
-          </span>
-          <h2 id="slack-heading">
-            You already have alerting.
-            <br />Get the change context.
-          </h2>
-          <p>
-            At 2 AM, you don't need another bot telling you production broke.
-            LastGood posts likely suspects into Slack, one message per incident, edited in place as the incident changes.
-          </p>
-        </div>
         <div className="slack-layout">
           <div className="slack-story">
+            <span className="eyebrow">
+              04 / SLACK <span className="slack-soon">Live</span>
+            </span>
+            <h2 id="slack-heading" className="slack-title">
+              You already have alerting.
+              <br />Get the change context.
+            </h2>
             <h3>Not another alert bot.</h3>
             <p>
-              Datadog, PagerDuty or Grafana raises the alarm. LastGood's job is
-              different: put recent deploys and feature-flag flips in one ranked
-              list, so your team has a lead before the log-diving starts.
+              Datadog, PagerDuty or Grafana raises the alarm. LastGood puts
+              recent deploys and feature-flag flips in one ranked list, so your
+              team has a lead before the log-diving starts. Your team reviews
+              the evidence and decides on a rollback. Nothing changes in
+              production automatically.
             </p>
-            <ol className="slack-flow" aria-label="Slack investigation workflow">
-              <li><span>01</span><div><strong>Your existing alert fires.</strong><p>Keep the tools that monitor and page your team.</p></div></li>
-              <li><span>02</span><div><strong>Suspect changes land in Slack.</strong><p>One message per incident with the top 3 suspects, edited in place.</p></div></li>
-              <li><span>03</span><div><strong>Open Rewind. Follow the evidence.</strong><p>The link opens Rewind for that incident time, service and environment.</p></div></li>
-              <li><span>04</span><div><strong>Confirm the cause. Decide the fix.</strong><p>Your team reviews the evidence and rolls back if needed. No automatic production changes.</p></div></li>
-            </ol>
           </div>
           <figure className="slack-preview" aria-label="Example Slack suspect card">
-            <div className="slack-channel"><span># incident-api</span><span>EXAMPLE DATA</span></div>
+            <div className="slack-channel"><span># incident-checkout</span><span>EXAMPLE DATA</span></div>
             <div className="slack-message">
               <div className="slack-author"><span className="slack-avatar" aria-hidden="true">↳</span><strong>LastGood</strong><span className="slack-app">APP</span><time>02:14</time></div>
               <div className="slack-card">
-                <span className="micro-label">CHANGE CONTEXT / API · PRODUCTION</span>
-                <h3>HighErrorRate on api</h3>
+                <span className="micro-label">CHANGE CONTEXT / CHECKOUT-API · PRODUCTION</span>
+                <h3>HighErrorRate on checkout-api</h3>
                 <p className="slack-card-intro">You have the alert. Here are the changes worth checking.</p>
                 <ol className="slack-suspects" aria-label="Ranked suspect changes">
-                  <li><span>1</span><div><strong>deploy <code>api@2f3a1c</code></strong><small>14 min ago · same service &amp; environment</small></div></li>
+                  <li><span>1</span><div><strong>deploy <code>checkout-api@2f3a1c</code></strong><small>4 min ago · same service &amp; environment</small></div></li>
                   <li><span>2</span><div><strong>flag <code>checkout-v2</code> flipped on</strong><small>22 min ago · production</small></div></li>
-                  <li><span>3</span><div><strong>deploy <code>api@9b72e0</code></strong><small>38 min ago · same service &amp; environment</small></div></li>
+                  <li><span>3</span><div><strong>config <code>redis-cache</code> changed</strong><small>1 h 30 min ago · upstream service</small></div></li>
                 </ol>
                 <div className="slack-rewind-preview"><span>Open incident in Rewind</span><ArrowUpRight size={16} aria-hidden="true" /></div>
                 <p className="slack-card-note">Rewind link carries incident time, service and environment.</p>
@@ -359,51 +334,6 @@ const Index = () => (
             </div>
             <figcaption>Example data. Defaults: sev2 and above, production only, at most 5 new threads per 10 minutes. Configure it on the console Notifications page.</figcaption>
           </figure>
-        </div>
-      </section>
-      <section
-        className="principles section-shell"
-        aria-labelledby="principles-heading"
-      >
-        <div className="section-heading">
-          <span className="eyebrow">04 / BUILT FOR THE INVESTIGATION</span>
-          <h2 id="principles-heading">
-            A timeline.
-            <br />
-            Not another firehose.
-          </h2>
-        </div>
-        <div className="principle-list">
-          <article>
-            <span>01</span>
-            <div>
-              <h3>Context before conclusions.</h3>
-              <p>
-                Exact timestamps, commit links and event payloads give you
-                something to inspect, not a black-box verdict.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span>02</span>
-            <div>
-              <h3>Alongside your existing tools.</h3>
-              <p>
-                LastGood is a change-correlation layer, not a replacement for
-                Datadog, PagerDuty or your logs.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span>03</span>
-            <div>
-              <h3>Your team stays in control.</h3>
-              <p>
-                Use the diagnostic report as a starting point. Confirm the cause
-                and review remediation before making production changes.
-              </p>
-            </div>
-          </article>
         </div>
       </section>
       <section
