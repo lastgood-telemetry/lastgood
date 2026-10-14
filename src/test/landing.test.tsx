@@ -102,3 +102,22 @@ describe("evidence-first landing page", () => {
     ).not.toBeInTheDocument();
   });
 });
+
+describe("signal flow and how-it-thinks", () => {
+  it("shows sources, engine and ranked suspects as the hero visual", () => {
+    render(<Index />);
+    const flow = screen.getByRole("group", { name: /How LastGood works/ });
+    expect(within(flow).getByText("GitHub")).toBeVisible();
+    expect(within(flow).getByText("Jenkins and other CI")).toBeVisible();
+    expect(within(flow).getByText("2 / THE LASTGOOD ENGINE")).toBeVisible();
+    expect(within(flow).getByText(/RULED OUT/)).toBeVisible();
+    expect(screen.getByText(/EXAMPLE INCIDENT, SAMPLE DATA/)).toBeVisible();
+  });
+  it("explains the engine honestly, without unbackable claims", () => {
+    render(<Index />);
+    const section = screen.getByRole("region", { name: /Not every change/ });
+    expect(within(section).getByText(/Suspects, not a verdict/)).toBeVisible();
+    expect(within(section).getByText(/does not\s+prove causation/)).toBeVisible();
+    expect(document.body.textContent).not.toMatch(/SOC 2 (certified|compliant)|MTTR|Trusted by/i);
+  });
+});

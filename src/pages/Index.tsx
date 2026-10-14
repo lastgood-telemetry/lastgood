@@ -1,4 +1,5 @@
 import RewindIllustration from "@/components/landing/RewindIllustration";
+import SignalFlow from "@/components/landing/SignalFlow";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -75,10 +76,10 @@ const Index = () => (
             No signup for the sandbox. <a href="/docs">Read the integration docs</a>
           </span>
         </div>
-        <figure className="hero-shot">
-          <RewindIllustration />
+        <figure className="hero-shot hero-flow">
+          <SignalFlow />
           <span className="hero-shot-caption">
-            <span>SIMPLIFIED VIEW OF THE CONSOLE · SAMPLE DATA</span>
+            <span>HOW IT WORKS · EXAMPLE INCIDENT, SAMPLE DATA</span>
           </span>
         </figure>
         <div className="hero-footnote">
@@ -91,12 +92,106 @@ const Index = () => (
         </div>
       </section>
       <section
+        id="how-it-thinks"
+        className="thinking section-shell"
+        aria-labelledby="thinking-heading"
+      >
+        <div className="section-heading">
+          <span className="eyebrow">01 / HOW LASTGOOD THINKS</span>
+          <h2 id="thinking-heading">
+            Not every change
+            <br />
+            deserves your attention.
+          </h2>
+          <p>
+            The ranking comes from a small set of rules you can read and argue
+            with. Here is what the engine asks about every change.
+          </p>
+        </div>
+        <div className="think-grid">
+          <article>
+            <span className="step-number">Q1</span>
+            <h3>What kind of change is it?</h3>
+            <p>
+              A migration, a hotfix, an infra change, a config edit, a deploy
+              and a flag flip carry different risk. Files touched count too:
+              schema, config and dependency changes rank higher.
+            </p>
+          </article>
+          <article>
+            <span className="step-number">Q2</span>
+            <h3>How much does this service matter?</h3>
+            <p>
+              Criticality is something you set per service, not a guess from its
+              name. Map dependencies and a change upstream of the failing
+              service gets weight too. No map? It still works.
+            </p>
+          </article>
+          <article>
+            <span className="step-number">Q3</span>
+            <h3>Is it still a live suspect?</h3>
+            <p>
+              Risk fades with time, and it fades slower for risky changes. A
+              migration can stay a suspect for up to 48 hours. A low-risk
+              change drops away fast.
+            </p>
+          </article>
+          <article>
+            <span className="step-number">Q4</span>
+            <h3>Did it happen where the incident is?</h3>
+            <p>
+              Production counts in full. Staging and dev count for less.
+              Changes are matched to the incident's service and environment.
+            </p>
+          </article>
+        </div>
+        <div className="think-example">
+          <div className="think-example-head">
+            <span className="micro-label">SAME INCIDENT, TWO VERY DIFFERENT CHANGES</span>
+          </div>
+          <div className="think-example-rows">
+            <div className="think-row think-row-out">
+              <span className="think-verdict">RULED OUT</span>
+              <div>
+                <strong>README.md edited, 3 min before</strong>
+                <p>Docs-only. Very recent, but it cannot break production. It is listed as ruled out, not silently hidden.</p>
+              </div>
+            </div>
+            <div className="think-row think-row-in">
+              <span className="think-verdict">STILL A SUSPECT</span>
+              <div>
+                <strong>Migration deployed, 31 h before</strong>
+                <p>Old, but schema changes fail late. It stays on the list with the reason: touches migration files.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="think-foot">
+          <div>
+            <h3>Every rank comes with a reason.</h3>
+            <p>
+              Reasons are written in plain language, so the on-call engineer can
+              check them in seconds. An AI model writes the summary from the
+              result. It never changes the ranking.
+            </p>
+          </div>
+          <div>
+            <h3>Suspects, not a verdict.</h3>
+            <p>
+              LastGood tells you which change to look at first. It does not
+              prove causation and it does not roll anything back. Your team
+              confirms the cause and decides the fix.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
         id="how-it-works"
         className="workflow section-shell"
         aria-labelledby="workflow-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">01 / THE WORKFLOW</span>
+          <span className="eyebrow">02 / THE WORKFLOW</span>
           <h2 id="workflow-heading">
             From alert to
             <br />a useful first lead.
@@ -145,7 +240,7 @@ const Index = () => (
         aria-labelledby="integrations-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">02 / CONNECT YOUR CHANGE SIGNALS</span>
+          <span className="eyebrow">03 / CONNECT YOUR CHANGE SIGNALS</span>
           <h2 id="integrations-heading">
             Changes in. Alerts in.
             <br />
@@ -186,6 +281,30 @@ const Index = () => (
             Every way to integrate <ArrowRight size={16} />
           </a>
         </div>
+      </section>
+      <section
+        id="result"
+        className="result section-shell"
+        aria-labelledby="result-heading"
+      >
+        <div className="section-heading">
+          <span className="eyebrow">THE RESULT</span>
+          <h2 id="result-heading">
+            Open Rewind. The
+            <br />
+            ranking is already there.
+          </h2>
+          <p>
+            Pick the incident time, service and environment. Rewind shows the
+            ranked suspects with their reasons, and the evidence behind each one.
+          </p>
+        </div>
+        <figure className="hero-shot result-shot">
+          <RewindIllustration />
+          <span className="hero-shot-caption">
+            <span>SIMPLIFIED VIEW OF THE CONSOLE · SAMPLE DATA</span>
+          </span>
+        </figure>
       </section>
       <section
         id="slack"
@@ -247,7 +366,7 @@ const Index = () => (
         aria-labelledby="principles-heading"
       >
         <div className="section-heading">
-          <span className="eyebrow">03 / BUILT FOR THE INVESTIGATION</span>
+          <span className="eyebrow">04 / BUILT FOR THE INVESTIGATION</span>
           <h2 id="principles-heading">
             A timeline.
             <br />

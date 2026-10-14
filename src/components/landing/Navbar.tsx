@@ -7,6 +7,7 @@ export const CONSOLE_URL = "https://console.lastgood.space/login";
 export const SANDBOX_URL = "https://console.lastgood.space/sandbox";
 
 const links = [
+  { href: "/#how-it-thinks", label: "How it thinks" },
   { href: "/#how-it-works", label: "Workflow" },
   { href: "/#integrations", label: "Integrations" },
   { href: "/docs", label: "Docs" },
