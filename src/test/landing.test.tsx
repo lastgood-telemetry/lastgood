@@ -50,8 +50,7 @@ describe("evidence-first landing page", () => {
     expect(within(section).getByText("Live")).toBeVisible();
     expect(within(section).getByText("Not another alert bot.")).toBeVisible();
     expect(within(section).getByText(/at most 5 new threads per 10 minutes/)).toBeVisible();
-    expect(within(section).getByText(/No automatic production changes/)).toBeVisible();
-    expect(within(section).getByRole("list", { name: "Slack investigation workflow" }).children).toHaveLength(4);
+    expect(within(section).getByText(/Nothing changes in\s+production automatically/)).toBeVisible();
     expect(within(section).getByRole("list", { name: "Ranked suspect changes" }).children).toHaveLength(3);
     expect(within(section).queryByRole("link")).toBeNull();
     expect(within(section).queryByRole("button")).toBeNull();
@@ -108,7 +107,7 @@ describe("signal flow and how-it-thinks", () => {
     render(<Index />);
     const flow = screen.getByRole("group", { name: /How LastGood works/ });
     expect(within(flow).getByText("GitHub")).toBeVisible();
-    expect(within(flow).getByText("Jenkins and other CI")).toBeVisible();
+    expect(within(flow).getByText("Jenkins, CI")).toBeVisible();
     expect(within(flow).getByText("2 / THE LASTGOOD ENGINE")).toBeVisible();
     expect(within(flow).getByText(/RULED OUT/)).toBeVisible();
     expect(screen.getByText(/EXAMPLE INCIDENT, SAMPLE DATA/)).toBeVisible();
@@ -119,5 +118,23 @@ describe("signal flow and how-it-thinks", () => {
     expect(within(section).getByText(/Suspects, not a verdict/)).toBeVisible();
     expect(within(section).getByText(/does not\s+prove causation/)).toBeVisible();
     expect(document.body.textContent).not.toMatch(/SOC 2 (certified|compliant)|MTTR|Trusted by/i);
+  });
+});
+
+describe("consolidated page", () => {
+  it("numbers sections in order and has a call to action after how-it-thinks", () => {
+    render(<Index />);
+    const eyebrows = Array.from(document.querySelectorAll(".eyebrow")).map((e) => e.textContent ?? "");
+    const nums = eyebrows.map((t) => t.match(/^(\d\d) \//)?.[1]).filter(Boolean);
+    expect(nums).toEqual(["01", "02", "03", "04"]);
+    const cta = screen.getByRole("heading", { name: "See the ranking for yourself." });
+    const thinking = screen.getByRole("heading", { name: /Not every change/ });
+    expect(thinking.compareDocumentPosition(cta) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+  it("keeps the Rewind mock free of numeric scores", () => {
+    render(<Index />);
+    const svg = document.querySelector(".rw-ill")!;
+    expect(svg.textContent).not.toMatch(/\d+\/100/);
+    expect(svg.textContent).toMatch(/HIGH RISK/);
   });
 });

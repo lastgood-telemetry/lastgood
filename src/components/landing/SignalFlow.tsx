@@ -5,10 +5,10 @@ import { Database, FileText, Flag, Rocket } from "lucide-react";
 // middle, ranked suspects out. Plain HTML and CSS so it stays crisp, themed and
 // readable at any width. Sample data only; labels say how each source connects.
 const sources = [
-  { name: "GitHub", how: "GitHub App", what: "pushes, deployments, workflow runs" },
-  { name: "Jenkins and other CI", how: "REST API", what: "build and deploy events" },
-  { name: "Feature flags", how: "REST API", what: "flag flips per environment" },
-  { name: "Migrations and config", how: "REST API", what: "schema and config changes" },
+  { name: "GitHub", how: "GitHub App" },
+  { name: "Jenkins, CI", how: "REST API" },
+  { name: "Feature flags", how: "REST API" },
+  { name: "Migrations", how: "REST API" },
 ];
 
 const stages = [
@@ -20,8 +20,8 @@ const stages = [
 
 const suspects = [
   { rank: "1", t: "Deploy on checkout-api", d: "Touches migration files · 4 min before", hot: true },
-  { rank: "2", t: "Flag new-checkout-flow turned on", d: "Same environment · 22 min before", hot: false },
-  { rank: "3", t: "Config change to redis cache", d: "Upstream dependency · 1 h 30 min before", hot: false },
+  { rank: "2", t: "Flag checkout-v2 turned on", d: "Production · 22 min before", hot: false },
+  { rank: "3", t: "Config change to redis cache", d: "Upstream of checkout-api · 1 h 30 min before", hot: false },
 ];
 
 const chips = [
@@ -52,15 +52,14 @@ const SignalFlow = () => {
         {sources.map((s) => (
           <li key={s.name}>
             <strong>{s.name}</strong>
-            <span>{s.what}</span>
             <em>{s.how}</em>
           </li>
         ))}
       </ul>
       <div className="sf-alert">
         <span className="sf-label">INCIDENT TRIGGER</span>
-        <strong>Alert from Datadog or any webhook</strong>
-        <span>Sets the time, service and environment to rewind to</span>
+        <strong>Alert from Datadog or a webhook</strong>
+        <span>Sets the time, service and environment</span>
       </div>
     </div>
     <div className="sf-lane" aria-hidden="true">
@@ -86,12 +85,10 @@ const SignalFlow = () => {
             <b>{s.n}</b>
             <div>
               <strong>{s.t}</strong>
-              <span>{s.d}</span>
             </div>
           </li>
         ))}
       </ol>
-      <p className="sf-engine-note">Deterministic rules. The same inputs give the same ranking, and every score has a reason attached.</p>
     </div>
     <div className="sf-link" aria-hidden="true"><i /><i /><i /></div>
     <div className="sf-col sf-out">
