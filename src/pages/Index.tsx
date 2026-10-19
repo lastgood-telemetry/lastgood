@@ -73,13 +73,15 @@ const Index = () => (
             Start free beta <ArrowUpRight size={16} />
           </a>
           <span className="action-note">
-            No signup for the sandbox. <a href="/docs">Read the integration docs</a>
+            No signup for the sandbox. It replays real change data from our
+            own production, anonymized.{" "}
+            <a href="/docs">Read the integration docs</a>
           </span>
         </div>
         <figure className="hero-shot hero-flow">
           <SignalFlow />
           <span className="hero-shot-caption">
-            <span>HOW IT WORKS · EXAMPLE INCIDENT, SAMPLE DATA</span>
+            <span>HOW IT WORKS · ILLUSTRATIVE EXAMPLE</span>
           </span>
         </figure>
       </section>
@@ -198,8 +200,13 @@ const Index = () => (
         <h2 id="cta-heading">See the ranking for yourself.</h2>
         <div>
           <p>
-            The sandbox needs no signup and uses fixed sample data. The console
-            behind login runs the engine on your own changes.
+            The sandbox needs no signup and replays real change data
+            from our own production, anonymized. The console behind login runs
+            the engine on your own changes.
+          </p>
+          <p>
+            Want the engine on your own incident? We'll replay your last one
+            on a free 15-min call. <ChatLink>Chat with us</ChatLink> to book it.
           </p>
           <div className="beta-links">
             <a

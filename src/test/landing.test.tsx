@@ -110,7 +110,7 @@ describe("signal flow and how-it-thinks", () => {
     expect(within(flow).getByText("Jenkins, CI")).toBeVisible();
     expect(within(flow).getByText("2 / THE LASTGOOD ENGINE")).toBeVisible();
     expect(within(flow).getByText(/RULED OUT/)).toBeVisible();
-    expect(screen.getByText(/EXAMPLE INCIDENT, SAMPLE DATA/)).toBeVisible();
+    expect(screen.getByText(/ILLUSTRATIVE EXAMPLE/)).toBeVisible();
   });
   it("explains the engine honestly, without unbackable claims", () => {
     render(<Index />);
