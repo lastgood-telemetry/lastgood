@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Terms from "./pages/Terms";
 import Docs from "./pages/Docs";
+import Access from "./pages/Access";
 import { initGA, trackPageView } from "./util/analytics";
 
 const AnalyticsTracker = () => {
@@ -23,6 +24,7 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/docs" element={<Docs />} />
+      <Route path="/access" element={<Access />} />
       <Route path="/terms" element={<Terms />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
