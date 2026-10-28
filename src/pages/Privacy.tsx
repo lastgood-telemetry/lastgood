@@ -7,6 +7,7 @@ const sections = [
   ["collect", "What we collect"],
   ["use", "How we use it"],
   ["providers", "Service providers"],
+  ["locations", "Where data is stored"],
   ["analytics", "Website analytics and chat"],
   ["retention", "Retention and deletion"],
   ["rights", "Your choices"],
@@ -102,7 +103,7 @@ const Privacy = () => {
               <li>Vercel: hosting for the website and console.</li>
               <li>Resend: transactional email such as sign-in links and invitations.</li>
               <li>
-                AI model providers (currently Groq and Google Gemini): they
+                Third-party LLM services: they
                 receive parts of an incident, such as change summaries
                 (which can include commit messages) and alert titles, to write
                 summaries. We do not request file contents from GitHub, so we
@@ -115,6 +116,32 @@ const Privacy = () => {
             <p>
               GitHub, Google and Slack handle your data under their own
               policies when you sign in with them or connect them.
+            </p>
+          </section>
+
+          <section id="locations">
+            <h2>Where data is stored</h2>
+            <p>
+              Our primary application database is hosted on Amazon Web
+              Services in Sydney, Australia (ap-southeast-2). This is where
+              we store account details, integration events, incidents and
+              the summaries and postmortems kept by the Service.
+            </p>
+            <p>
+              Other providers store data separately from our primary database:
+            </p>
+            <ul>
+              <li>One third-party LLM service stores retained input and output in the United States. Depending on the service and account terms, inputs and outputs can be retained for reliability or abuse monitoring, used to improve the provider's services, or reviewed by people. We do not promise that LLM processing stays in a single country.</li>
+              <li>Resend stores email content, delivery logs and account data in the United States, regardless of the region used to send email.</li>
+              <li>The website sends analytics to PostHog US Cloud, in the United States.</li>
+              <li>Crisp stores messaging data in the Netherlands and plugin data in Germany. Its relay servers can keep connection logs in the United States, United Kingdom and Singapore.</li>
+            </ul>
+            <p>
+              These locations do not describe every provider's processing
+              or storage locations. We are still confirming the applicable
+              other LLM, Vercel, Zoho and console analytics arrangements.
+              Contact us before connecting data that must stay in a particular
+              country; we do not promise country-restricted processing.
             </p>
           </section>
 
