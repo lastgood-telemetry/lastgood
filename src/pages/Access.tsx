@@ -31,7 +31,7 @@ const Access = () => {
           <span className="eyebrow">TRUST / ACCESS</span>
           <h1>What LastGood accesses</h1>
           <p>
-            <strong>Last updated:</strong> October 20, 2026
+            <strong>Last updated:</strong> October 28, 2026
           </p>
           <p>
             LastGood records what changed and ranks it when an incident
@@ -71,7 +71,10 @@ const Access = () => {
             <p>
               GitHub shows the exact permissions the app requests on its
               install screen. That screen is the source of truth for
-              permissions.
+              permissions. It lists "Contents: read" because GitHub requires
+              that permission to send <code>push</code> and <code>release</code>{" "}
+              events. LastGood uses it to receive those events. Its code does
+              not call GitHub's contents or clone endpoints.
             </p>
           </section>
 
@@ -104,8 +107,9 @@ const Access = () => {
             <p>
               Some summaries are written with third-party AI model providers.
               Parts of an incident, such as change summaries and alert titles,
-              can be sent to them. File contents are not part of that, because
-              we never receive them.
+              can be sent to them. File contents are not part of that. The
+              events we use carry file paths, not file contents, and our code
+              does not request file contents from GitHub.
             </p>
           </section>
 
